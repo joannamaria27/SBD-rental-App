@@ -9,16 +9,15 @@ public class Punkt_Wypozyczen {
 
     @Id
     @GeneratedValue
-    private Long id_punktu;
-
+    private long id_punktu;
     private String lokalizacja;
     private String nazwa;
 
-    public Long getId_punktu() {
+    public long getId_punktu() {
         return id_punktu;
     }
 
-    public void setId_punktu(Long id_punktu) {
+    public void setId_punktu(long id_punktu) {
         this.id_punktu = id_punktu;
     }
 

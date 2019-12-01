@@ -9,16 +9,16 @@ public class Platnosc {
 
     @Id
     @GeneratedValue
-    private Long id;
+    private long id_platnosci;
     private String typ;
     private boolean faktura;
 
-    public Long getId() {
-        return id;
+    public long getId_platnosci() {
+        return id_platnosci;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId_platnosci(long id_platnosci) {
+        this.id_platnosci = id_platnosci;
     }
 
     public String getTyp() {

@@ -16,12 +16,23 @@ public class Pojazd {
     private String marka;
     private String model;
     @OneToOne
-    private Ubezpieczenie ubezpieczenie;
+    private Ubezpieczenie id_ubezpieczenia;
     private String stan_pojazdu;
-    private String termin_waz_badania;
+    private String czyDostepny;
+    private Date termin_waz_badania;
     @OneToOne
     private Punkt_Wypozyczen punkt_postoju;
 
+    public Pojazd(String _typ, String _marka, String _model, Ubezpieczenie _id_ubezpieczenia, String _stan_pojazdu, Date _termin_waz_badania, Punkt_Wypozyczen _punkt_postoju){
+        typ = _typ;
+        marka = _marka;
+        model = _model;
+        id_ubezpieczenia = _id_ubezpieczenia;
+        stan_pojazdu = _stan_pojazdu;
+        termin_waz_badania = _termin_waz_badania;
+        punkt_postoju = _punkt_postoju;
+        czyDostepny = "nie";
+    }
 
     public long getId_pojazdu() {
         return id_pojazdu;
@@ -55,12 +66,12 @@ public class Pojazd {
         this.model = model;
     }
 
-    public Ubezpieczenie getUbezpieczenie() {
-        return ubezpieczenie;
+    public Ubezpieczenie getId_ubezpieczenia() {
+        return id_ubezpieczenia;
     }
 
-    public void setUbezpieczenie(Ubezpieczenie ubezpieczenie) {
-        this.ubezpieczenie = ubezpieczenie;
+    public void setId_ubezpieczenia(Ubezpieczenie id_ubezpieczenia) {
+        this.id_ubezpieczenia = id_ubezpieczenia;
     }
 
     public String getStan_pojazdu() {
@@ -71,11 +82,19 @@ public class Pojazd {
         this.stan_pojazdu = stan_pojazdu;
     }
 
-    public String getTermin_waz_badania() {
+    public String isCzyDostepny() {
+        return czyDostepny;
+    }
+
+    public void setCzyDostepny(String czyDostepny) {
+        this.czyDostepny = czyDostepny;
+    }
+
+    public Date getTermin_waz_badania() {
         return termin_waz_badania;
     }
 
-    public void setTermin_waz_badania(String termin_waz_badania) {
+    public void setTermin_waz_badania(Date termin_waz_badania) {
         this.termin_waz_badania = termin_waz_badania;
     }
 

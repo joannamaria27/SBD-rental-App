@@ -10,47 +10,47 @@ public class Rezerwacja {
 
     @Id
     @GeneratedValue
-    private Long id_rezerwacji;
+    private long id_rezerwacji;
     @OneToOne
-    private Pojazd pojazd;
+    private Pojazd id_pojazdu;
     @OneToOne
-    private Klient klient;
-    private String data_rozp_rez;
+    private Klient id_klienta;
+    private String data_r_rezerwacji;
     private String data_z_rezerwacji;
     private float przewidywana_cena;
     @OneToOne
-    private Pracownik pracownik_dod_rez;
+    private Pracownik id_pracownika;
 
-    public Long getId_rezerwacji() {
+    public long getId_rezerwacji() {
         return id_rezerwacji;
     }
 
-    public void setId_rezerwacji(Long id_rezerwacji) {
+    public void setId_rezerwacji(long id_rezerwacji) {
         this.id_rezerwacji = id_rezerwacji;
     }
 
-    public Pojazd getPojazd() {
-        return pojazd;
+    public Pojazd getId_pojazdu() {
+        return id_pojazdu;
     }
 
-    public void setPojazd(Pojazd pojazd) {
-        this.pojazd = pojazd;
+    public void setId_pojazdu(Pojazd id_pojazdu) {
+        this.id_pojazdu = id_pojazdu;
     }
 
-    public Klient getKlient() {
-        return klient;
+    public Klient getId_klienta() {
+        return id_klienta;
     }
 
-    public void setKlient(Klient klient) {
-        this.klient = klient;
+    public void setId_klienta(Klient id_klienta) {
+        this.id_klienta = id_klienta;
     }
 
-    public String getData_rozp_rez() {
-        return data_rozp_rez;
+    public String getData_r_rezerwacji() {
+        return data_r_rezerwacji;
     }
 
-    public void setData_rozp_rez(String data_rozp_rez) {
-        this.data_rozp_rez = data_rozp_rez;
+    public void setData_r_rezerwacji(String data_r_rezerwacji) {
+        this.data_r_rezerwacji = data_r_rezerwacji;
     }
 
     public String getData_z_rezerwacji() {
@@ -69,11 +69,11 @@ public class Rezerwacja {
         this.przewidywana_cena = przewidywana_cena;
     }
 
-    public Pracownik getPracownik_dod_rez() {
-        return pracownik_dod_rez;
+    public Pracownik getId_pracownika() {
+        return id_pracownika;
     }
 
-    public void setPracownik_dod_rez(Pracownik pracownik_dod_rez) {
-        this.pracownik_dod_rez = pracownik_dod_rez;
+    public void setId_pracownika(Pracownik id_pracownika) {
+        this.id_pracownika = id_pracownika;
     }
 }

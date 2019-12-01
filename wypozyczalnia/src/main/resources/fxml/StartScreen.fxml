@@ -5,8 +5,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.StackPane?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StartScreenController">
    <center>
       <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -27,7 +26,7 @@
    <bottom>
       <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="klienci" mnemonicParsing="false" prefHeight="52.0" prefWidth="151.0" text="KLIENCI" StackPane.alignment="CENTER_LEFT">
+            <Button fx:id="mainMenuClientButton" mnemonicParsing="false" onAction="#showClientMenu" prefHeight="52.0" prefWidth="151.0" text="KLIENCI" StackPane.alignment="CENTER_LEFT">
                <StackPane.margin>
                   <Insets left="50.0" />
                </StackPane.margin>
@@ -37,7 +36,7 @@
                   <Insets right="200.0" />
                </StackPane.margin>
             </Button>
-            <Button fx:id="pojazdy" mnemonicParsing="false" prefHeight="52.0" prefWidth="151.0" text="POJAZDY" StackPane.alignment="CENTER">
+            <Button fx:id="pojazdy" mnemonicParsing="false" onAction="#showVehicleMenu" prefHeight="52.0" prefWidth="151.0" text="POJAZDY" StackPane.alignment="CENTER">
                <StackPane.margin>
                   <Insets left="200.0" />
                </StackPane.margin>

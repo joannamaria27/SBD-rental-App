@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -12,7 +13,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.StackPane?>
 
-<BorderPane style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.VehicleOptionsController">
     <center>
         <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="742.0" prefWidth="1200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
             <tabs>
@@ -20,32 +21,27 @@
                     <content>
                         <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: white;">
                             <children>
-                                <TextField prefHeight="31.0" prefWidth="599.0" promptText="PUNKT POSTOJU" StackPane.alignment="CENTER">
+                                <TextField fx:id="addVehiclePunktPostojuTextField" prefHeight="31.0" prefWidth="599.0" promptText="PUNKT POSTOJU" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets left="50.0" right="400.0" top="200.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <TextField prefHeight="31.0" prefWidth="599.0" promptText="TYP" StackPane.alignment="CENTER">
+                                <TextField fx:id="addVehicleTypTextField" prefHeight="31.0" prefWidth="599.0" promptText="TYP" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="400.0" left="50.0" right="400.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <TextField prefHeight="31.0" prefWidth="599.0" promptText="MARKA" StackPane.alignment="CENTER">
+                                <TextField fx:id="addVehicleMarkaTextField" prefHeight="31.0" prefWidth="599.0" promptText="MARKA" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="300.0" left="50.0" right="400.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <TextField prefHeight="31.0" prefWidth="599.0" promptText="TERMIN WAZNOSCI BADANIA" StackPane.alignment="CENTER">
-                                    <StackPane.margin>
-                                        <Insets left="50.0" right="400.0" top="100.0" />
-                                    </StackPane.margin>
-                                </TextField>
-                                <TextField prefHeight="31.0" prefWidth="599.0" promptText="STAN POJAZDU" StackPane.alignment="CENTER">
+                                <TextField fx:id="addVehicleStanPojazduTextField" promptText="STAN POJAZDU" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets left="50.0" right="400.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="186.0" text="DODAJ" StackPane.alignment="CENTER">
+                                <Button mnemonicParsing="false" onAction="#addVehicle" prefHeight="39.0" prefWidth="186.0" text="DODAJ" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets right="400.0" top="300.0" />
                                     </StackPane.margin>
@@ -53,16 +49,21 @@
                                         <Cursor fx:constant="OPEN_HAND" />
                                     </cursor>
                                 </Button>
-                                <TextField promptText="UBEZPIECZENIE" StackPane.alignment="CENTER">
+                                <TextField fx:id="addVehicleUbezpieczenieTextField" promptText="UBEZPIECZENIE" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="100.0" left="50.0" right="400.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <TextField prefHeight="31.0" prefWidth="599.0" promptText="MODEL" StackPane.alignment="CENTER">
+                                <TextField fx:id="addVehicleModelTextField" prefHeight="31.0" prefWidth="599.0" promptText="MODEL" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="200.0" left="50.0" right="400.0" />
                                     </StackPane.margin>
                                 </TextField>
+                        <DatePicker fx:id="addVehicleTerminWaznosciBadaniaDatePicker" promptText="TERMIN WAŻNOŚCI BADANIA">
+                           <StackPane.margin>
+                              <Insets left="50.0" right="400.0" top="100.0" />
+                           </StackPane.margin>
+                        </DatePicker>
                             </children>
                         </StackPane>
                     </content>

@@ -3,20 +3,41 @@ package domain;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.sql.Date;
 
 @Entity
 public class Klient{
 
     @Id
     @GeneratedValue
-    private Long id_klienta;
+    private long id_klienta;
     private String nazwisko;
     private String imie;
-    private String data_urodzenia;
+    private Date data_urodzenia;
     private String adres;
     private String pesel;
     private String telefon;
     private String nr_prawa_jazdy;
+
+    public Klient(){}
+
+    public Klient(String nr_prawa_jazdy_, String nazwisko_, String imie_, Date data_urodzenia_, String adres_, String pesel_, String telefon_) {
+        nr_prawa_jazdy = nr_prawa_jazdy_;
+        nazwisko = nazwisko_;
+        imie = imie_;
+        data_urodzenia = data_urodzenia_;
+        adres = adres_;
+        pesel = pesel_;
+        telefon = telefon_;
+    }
+
+    public long getId_klienta() {
+        return id_klienta;
+    }
+
+    public void setId_klienta(long id_klienta) {
+        this.id_klienta = id_klienta;
+    }
 
     public String getNazwisko() {
         return nazwisko;
@@ -34,11 +55,11 @@ public class Klient{
         this.imie = imie;
     }
 
-    public String getData_urodzenia() {
+    public Date getData_urodzenia() {
         return data_urodzenia;
     }
 
-    public void setData_urodzenia(String data_urodzenia) {
+    public void setData_urodzenia(Date data_urodzenia) {
         this.data_urodzenia = data_urodzenia;
     }
 

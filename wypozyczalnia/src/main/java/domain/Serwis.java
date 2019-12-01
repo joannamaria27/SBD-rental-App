@@ -1,58 +1,57 @@
 package domain;
 
 import javax.persistence.*;
+import java.sql.Date;
 
 @Entity
 public class Serwis {
 
     @Id
     @GeneratedValue
-    private Long id_serwisu;
-
+    private long id_serwisu;
     @ManyToOne
-    private Pojazd pojazd;
+    private Pojazd id_pojazdu;
+    private Date data_r_naprawy;
+    private Date data_z_naprawy;
+    private float cena;
 
-    private String data_rozp_naprawy;
-    private  String data_zak_naprawy;
-    private Float cena;
-
-    public Long getId_serwisu() {
+    public long getId_serwisu() {
         return id_serwisu;
     }
 
-    public void setId_serwisu(Long id_serwisu) {
+    public void setId_serwisu(long id_serwisu) {
         this.id_serwisu = id_serwisu;
     }
 
-    public Pojazd getPojazd() {
-        return pojazd;
+    public Pojazd getId_pojazdu() {
+        return id_pojazdu;
     }
 
-    public void setPojazd(Pojazd pojazd) {
-        this.pojazd = pojazd;
+    public void setId_pojazdu(Pojazd id_pojazdu) {
+        this.id_pojazdu = id_pojazdu;
     }
 
-    public String getData_rozp_naprawy() {
-        return data_rozp_naprawy;
+    public Date getData_r_naprawy() {
+        return data_r_naprawy;
     }
 
-    public void setData_rozp_naprawy(String data_rozp_naprawy) {
-        this.data_rozp_naprawy = data_rozp_naprawy;
+    public void setData_r_naprawy(Date data_r_naprawy) {
+        this.data_r_naprawy = data_r_naprawy;
     }
 
-    public String getData_zak_naprawy() {
-        return data_zak_naprawy;
+    public Date getData_z_naprawy() {
+        return data_z_naprawy;
     }
 
-    public void setData_zak_naprawy(String data_zak_naprawy) {
-        this.data_zak_naprawy = data_zak_naprawy;
+    public void setData_z_naprawy(Date data_z_naprawy) {
+        this.data_z_naprawy = data_z_naprawy;
     }
 
-    public Float getCena() {
+    public float getCena() {
         return cena;
     }
 
-    public void setCena(Float cena) {
+    public void setCena(float cena) {
         this.cena = cena;
     }
 }

@@ -3,20 +3,29 @@ package domain;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.sql.Date;
 
 @Entity
 public class Pracownik{
 
     @Id
     @GeneratedValue
-    private Long id_pracownika;
+    private long id_pracownika;
     private String nazwisko;
     private String imie;
-    private String data_urodzenia;
+    private Date data_urodzenia;
     private String adres;
     private String pesel;
     private String telefon;
     private String stanowisko;
+
+    public long getId_pracownika() {
+        return id_pracownika;
+    }
+
+    public void setId_pracownika(long id_pracownika) {
+        this.id_pracownika = id_pracownika;
+    }
 
     public String getNazwisko() {
         return nazwisko;
@@ -34,11 +43,11 @@ public class Pracownik{
         this.imie = imie;
     }
 
-    public String getData_urodzenia() {
+    public Date getData_urodzenia() {
         return data_urodzenia;
     }
 
-    public void setData_urodzenia(String data_urodzenia) {
+    public void setData_urodzenia(Date data_urodzenia) {
         this.data_urodzenia = data_urodzenia;
     }
 

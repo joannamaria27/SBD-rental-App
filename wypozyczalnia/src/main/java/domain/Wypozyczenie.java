@@ -1,47 +1,47 @@
 package domain;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Date;
 
 @Entity
 public class Wypozyczenie {
 
     @Id
     @GeneratedValue
-    private long id;
+    private long id_wypozyczenia;
 
     @OneToOne
-    private Pojazd pojazd;
-    private String data_wypozyczenia;
+    private Pojazd id_pojazdu;
+    private Date data_wypozyczenia;
     private String kod_dostepu;;
     private String stan_pojazdu;
     @OneToOne
-    private Klient klient;
+    private Klient id_klienta;
     private float kaucja;
     @OneToOne
-    private Pracownik pracownik;
+    private Pracownik id_pracownika;
 
-    public long getId() {
-        return id;
+    public long getId_wypozyczenia() {
+        return id_wypozyczenia;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setId_wypozyczenia(long id_wypozyczenia) {
+        this.id_wypozyczenia = id_wypozyczenia;
     }
 
-    public Pojazd getPojazd() {
-        return pojazd;
+    public Pojazd getId_pojazdu() {
+        return id_pojazdu;
     }
 
-    public void setPojazd(Pojazd pojazd) {
-        this.pojazd = pojazd;
+    public void setId_pojazdu(Pojazd id_pojazdu) {
+        this.id_pojazdu = id_pojazdu;
     }
 
-    public String getData_wypozyczenia() {
+    public Date getData_wypozyczenia() {
         return data_wypozyczenia;
     }
 
-    public void setData_wypozyczenia(String data_wypozyczenia) {
+    public void setData_wypozyczenia(Date data_wypozyczenia) {
         this.data_wypozyczenia = data_wypozyczenia;
     }
 
@@ -61,12 +61,12 @@ public class Wypozyczenie {
         this.stan_pojazdu = stan_pojazdu;
     }
 
-    public Klient getKlient() {
-        return klient;
+    public Klient getId_klienta() {
+        return id_klienta;
     }
 
-    public void setKlient(Klient klient) {
-        this.klient = klient;
+    public void setId_klienta(Klient id_klienta) {
+        this.id_klienta = id_klienta;
     }
 
     public float getKaucja() {
@@ -77,11 +77,11 @@ public class Wypozyczenie {
         this.kaucja = kaucja;
     }
 
-    public Pracownik getPracownik() {
-        return pracownik;
+    public Pracownik getId_pracownika() {
+        return id_pracownika;
     }
 
-    public void setPracownik(Pracownik pracownik) {
-        this.pracownik = pracownik;
+    public void setId_pracownika(Pracownik id_pracownika) {
+        this.id_pracownika = id_pracownika;
     }
 }
