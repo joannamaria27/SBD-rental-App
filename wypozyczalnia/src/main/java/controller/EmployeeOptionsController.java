@@ -33,7 +33,7 @@ public class EmployeeOptionsController {
     private TextField deleteEmployeeIdTextField;
 
     @FXML
-    private StackPane printClientStackPane;
+    private StackPane printEmployeeStackPane;
 
     public void addEmployee() {
         System.out.println("addEmployeeButton");
@@ -64,8 +64,8 @@ public class EmployeeOptionsController {
         WindowSingleton.getInstance().setLayout("/fxml/StartScreen.fxml");
     }
 
-    public void deleteEmployeeShowClientList() {
-        WindowSingleton.showClientTable(deleteEmployeeIdTextField);
+    public void deleteEmployeeShowEmployeeList() {
+        WindowSingleton.showEmployeeTable(deleteEmployeeIdTextField);
     }
 
     public void deleteEmployee() {
@@ -91,5 +91,8 @@ public class EmployeeOptionsController {
         }
     }
 
-   
+    public void printClientList() {
+        final TableView<Pracownik> table = WindowSingleton.createEmployeeTable();
+        printEmployeeStackPane.getChildren().add(table);
+    }
 }

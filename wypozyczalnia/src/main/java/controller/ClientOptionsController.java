@@ -60,9 +60,7 @@ public class ClientOptionsController {
         addClientBirthDateTextField.setText(String.valueOf(addClientBirthDateDatePicker.getValue()));
     }
 
-    public void showMainMenu() throws IOException {
-        WindowSingleton.getInstance().setLayout("/fxml/StartScreen.fxml");
-    }
+
 
     public void deleteClientShowClientList() {
         WindowSingleton.showClientTable(deleteClientIdTextField);
@@ -94,5 +92,10 @@ public class ClientOptionsController {
     public void printClientList() {
         final TableView<Klient> table = WindowSingleton.createClientTable();
         printClientStackPane.getChildren().add(table);
+    }
+
+
+    public void showMainMenu() throws IOException {
+        WindowSingleton.getInstance().setLayout("/fxml/StartScreen.fxml");
     }
 }

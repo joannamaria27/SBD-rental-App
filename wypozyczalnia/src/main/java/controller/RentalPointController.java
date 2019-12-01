@@ -8,9 +8,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
 
-import javax.xml.soap.Text;
+import java.io.IOException;
 import java.util.List;
-//import java.awt.*;
+
 
 public class RentalPointController {
 
@@ -67,4 +67,10 @@ public class RentalPointController {
         DBConnector.getInstance().deleteRentalPoint(punkt_wypozyczen);
         deleteRentalPointIdTextField.setText("");
     }
+
+
+    public void showMainMenu() throws IOException {
+        WindowSingleton.getInstance().setLayout("/fxml/StartScreen.fxml");
+    }
+
 }

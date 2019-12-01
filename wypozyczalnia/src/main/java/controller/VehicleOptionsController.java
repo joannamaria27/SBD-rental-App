@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
+import java.io.IOException;
 import java.sql.Date;
 
 
@@ -58,4 +59,11 @@ public class VehicleOptionsController {
     public void showAddRentalPointList(){
         WindowSingleton.showRentalPointTable(addVehiclePunktPostojuTextField);
     }
+
+
+
+    public void showMainMenu() throws IOException {
+        WindowSingleton.getInstance().setLayout("/fxml/StartScreen.fxml");
+    }
+
 }

@@ -1,9 +1,6 @@
 package controller;
 
-import domain.Klient;
-import domain.Pojazd;
-import domain.Punkt_Wypozyczen;
-import domain.Wypozyczenie;
+import domain.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

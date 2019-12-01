@@ -1,6 +1,7 @@
 package controller;
 
 import domain.Klient;
+import domain.Pracownik;
 import domain.Punkt_Wypozyczen;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -121,6 +122,33 @@ public class WindowSingleton {
         window.setScene(scene);
         window.show();
     }
+    public static void showEmployeeTable(final TextField idField) {
+
+        final Stage window = new Stage();
+        Button button = new Button("Wybierz");
+        window.setTitle("Lista pracowników");
+
+
+        final TableView<Pracownik> table = createEmployeeTable();
+        Pracownik pracownik = table.getSelectionModel().getSelectedItem();
+
+        VBox vBox = new VBox();
+        vBox.getChildren().addAll(table, button);
+
+        button.setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent e) {
+                Pracownik selection;
+                selection = table.getSelectionModel().getSelectedItem();
+                //System.out.println(selection.getId());
+                idField.setText(String.valueOf(selection.getId_pracownika()));
+                window.close();
+            }
+        });
+
+        Scene scene = new Scene(vBox);
+        window.setScene(scene);
+        window.show();
+    }
 
     public static void showRentalPointTable(final TextField idField) {
 
@@ -201,6 +229,55 @@ public class WindowSingleton {
 
         return table;
     }
+    public static TableView createEmployeeTable() {
+        final TableView<Pracownik> table;
+
+        // id
+        TableColumn<Pracownik, Long> idColumn = new TableColumn<Pracownik, Long>("ID");
+        idColumn.setMinWidth(50);
+        idColumn.setCellValueFactory(new PropertyValueFactory<Pracownik, Long>("id_pracownika"));
+
+        // adres
+        TableColumn<Pracownik, String> addressColumn = new TableColumn<Pracownik, String>("Adres");
+        addressColumn.setMinWidth(100);
+        addressColumn.setCellValueFactory(new PropertyValueFactory<Pracownik, String>("adres"));
+
+        // stanowisko
+        TableColumn<Pracownik, String> stanowiskoColumn = new TableColumn<Pracownik, String>("Stanowisko");
+        stanowiskoColumn.setMinWidth(100);
+        stanowiskoColumn.setCellValueFactory(new PropertyValueFactory<Pracownik, String>("stanowisko"));
+
+        // imie
+        TableColumn<Pracownik, String> nameColumn = new TableColumn<Pracownik, String>("Imie");
+        nameColumn.setMinWidth(100);
+        nameColumn.setCellValueFactory(new PropertyValueFactory<Pracownik, String>("imie"));
+
+        // nazwisko
+        TableColumn<Pracownik, String> surnameColumn = new TableColumn<Pracownik, String>("Nazwisko");
+        surnameColumn.setMinWidth(100);
+        surnameColumn.setCellValueFactory(new PropertyValueFactory<Pracownik, String>("nazwisko"));
+
+        // data urodzenia
+        TableColumn<Pracownik, Date> birthDateColumn = new TableColumn<Pracownik, Date>("Data urodzenia");
+        birthDateColumn.setMinWidth(100);
+        birthDateColumn.setCellValueFactory(new PropertyValueFactory<Pracownik, Date>("data_urodzenia"));
+
+        // pesel
+        TableColumn<Pracownik, String> peselColumn = new TableColumn<Pracownik, String>("PESEL");
+        peselColumn.setMinWidth(100);
+        peselColumn.setCellValueFactory(new PropertyValueFactory<Pracownik, String>("pesel"));
+
+        TableColumn<Pracownik, String> phoneColumn = new TableColumn<Pracownik, String>("Telefon");
+        phoneColumn.setMinWidth(100);
+        phoneColumn.setCellValueFactory(new PropertyValueFactory<Pracownik, String>("telefon"));
+
+
+        table = new TableView<Pracownik>();
+        table.setItems(WindowSingleton.getEmployeeObservableList());
+        table.getColumns().addAll(idColumn, nameColumn, surnameColumn, birthDateColumn, addressColumn, phoneColumn, stanowiskoColumn, peselColumn);
+
+        return table;
+    }
 
     public static TableView createRentalPointTable() {
         final TableView<Punkt_Wypozyczen> table;
@@ -239,6 +316,18 @@ public class WindowSingleton {
             clients.add(klient);
         }
         return clients;
+    }
+
+    private static ObservableList<Pracownik> getEmployeeObservableList() {
+        ObservableList<Pracownik> employee = FXCollections.observableArrayList();
+
+        // todo FROM Pracownik a???
+        List<Pracownik> list = DBConnector.getInstance().getEntityManager().createQuery("SELECT a FROM Klient a", Pracownik.class).getResultList();
+
+        for (Pracownik pracownik : list) {
+            employee.add(pracownik);
+        }
+        return employee;
     }
 
     private static ObservableList<Punkt_Wypozyczen> getRentalPointObservableList() {

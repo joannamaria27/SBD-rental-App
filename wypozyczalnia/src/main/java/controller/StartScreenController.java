@@ -42,7 +42,7 @@ public class StartScreenController {
 
     public void showReservationMenu() throws IOException {
         System.out.println("showReservationMenu");
-        WindowSingleton.getInstance().setLayout("/fxml/ClientOptions.fxml");
+        WindowSingleton.getInstance().setLayout("/fxml/ReservationOptions.fxml");
     }
 
 }
