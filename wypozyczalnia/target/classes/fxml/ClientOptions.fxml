@@ -59,16 +59,16 @@
                                         <Insets bottom="100.0" left="50.0" right="400.0" />
                                     </StackPane.margin>
                                 </TextField>
-                        <TextField fx:id="addClientLicenceTextField" prefHeight="31.0" prefWidth="599.0" promptText="NR PRAWA JAZDY" StackPane.alignment="CENTER">
-                           <StackPane.margin>
-                              <Insets bottom="200.0" left="50.0" right="400.0" />
-                           </StackPane.margin>
-                        </TextField>
-                        <DatePicker fx:id="addClientBirthDateDatePicker" onAction="#addClientSetBirthDate" prefWidth="174.0" StackPane.alignment="CENTER">
-                           <StackPane.margin>
-                              <Insets bottom="100.0" left="600.0" />
-                           </StackPane.margin>
-                        </DatePicker>
+                                <TextField fx:id="addClientLicenceTextField" prefHeight="31.0" prefWidth="599.0" promptText="NR PRAWA JAZDY" StackPane.alignment="CENTER">
+                                    <StackPane.margin>
+                                        <Insets bottom="200.0" left="50.0" right="400.0" />
+                                    </StackPane.margin>
+                                </TextField>
+                                <DatePicker fx:id="addClientBirthDateDatePicker" onAction="#addClientSetBirthDate" prefWidth="174.0" StackPane.alignment="CENTER">
+                                    <StackPane.margin>
+                                        <Insets bottom="100.0" left="600.0" />
+                                    </StackPane.margin>
+                                </DatePicker>
                             </children>
                         </StackPane>
                     </content>
@@ -189,31 +189,31 @@
                                         <Insets bottom="300.0" right="650.0" />
                                     </StackPane.margin>
                                 </Button>
-                        <TextField fx:id="editClientNewTelefonTextField" prefHeight="31.0" prefWidth="599.0" promptText="TELEFON">
-                           <StackPane.margin>
-                              <Insets left="50.0" right="650.0" top="500.0" />
-                           </StackPane.margin>
-                        </TextField>
-                        <TextField fx:id="editClientNewPeselTextField" prefHeight="31.0" prefWidth="599.0" promptText="PESEL" StackPane.alignment="CENTER">
-                           <StackPane.margin>
-                              <Insets left="50.0" right="650.0" top="400.0" />
-                           </StackPane.margin>
-                        </TextField>
-                        <DatePicker fx:id="editClientDatePicker" onAction="#editClientSetBirthDate" prefHeight="31.0" prefWidth="198.0" StackPane.alignment="CENTER">
-                           <StackPane.margin>
-                              <Insets right="300.0" top="200.0" />
-                           </StackPane.margin>
-                        </DatePicker>
-                        <TextField fx:id="editClientTelefonTextField" disable="true" prefHeight="31.0" prefWidth="793.0" promptText="TELEFON" StackPane.alignment="CENTER">
-                           <StackPane.margin>
-                              <Insets left="650.0" right="50.0" top="500.0" />
-                           </StackPane.margin>
-                        </TextField>
-                        <TextField fx:id="editClientPeselTextField" disable="true" prefHeight="31.0" prefWidth="599.0" promptText="PESEL">
-                           <StackPane.margin>
-                              <Insets left="650.0" right="50.0" top="400.0" />
-                           </StackPane.margin>
-                        </TextField>
+                                <TextField fx:id="editClientNewTelefonTextField" prefHeight="31.0" prefWidth="599.0" promptText="TELEFON">
+                                    <StackPane.margin>
+                                        <Insets left="50.0" right="650.0" top="500.0" />
+                                    </StackPane.margin>
+                                </TextField>
+                                <TextField fx:id="editClientNewPeselTextField" prefHeight="31.0" prefWidth="599.0" promptText="PESEL" StackPane.alignment="CENTER">
+                                    <StackPane.margin>
+                                        <Insets left="50.0" right="650.0" top="400.0" />
+                                    </StackPane.margin>
+                                </TextField>
+                                <DatePicker fx:id="editClientDatePicker" onAction="#editClientSetBirthDate" prefHeight="31.0" prefWidth="198.0" StackPane.alignment="CENTER">
+                                    <StackPane.margin>
+                                        <Insets right="300.0" top="200.0" />
+                                    </StackPane.margin>
+                                </DatePicker>
+                                <TextField fx:id="editClientTelefonTextField" disable="true" prefHeight="31.0" prefWidth="793.0" promptText="TELEFON" StackPane.alignment="CENTER">
+                                    <StackPane.margin>
+                                        <Insets left="650.0" right="50.0" top="500.0" />
+                                    </StackPane.margin>
+                                </TextField>
+                                <TextField fx:id="editClientPeselTextField" disable="true" prefHeight="31.0" prefWidth="599.0" promptText="PESEL">
+                                    <StackPane.margin>
+                                        <Insets left="650.0" right="50.0" top="400.0" />
+                                    </StackPane.margin>
+                                </TextField>
                             </children>
                         </StackPane>
                     </content>
