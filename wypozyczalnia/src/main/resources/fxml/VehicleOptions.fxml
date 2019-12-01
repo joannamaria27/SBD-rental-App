@@ -64,6 +64,16 @@
                               <Insets left="50.0" right="400.0" top="100.0" />
                            </StackPane.margin>
                         </DatePicker>
+                        <Button mnemonicParsing="false" text="LISTA UBEZPIECZEŃ" StackPane.alignment="CENTER_LEFT">
+                           <StackPane.margin>
+                              <Insets bottom="100.0" left="820.0" />
+                           </StackPane.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#showAddRentalPointList" text="LISTA PUNKTÓW POSTOJU" StackPane.alignment="CENTER_LEFT">
+                           <StackPane.margin>
+                              <Insets left="820.0" top="200.0" />
+                           </StackPane.margin>
+                        </Button>
                             </children>
                         </StackPane>
                     </content>

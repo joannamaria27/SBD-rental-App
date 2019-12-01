@@ -54,4 +54,8 @@ public class VehicleOptionsController {
         addVehicleStanPojazduTextField.setText("");
         addVehicleTerminWaznosciBadaniaDatePicker.setAccessibleText("");
     }
+
+    public void showAddRentalPointList(){
+        WindowSingleton.showRentalPointTable(addVehiclePunktPostojuTextField);
+    }
 }

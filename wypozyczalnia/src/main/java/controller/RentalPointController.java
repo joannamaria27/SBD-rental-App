@@ -30,7 +30,7 @@ public class RentalPointController {
             return;
         }
         List<Punkt_Wypozyczen> list = DBConnector.getInstance().getEntityManager().createQuery("SELECT a FROM Punkt_Wypozyczen a WHERE lokalizacja='" + addRentalPointLokalizacjaTextField.getText() + "'", Punkt_Wypozyczen.class).getResultList();
-        if(list.size()>0){
+        if (list.size() > 0) {
             WindowSingleton.alert("W podanej lokalizacji już istnieje punkt wypożyczeń");
             return;
         }
@@ -49,7 +49,7 @@ public class RentalPointController {
         printRentalPointStackPane.getChildren().add(table);
     }
 
-    public void deleteRentalPoint(){
+    public void deleteRentalPoint() {
 
         if (deleteRentalPointIdTextField.getText().equals("")) {
             WindowSingleton.alert("Niepoprawne dane");
@@ -63,7 +63,7 @@ public class RentalPointController {
                 return;
             }
         }
-        WindowSingleton.alert("Usunięto punkt wypożyczeń o ID = "+deleteRentalPointIdTextField.getText());
+        WindowSingleton.alert("Usunięto punkt wypożyczeń o ID = " + deleteRentalPointIdTextField.getText());
         DBConnector.getInstance().deleteRentalPoint(punkt_wypozyczen);
         deleteRentalPointIdTextField.setText("");
     }
