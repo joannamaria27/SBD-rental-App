@@ -110,37 +110,37 @@
                                         <Insets left="50.0" top="100.0" />
                                     </StackPane.margin>
                                 </Label>
-                                <TextField promptText="ID" StackPane.alignment="CENTER">
+                                <TextField fx:id="editClientIdTextField" promptText="ID" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="400.0" left="50.0" right="50.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <TextField prefHeight="31.0" prefWidth="599.0" promptText="NAZWISKO" StackPane.alignment="CENTER">
+                                <TextField fx:id="editClientNewNazwiskoTextField" prefHeight="31.0" prefWidth="599.0" promptText="NAZWISKO" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="400.0" left="50.0" right="650.0" top="300.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <TextField prefHeight="31.0" prefWidth="599.0" promptText="IMIĘ" StackPane.alignment="CENTER">
+                                <TextField fx:id="editClientNewImieTextField" prefHeight="31.0" prefWidth="599.0" promptText="IMIĘ" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="300.0" left="50.0" right="650.0" top="300.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <TextField prefHeight="31.0" prefWidth="599.0" promptText="NUMER PRAWA JAZDY" StackPane.alignment="CENTER">
+                                <TextField fx:id="editClientNewNumerPrawaJazdyTextField" prefHeight="31.0" prefWidth="599.0" promptText="NUMER PRAWA JAZDY" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="200.0" left="50.0" right="650.0" top="300.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <TextField prefHeight="31.0" prefWidth="599.0" promptText="DATA URODZENIA" StackPane.alignment="CENTER">
+                                <TextField fx:id="editClientNewDataUrodzeniaTextField" prefHeight="31.0" prefWidth="599.0" promptText="DATA URODZENIA" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="100.0" left="50.0" right="850.0" top="300.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <TextField prefHeight="31.0" prefWidth="599.0" promptText="ADRES" StackPane.alignment="CENTER">
+                                <TextField fx:id="editClientNewAdresTextField" prefHeight="31.0" prefWidth="599.0" promptText="ADRES" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets left="50.0" right="650.0" top="300.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="186.0" text="ZATWIERDZ" StackPane.alignment="CENTER">
+                                <Button mnemonicParsing="false" onAction="#editClient" prefHeight="39.0" prefWidth="186.0" text="ZATWIERDZ" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets right="650.0" top="600.0" />
                                     </StackPane.margin>
@@ -148,32 +148,32 @@
                                         <Cursor fx:constant="OPEN_HAND" />
                                     </cursor>
                                 </Button>
-                                <TextField disable="true" prefHeight="31.0" prefWidth="599.0" promptText="DATA URODZENIA" StackPane.alignment="CENTER">
+                                <TextField fx:id="editClientDataUrodzeniaTextField" disable="true" prefHeight="31.0" prefWidth="599.0" promptText="DATA URODZENIA" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="100.0" left="650.0" right="50.0" top="300.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <TextField disable="true" prefHeight="31.0" prefWidth="599.0" promptText="NUMER PRAWA JAZDY" StackPane.alignment="CENTER">
+                                <TextField fx:id="editClientNumerPrawaJazdyTextField" disable="true" prefHeight="31.0" prefWidth="599.0" promptText="NUMER PRAWA JAZDY" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="200.0" left="650.0" right="50.0" top="300.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <TextField disable="true" prefHeight="31.0" prefWidth="793.0" promptText="NAZWISKO" StackPane.alignment="CENTER">
+                                <TextField fx:id="editClientNazwiskoTextField" disable="true" prefHeight="31.0" prefWidth="793.0" promptText="NAZWISKO" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="400.0" left="650.0" right="50.0" top="300.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <TextField disable="true" prefHeight="31.0" prefWidth="599.0" promptText="IMIĘ" StackPane.alignment="CENTER">
+                                <TextField fx:id="editClientImieTextField" disable="true" prefHeight="31.0" prefWidth="599.0" promptText="IMIĘ" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="300.0" left="650.0" right="50.0" top="300.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <TextField disable="true" prefHeight="31.0" prefWidth="599.0" promptText="ADRES" StackPane.alignment="CENTER">
+                                <TextField fx:id="editClientAdresTextField" disable="true" prefHeight="31.0" prefWidth="599.0" promptText="ADRES" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets left="650.0" right="50.0" top="300.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="186.0" text="LISTA KLIENTÓW" StackPane.alignment="CENTER">
+                                <Button mnemonicParsing="false" onAction="#showEditClientList" prefHeight="39.0" prefWidth="186.0" text="LISTA KLIENTÓW" StackPane.alignment="CENTER">
                                     <cursor>
                                         <Cursor fx:constant="OPEN_HAND" />
                                     </cursor>
@@ -181,7 +181,7 @@
                                         <Insets bottom="300.0" left="650.0" />
                                     </StackPane.margin>
                                 </Button>
-                                <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="186.0" text="EDYTUJ" StackPane.alignment="CENTER">
+                                <Button mnemonicParsing="false" onAction="#fillEditedClientFields" prefHeight="39.0" prefWidth="186.0" text="EDYTUJ" StackPane.alignment="CENTER">
                                     <cursor>
                                         <Cursor fx:constant="OPEN_HAND" />
                                     </cursor>
@@ -189,27 +189,27 @@
                                         <Insets bottom="300.0" right="650.0" />
                                     </StackPane.margin>
                                 </Button>
-                        <TextField prefHeight="31.0" prefWidth="599.0" promptText="TELEFON">
+                        <TextField fx:id="editClientNewTelefonTextField" prefHeight="31.0" prefWidth="599.0" promptText="TELEFON">
                            <StackPane.margin>
                               <Insets left="50.0" right="650.0" top="500.0" />
                            </StackPane.margin>
                         </TextField>
-                        <TextField prefHeight="31.0" prefWidth="599.0" promptText="PESEL" StackPane.alignment="CENTER">
+                        <TextField fx:id="editClientNewPeselTextField" prefHeight="31.0" prefWidth="599.0" promptText="PESEL" StackPane.alignment="CENTER">
                            <StackPane.margin>
                               <Insets left="50.0" right="650.0" top="400.0" />
                            </StackPane.margin>
                         </TextField>
-                        <DatePicker prefHeight="31.0" prefWidth="198.0" StackPane.alignment="CENTER">
+                        <DatePicker fx:id="editClientDatePicker" onAction="#editClientSetBirthDate" prefHeight="31.0" prefWidth="198.0" StackPane.alignment="CENTER">
                            <StackPane.margin>
                               <Insets right="300.0" top="200.0" />
                            </StackPane.margin>
                         </DatePicker>
-                        <TextField disable="true" prefHeight="31.0" prefWidth="793.0" promptText="TELEFON" StackPane.alignment="CENTER">
+                        <TextField fx:id="editClientTelefonTextField" disable="true" prefHeight="31.0" prefWidth="793.0" promptText="TELEFON" StackPane.alignment="CENTER">
                            <StackPane.margin>
                               <Insets left="650.0" right="50.0" top="500.0" />
                            </StackPane.margin>
                         </TextField>
-                        <TextField disable="true" prefHeight="31.0" prefWidth="599.0" promptText="PESEL">
+                        <TextField fx:id="editClientPeselTextField" disable="true" prefHeight="31.0" prefWidth="599.0" promptText="PESEL">
                            <StackPane.margin>
                               <Insets left="650.0" right="50.0" top="400.0" />
                            </StackPane.margin>

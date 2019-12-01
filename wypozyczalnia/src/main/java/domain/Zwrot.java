@@ -15,7 +15,7 @@ public class Zwrot {
     @OneToOne
     private Wypozyczenie id_wypozyczenia;
     private Date data_zwrotu;
-    private String stan_pojazdu;
+    private Date stan_pojazdu;
     private float cena_ostateczna;
     @OneToOne
     private Pracownik id_pracownika;
@@ -46,11 +46,11 @@ public class Zwrot {
         this.data_zwrotu = data_zwrotu;
     }
 
-    public String getStan_pojazdu() {
+    public Date getStan_pojazdu() {
         return stan_pojazdu;
     }
 
-    public void setStan_pojazdu(String stan_pojazdu) {
+    public void setStan_pojazdu(Date stan_pojazdu) {
         this.stan_pojazdu = stan_pojazdu;
     }
 

@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-import java.sql.Date;
 
 @Entity
 public class Rezerwacja {
@@ -16,8 +15,8 @@ public class Rezerwacja {
     private Pojazd id_pojazdu;
     @OneToOne
     private Klient id_klienta;
-    private Date data_r_rezerwacji;
-    private Date data_z_rezerwacji;
+    private String data_r_rezerwacji;
+    private String data_z_rezerwacji;
     private float przewidywana_cena;
     @OneToOne
     private Pracownik id_pracownika;
@@ -46,19 +45,19 @@ public class Rezerwacja {
         this.id_klienta = id_klienta;
     }
 
-    public Date getData_r_rezerwacji() {
+    public String getData_r_rezerwacji() {
         return data_r_rezerwacji;
     }
 
-    public void setData_r_rezerwacji(Date data_r_rezerwacji) {
+    public void setData_r_rezerwacji(String data_r_rezerwacji) {
         this.data_r_rezerwacji = data_r_rezerwacji;
     }
 
-    public Date getData_z_rezerwacji() {
+    public String getData_z_rezerwacji() {
         return data_z_rezerwacji;
     }
 
-    public void setData_z_rezerwacji(Date data_z_rezerwacji) {
+    public void setData_z_rezerwacji(String data_z_rezerwacji) {
         this.data_z_rezerwacji = data_z_rezerwacji;
     }
 
