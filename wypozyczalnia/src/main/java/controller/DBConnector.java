@@ -170,4 +170,9 @@ public class DBConnector {
     public void deletePracownik(Pracownik p) {
         entityManager.remove(p);
     }
+    public void editPracownik(Pracownik p) {
+        entityManager.getTransaction().begin();
+        entityManager.merge(p);
+        entityManager.getTransaction().commit();
+    }
 }
