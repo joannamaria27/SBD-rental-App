@@ -322,7 +322,7 @@ public class WindowSingleton {
         ObservableList<Pracownik> employee = FXCollections.observableArrayList();
 
         // todo FROM Pracownik a???
-        List<Pracownik> list = DBConnector.getInstance().getEntityManager().createQuery("SELECT a FROM Klient a", Pracownik.class).getResultList();
+        List<Pracownik> list = DBConnector.getInstance().getEntityManager().createQuery("SELECT a FROM Pracownik a", Pracownik.class).getResultList();
 
         for (Pracownik pracownik : list) {
             employee.add(pracownik);
