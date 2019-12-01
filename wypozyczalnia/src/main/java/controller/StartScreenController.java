@@ -27,7 +27,7 @@ public class StartScreenController {
 
     public void showRentalPointMenu() throws IOException {
         System.out.println("showRentalMenu");
-        WindowSingleton.getInstance().setLayout("/fxml/RentalPointOptions.fxml");
+        WindowSingleton.getInstance().setLayout("/fxml/RentalPoint.fxml");
     }
 
     public void showReturnMenu() throws IOException {

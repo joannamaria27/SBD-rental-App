@@ -35,7 +35,7 @@ public class VehicleOptionsController {
         System.out.println(addVehicleTerminWaznosciBadaniaDatePicker.getValue().getClass().getName());
 
         Ubezpieczenie ubezpieczenie = new Ubezpieczenie();
-        Punkt_Wypozyczen punkt_wypozyczen = new Punkt_Wypozyczen();
+        Punkt_Wypozyczen punkt_wypozyczen = new Punkt_Wypozyczen("Białystok", "punkt1");
 
         DBConnector.getInstance().start();
         DBConnector.getInstance().addPojazd(new Pojazd(addVehicleTypTextField.getText(),

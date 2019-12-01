@@ -53,7 +53,7 @@ public class ClientOptionsController {
         DBConnector.getInstance().start();
         DBConnector.getInstance().addKlient(new Klient(addClientLicenceTextField.getText(), addClientSurnameTextField.getText(), addClientNameTextField.getText(), Date.valueOf(addClientBirthDateDatePicker.getValue()), addClientAddressTextField.getText(), addClientPeselTextField.getText(), addclientPhoneTextField.getText()));
         DBConnector.getInstance().stop();
-        WindowSingleton.alert("Dodano pojazd");
+        WindowSingleton.alert("Dodano klienta");
     }
 
     public void addClientSetBirthDate() {

@@ -1,6 +1,7 @@
 package controller;
 
 import domain.Klient;
+import domain.Punkt_Wypozyczen;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -120,6 +121,35 @@ public class WindowSingleton {
         window.setScene(scene);
         window.show();
     }
+
+    public static void showRentalPointTable(final TextField idField) {
+
+        final Stage window = new Stage();
+        Button button = new Button("Wybierz");
+        window.setTitle("Lista punktów wypożyczeń");
+
+
+        final TableView<Punkt_Wypozyczen> table = createRentalPointTable();
+        Punkt_Wypozyczen punkt_wypozyczen = table.getSelectionModel().getSelectedItem();
+
+        VBox vBox = new VBox();
+        vBox.getChildren().addAll(table, button);
+
+        button.setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent e) {
+                Punkt_Wypozyczen selection;
+                selection = table.getSelectionModel().getSelectedItem();
+                //System.out.println(selection.getId());
+                idField.setText(String.valueOf(selection.getId_punktu()));
+                window.close();
+            }
+        });
+
+        Scene scene = new Scene(vBox);
+        window.setScene(scene);
+        window.show();
+    }
+
     public static TableView createClientTable() {
         final TableView<Klient> table;
 //        final Button select = new Button("Select");
@@ -172,6 +202,33 @@ public class WindowSingleton {
         return table;
     }
 
+    public static TableView createRentalPointTable() {
+        final TableView<Punkt_Wypozyczen> table;
+//        final Button select = new Button("Select");
+//        String choice = "";
+
+        // id
+        TableColumn<Punkt_Wypozyczen, Long> idColumn = new TableColumn<Punkt_Wypozyczen, Long>("ID");
+        idColumn.setMinWidth(50);
+        idColumn.setCellValueFactory(new PropertyValueFactory<Punkt_Wypozyczen, Long>("id_punktu"));
+
+        // lokalizacja
+        TableColumn<Punkt_Wypozyczen, String> locationColumn = new TableColumn<Punkt_Wypozyczen, String>("Lokalizacja");
+        locationColumn.setMinWidth(100);
+        locationColumn.setCellValueFactory(new PropertyValueFactory<Punkt_Wypozyczen, String>("lokalizacja"));
+
+        // nazwa
+        TableColumn<Punkt_Wypozyczen, String> nameColumn = new TableColumn<Punkt_Wypozyczen, String>("Nazwa");
+        nameColumn.setMinWidth(100);
+        nameColumn.setCellValueFactory(new PropertyValueFactory<Punkt_Wypozyczen, String>("nazwa_punktu"));
+
+        table = new TableView<Punkt_Wypozyczen>();
+        table.setItems(WindowSingleton.getRentalPointObservableList());
+        table.getColumns().addAll(idColumn, nameColumn, locationColumn);
+
+        return table;
+    }
+
     private static ObservableList<Klient> getClientObservableList() {
         ObservableList<Klient> clients = FXCollections.observableArrayList();
 
@@ -182,6 +239,18 @@ public class WindowSingleton {
             clients.add(klient);
         }
         return clients;
+    }
+
+    private static ObservableList<Punkt_Wypozyczen> getRentalPointObservableList() {
+        ObservableList<Punkt_Wypozyczen> rental_points = FXCollections.observableArrayList();
+
+        // todo FROM Klient a???
+        List<Punkt_Wypozyczen> list = DBConnector.getInstance().getEntityManager().createQuery("SELECT a FROM Punkt_Wypozyczen a", Punkt_Wypozyczen.class).getResultList();
+
+        for (Punkt_Wypozyczen punkt_wypozyczen : list) {
+            rental_points.add(punkt_wypozyczen);
+        }
+        return rental_points;
     }
 
 

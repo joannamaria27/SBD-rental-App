@@ -2,6 +2,7 @@ package controller;
 
 import domain.Klient;
 import domain.Pojazd;
+import domain.Punkt_Wypozyczen;
 import domain.Wypozyczenie;
 
 import javax.persistence.EntityManager;
@@ -108,6 +109,12 @@ public class DBConnector {
         //entityManager.getTransaction().commit();
     }
 
+    public void addRentalPoint(Punkt_Wypozyczen p) {
+        entityManager.getTransaction().begin();
+        entityManager.persist(p);
+        entityManager.getTransaction().commit();
+    }
+
     public void deletePojazd(Pojazd p) {
         entityManager.remove(p);
     }
@@ -118,6 +125,11 @@ public class DBConnector {
 
     public void deleteWypozyczenie(Wypozyczenie w) {
         entityManager.remove(w);
+    }
+    public void deleteRentalPoint(Punkt_Wypozyczen p) {
+        entityManager.getTransaction().begin();
+        entityManager.remove(p);
+        entityManager.getTransaction().commit();
     }
 
     // nie wiem czy działa
