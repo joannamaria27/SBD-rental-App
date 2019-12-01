@@ -160,4 +160,11 @@ public class DBConnector {
         entityManagerFactory.close();
     }
 
+    public void addPracownik(Pracownik pracownik) {
+        entityManager.persist(pracownik);
+    }
+
+    public void deletePracownik(Pracownik p) {
+        entityManager.remove(p);
+    }
 }
