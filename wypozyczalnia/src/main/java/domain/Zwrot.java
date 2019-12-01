@@ -22,6 +22,17 @@ public class Zwrot {
     @OneToOne
     private Platnosc id_platnosci;
 
+     public Zwrot(Wypozyczenie id_wypozyczenia, Date data_zwrotu, String stan_pojazdu, float cena_ostateczna, Pracownik id_pracownika, Platnosc id_platnosci) {
+//        this.id_zwrotu = id_zwrotu;
+        this.id_wypozyczenia = id_wypozyczenia;
+        this.data_zwrotu = data_zwrotu;
+        this.stan_pojazdu = stan_pojazdu;
+        this.cena_ostateczna = cena_ostateczna;
+        this.id_pracownika = id_pracownika;
+        this.id_platnosci = id_platnosci;
+    }
+    
+    
     public long getId_zwrotu() {
         return id_zwrotu;
     }
