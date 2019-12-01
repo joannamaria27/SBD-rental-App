@@ -148,6 +148,12 @@ public class DBConnector {
         entityManager.getTransaction().commit();
     }
 
+    public void editPunktWypozyczen(Punkt_Wypozyczen p) {
+        entityManager.getTransaction().begin();
+        entityManager.merge(p);
+        entityManager.getTransaction().commit();
+    }
+
     public void stop() {
         entityManager.getTransaction().commit();
     }

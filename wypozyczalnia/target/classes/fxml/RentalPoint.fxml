@@ -79,22 +79,22 @@
                                         <Insets left="50.0" top="100.0" />
                                     </StackPane.margin>
                                 </Label>
-                                <TextField promptText="ID" StackPane.alignment="CENTER">
+                                <TextField fx:id="editRentalPointIdTextField" promptText="ID" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="400.0" left="50.0" right="50.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <TextField prefHeight="31.0" prefWidth="599.0" promptText="NAZWA" StackPane.alignment="CENTER">
+                                <TextField fx:id="editRentalPointNewNazwaTextField" prefHeight="31.0" prefWidth="599.0" promptText="NAZWA" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="400.0" left="50.0" right="650.0" top="300.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <TextField prefHeight="31.0" prefWidth="599.0" promptText="LOKALIZACJA" StackPane.alignment="CENTER">
+                                <TextField fx:id="editRentalPointNewLokalizacjaTextField" prefHeight="31.0" prefWidth="599.0" promptText="LOKALIZACJA" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="300.0" left="50.0" right="650.0" top="300.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="186.0" text="ZATWIERDZ" StackPane.alignment="CENTER">
+                                <Button mnemonicParsing="false" onAction="#editRentalPoint" prefHeight="39.0" prefWidth="186.0" text="ZATWIERDZ" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets right="650.0" top="100.0" />
                                     </StackPane.margin>
@@ -102,17 +102,17 @@
                                         <Cursor fx:constant="OPEN_HAND" />
                                     </cursor>
                                 </Button>
-                                <TextField disable="true" prefHeight="31.0" prefWidth="793.0" promptText="NAZWA" StackPane.alignment="CENTER">
+                                <TextField fx:id="editRentalPointNazwaTextField" disable="true" prefHeight="31.0" prefWidth="793.0" promptText="NAZWA" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="400.0" left="650.0" right="50.0" top="300.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <TextField disable="true" prefHeight="31.0" prefWidth="599.0" promptText="LOKALIZACJA" StackPane.alignment="CENTER">
+                                <TextField fx:id="editRentalPointLokalizacjaTextField" disable="true" prefHeight="31.0" prefWidth="599.0" promptText="LOKALIZACJA" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="300.0" left="650.0" right="50.0" top="300.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="186.0" text="LISTA PUNKTÓW" StackPane.alignment="CENTER">
+                                <Button mnemonicParsing="false" onAction="#showEditRentalPointList" prefHeight="39.0" prefWidth="186.0" text="LISTA PUNKTÓW" StackPane.alignment="CENTER">
                                     <cursor>
                                         <Cursor fx:constant="OPEN_HAND" />
                                     </cursor>
@@ -120,7 +120,7 @@
                                         <Insets bottom="300.0" left="650.0" />
                                     </StackPane.margin>
                                 </Button>
-                                <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="186.0" text="EDYTUJ" StackPane.alignment="CENTER">
+                                <Button mnemonicParsing="false" onAction="#fillEditedRentalPointFields" prefHeight="39.0" prefWidth="186.0" text="EDYTUJ" StackPane.alignment="CENTER">
                                     <cursor>
                                         <Cursor fx:constant="OPEN_HAND" />
                                     </cursor>
@@ -154,7 +154,7 @@
         </TabPane>
     </center>
     <bottom>
-        <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="129.0" text="MENU GŁÓWNE" BorderPane.alignment="CENTER_RIGHT">
+        <Button mnemonicParsing="false" onAction="#showMainMenu" prefHeight="31.0" prefWidth="129.0" text="MENU GŁÓWNE" BorderPane.alignment="CENTER_RIGHT">
             <BorderPane.margin>
                 <Insets bottom="50.0" right="50.0" />
             </BorderPane.margin>
