@@ -20,6 +20,18 @@ public class Wypozyczenie {
     private float kaucja;
     @OneToOne
     private Pracownik id_pracownika;
+    
+        public Wypozyczenie( Pojazd id_pojazdu, Date data_wypozyczenia, String kod_dostepu, String stan_pojazdu, Klient id_klienta, float kaucja, Pracownik id_pracownika) {
+//        this.id_wypozyczenia = id_wypozyczenia;
+        this.id_pojazdu = id_pojazdu;
+        this.data_wypozyczenia = data_wypozyczenia;
+        this.kod_dostepu = kod_dostepu;
+        this.stan_pojazdu = stan_pojazdu;
+        this.id_klienta = id_klienta;
+        this.kaucja = kaucja;
+        this.id_pracownika = id_pracownika;
+    }
+
 
     public long getId_wypozyczenia() {
         return id_wypozyczenia;
