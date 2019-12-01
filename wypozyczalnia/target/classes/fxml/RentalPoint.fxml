@@ -74,7 +74,7 @@
                     <content>
                         <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: white;">
                             <children>
-                                <Label text="PODAJ ID SKUTERU KTÓRY CHCESZ EDYTOWAĆ:" StackPane.alignment="TOP_LEFT">
+                                <Label text="PODAJ ID PUNKTU WYPOZYCZEŃ KTÓRY CHCESZ EDYTOWAĆ:" StackPane.alignment="TOP_LEFT">
                                     <StackPane.margin>
                                         <Insets left="50.0" top="100.0" />
                                     </StackPane.margin>
@@ -84,65 +84,35 @@
                                         <Insets bottom="400.0" left="50.0" right="50.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <TextField fx:id="editScooterNewMarkaTextField" prefHeight="31.0" prefWidth="599.0" promptText="MARKA" StackPane.alignment="CENTER">
+                                <TextField fx:id="editScooterNewMarkaTextField" prefHeight="31.0" prefWidth="599.0" promptText="NAZWA" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="400.0" left="50.0" right="650.0" top="300.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <TextField fx:id="editScooterNewModelTextField" prefHeight="31.0" prefWidth="599.0" promptText="MODEL" StackPane.alignment="CENTER">
+                                <TextField fx:id="editScooterNewModelTextField" prefHeight="31.0" prefWidth="599.0" promptText="LOKALIZACJA" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="300.0" left="50.0" right="650.0" top="300.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <TextField fx:id="editScooterNewStanPojazduTextField" prefHeight="31.0" prefWidth="599.0" promptText="STAN POJAZDU" StackPane.alignment="CENTER">
-                                    <StackPane.margin>
-                                        <Insets bottom="200.0" left="50.0" right="650.0" top="300.0" />
-                                    </StackPane.margin>
-                                </TextField>
-                                <TextField fx:id="editScooterNewUbezpieczenieTextField" prefHeight="31.0" prefWidth="599.0" promptText="UBEZPIECZENIE" StackPane.alignment="CENTER">
-                                    <StackPane.margin>
-                                        <Insets bottom="100.0" left="50.0" right="650.0" top="300.0" />
-                                    </StackPane.margin>
-                                </TextField>
-                                <TextField fx:id="editScooterNewDostepnoscTextField" prefHeight="31.0" prefWidth="599.0" promptText="DOSTĘPNOŚĆ" StackPane.alignment="CENTER">
-                                    <StackPane.margin>
-                                        <Insets left="50.0" right="650.0" top="300.0" />
-                                    </StackPane.margin>
-                                </TextField>
                                 <Button fx:id="editScooterButton" mnemonicParsing="false" prefHeight="39.0" prefWidth="186.0" text="ZATWIERDZ" StackPane.alignment="CENTER">
                                     <StackPane.margin>
-                                        <Insets right="650.0" top="400.0" />
+                                        <Insets right="650.0" top="100.0" />
                                     </StackPane.margin>
                                     <cursor>
                                         <Cursor fx:constant="OPEN_HAND" />
                                     </cursor>
                                 </Button>
-                                <TextField fx:id="editScooterUbezpieczenieTextField" disable="true" prefHeight="31.0" prefWidth="599.0" promptText="UBEZPIECZENIE" StackPane.alignment="CENTER">
-                                    <StackPane.margin>
-                                        <Insets bottom="100.0" left="650.0" right="50.0" top="300.0" />
-                                    </StackPane.margin>
-                                </TextField>
-                                <TextField fx:id="editScooterStanPojazduTextField" disable="true" prefHeight="31.0" prefWidth="599.0" promptText="STAN POJAZDU" StackPane.alignment="CENTER">
-                                    <StackPane.margin>
-                                        <Insets bottom="200.0" left="650.0" right="50.0" top="300.0" />
-                                    </StackPane.margin>
-                                </TextField>
-                                <TextField fx:id="editScooterMarkaTextField" disable="true" prefHeight="31.0" prefWidth="793.0" promptText="MARKA" StackPane.alignment="CENTER">
+                                <TextField fx:id="editScooterMarkaTextField" disable="true" prefHeight="31.0" prefWidth="793.0" promptText="NAZWA" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="400.0" left="650.0" right="50.0" top="300.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <TextField fx:id="editScooterModelTextField" disable="true" prefHeight="31.0" prefWidth="599.0" promptText="MODEL" StackPane.alignment="CENTER">
+                                <TextField fx:id="editScooterModelTextField" disable="true" prefHeight="31.0" prefWidth="599.0" promptText="LOKALIZACJA" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="300.0" left="650.0" right="50.0" top="300.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <TextField fx:id="editScooterDostepnoscTextField" disable="true" prefHeight="31.0" prefWidth="599.0" promptText="DOSTĘPNOŚĆ" StackPane.alignment="CENTER">
-                                    <StackPane.margin>
-                                        <Insets left="650.0" right="50.0" top="300.0" />
-                                    </StackPane.margin>
-                                </TextField>
-                                <Button fx:id="editScooterListButton" mnemonicParsing="false" prefHeight="39.0" prefWidth="186.0" text="LISTA SKUTERÓW" StackPane.alignment="CENTER">
+                                <Button fx:id="editScooterListButton" mnemonicParsing="false" prefHeight="39.0" prefWidth="186.0" text="LISTA PUNKTÓW" StackPane.alignment="CENTER">
                                     <cursor>
                                         <Cursor fx:constant="OPEN_HAND" />
                                     </cursor>
