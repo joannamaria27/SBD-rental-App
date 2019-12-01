@@ -129,7 +129,7 @@
                     <content>
                         <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: white;">
                             <children>
-                                <Label text="PODAJ ID SKUTERU KTÓRY CHCESZ EDYTOWAĆ:" StackPane.alignment="TOP_LEFT">
+                                <Label text="PODAJ ID WYPOŻYCZENIA KTÓRY CHCESZ EDYTOWAĆ:" StackPane.alignment="TOP_LEFT">
                                     <StackPane.margin>
                                         <Insets left="50.0" top="100.0" />
                                     </StackPane.margin>
@@ -197,7 +197,7 @@
                                         <Insets left="650.0" right="50.0" top="300.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <Button fx:id="editScooterListButton" mnemonicParsing="false" prefHeight="39.0" prefWidth="186.0" text="LISTA SKUTERÓW" StackPane.alignment="CENTER">
+                                <Button fx:id="editScooterListButton" mnemonicParsing="false" prefHeight="39.0" prefWidth="186.0" text="LISTA WYPOZYCZEŃ" StackPane.alignment="CENTER">
                                     <cursor>
                                         <Cursor fx:constant="OPEN_HAND" />
                                     </cursor>
