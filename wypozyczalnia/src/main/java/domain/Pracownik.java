@@ -18,6 +18,19 @@ public class Pracownik{
     private String pesel;
     private String telefon;
     private String stanowisko;
+    
+     public Pracownik() {}
+
+    public Pracownik( String nazwisko, String imie, Date data_urodzenia, String adres, String pesel, String telefon, String stanowisko) {
+        this.id_pracownika = id_pracownika;
+        this.nazwisko = nazwisko;
+        this.imie = imie;
+        this.data_urodzenia = data_urodzenia;
+        this.adres = adres;
+        this.pesel = pesel;
+        this.telefon = telefon;
+        this.stanowisko = stanowisko;
+    }
 
     public long getId_pracownika() {
         return id_pracownika;
