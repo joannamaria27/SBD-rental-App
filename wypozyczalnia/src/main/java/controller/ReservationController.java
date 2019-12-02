@@ -1,6 +1,7 @@
 package controller;
 
 //import com.sun.tools.javac.util.List;
+
 import domain.Klient;
 import domain.Pojazd;
 import domain.Pracownik;
@@ -69,21 +70,20 @@ public class ReservationController {
     private TextField editReservationNewPracownikTextField;
 
 
-
     public void addReservation() {
         System.out.println("addReservationButton");
 
 
-        if (addReservationPrzewidywanaCenaTextField.getText().equals("") || addReservationIdKlientaTextField.getText().equals("") || addReservationIdPojazduTextField.getText().equals("") || addReservationIdPracownikaTextField.getText().equals("") || addReservationDataRozpTextField.getValue().equals("") || addReservationDataZakTextField.getValue().equals("") ){
+        if (addReservationPrzewidywanaCenaTextField.getText().equals("") || addReservationIdKlientaTextField.getText().equals("") || addReservationIdPojazduTextField.getText().equals("") || addReservationIdPracownikaTextField.getText().equals("") || addReservationDataRozpTextField.getValue().equals("") || addReservationDataZakTextField.getValue().equals("")) {
             WindowSingleton.alert("Niepoprawne dane");
             return;
         }
         //todo - daty
-        List<Rezerwacja> list = (List<Rezerwacja>) DBConnector.getInstance().getEntityManager().createQuery("SELECT a FROM Rezerwacja a WHERE id_pojazdu=' " + addReservationIdPojazduTextField.getText() + "'", Rezerwacja.class).getResultList();
-        if (list.size() > 0) {
-            WindowSingleton.alert("Pojazd o podanym numerze jest już zarezerwowany");
-            return;
-        }
+//        List<Rezerwacja> list = (List<Rezerwacja>) DBConnector.getInstance().getEntityManager().createQuery("SELECT a FROM Rezerwacja a WHERE id_pojazdu='" + addReservationIdPojazduTextField.getText() + "'", Rezerwacja.class).getResultList();
+//        if (list.size() > 0) {
+//            WindowSingleton.alert("Pojazd o podanym numerze jest już zarezerwowany");
+//            return;
+//        }
 
         try {
             Date startdate = Date.valueOf(addReservationDataRozpTextField.getValue());
@@ -105,7 +105,7 @@ public class ReservationController {
 
         DBConnector.getInstance().start();
 
-        DBConnector.getInstance().addRezerwacja(new Rezerwacja(pojazd, klient, Date.valueOf(addReservationDataRozpTextField.getValue()),  Date.valueOf(addReservationDataZakTextField.getValue()), Float.parseFloat(addReservationPrzewidywanaCenaTextField.getText()), pracownik));
+        DBConnector.getInstance().addRezerwacja(new Rezerwacja(pojazd, klient, Date.valueOf(addReservationDataRozpTextField.getValue()), Date.valueOf(addReservationDataZakTextField.getValue()), Float.parseFloat(addReservationPrzewidywanaCenaTextField.getText()), pracownik));
         DBConnector.getInstance().stop();
         WindowSingleton.alert("Dodano rezerwacje");
         addReservationPrzewidywanaCenaTextField.setText("");
@@ -116,10 +116,14 @@ public class ReservationController {
         addReservationIdPracownikaTextField.setText("");
     }
 
-    public void showAddPojazduList() { WindowSingleton.showVehicleTable(addReservationIdPojazduTextField); }
+    public void showAddPojazduList() {
+        WindowSingleton.showVehicleTable(addReservationIdPojazduTextField);
+    }
+
     public void showAddKlientaList() {
         WindowSingleton.showClientTable(addReservationIdKlientaTextField);
     }
+
     public void showAddPracownikList() {
         WindowSingleton.showEmployeeTable(addReservationIdPracownikaTextField);
     }
@@ -157,7 +161,6 @@ public class ReservationController {
     }
 
 
-
     public void printReservationList() {
         final TableView<Rezerwacja> table = WindowSingleton.createReservationTable();
         printReservationStackPane.getChildren().add(table);
@@ -174,18 +177,28 @@ public class ReservationController {
             return;
         }
         Rezerwacja rezerwacja = DBConnector.getInstance().getEntityManager().find(Rezerwacja.class, Long.parseLong(editReservationIdTextField.getText()));
-        editReservationIdPojazduTextField.setText(String.valueOf(rezerwacja.getId_pojazdu()));
-        editReservationIdKlientaTextField.setText(String.valueOf(rezerwacja.getId_klienta()));
-        //editReservationDataRTextField.setText(String.valueOf(rezerwacja.getData_r_rezerwacji()));
-        //editReservationDataZTextField.setText(String.valueOf(rezerwacja.getData_z_rezerwacji()));
-        editReservationPrzewidywanaCenaTextField.setText(String.valueOf(rezerwacja.getPrzewidywana_cena()));
-        editReservationPracownikTextField.setText(String.valueOf(rezerwacja.getId_pracownika()));
+        editReservationNewIdPojazduTextField.setText(String.valueOf(rezerwacja.getId_pojazdu()));
+        editReservationNewIdKlientaTextField.setText(String.valueOf(rezerwacja.getId_klienta()));
+        editReservationNewDataRTextField.setText(String.valueOf(rezerwacja.getData_r_rezerwacji()));
+        editReservationNewDataZTextField.setText(String.valueOf(rezerwacja.getData_z_rezerwacji()));
+        editReservationNewPrzewidywanaCenaTextField.setText(String.valueOf(rezerwacja.getPrzewidywana_cena()));
+        editReservationNewPracownikTextField.setText(String.valueOf(rezerwacja.getId_pracownika()));
+    }
 
+    public void showEditVehicleList() {
+        WindowSingleton.showVehicleTable(editReservationIdPojazduTextField);
+    }
 
+    public void showEditEmployeeList() {
+        WindowSingleton.showEmployeeTable(editReservationPracownikTextField);
+    }
+
+    public void showEditClientList() {
+        WindowSingleton.showClientTable(editReservationIdKlientaTextField);
     }
 
     public void editReservation() {
-        if(editReservationNewIdPojazduTextField.getText().equals("") ||
+        if (editReservationNewIdPojazduTextField.getText().equals("") ||
                 editReservationNewIdKlientaTextField.getText().equals("") ||
                 editReservationNewDataRTextField.getText().equals("") ||
                 editReservationNewDataZTextField.getText().equals("") ||
@@ -210,26 +223,41 @@ public class ReservationController {
 
         Rezerwacja rezerwacja = DBConnector.getInstance().getEntityManager().find(Rezerwacja.class, Long.parseLong(editReservationIdTextField.getText()));
 
-        Pojazd pojazd = DBConnector.getInstance().getEntityManager().find(Pojazd.class, Long.parseLong(editReservationNewIdPojazduTextField.getText()));
-        Klient klient = DBConnector.getInstance().getEntityManager().find(Klient.class, Long.parseLong(editReservationNewIdKlientaTextField.getText()));
-        Pracownik pracownik = DBConnector.getInstance().getEntityManager().find(Pracownik.class, Long.parseLong(editReservationNewPracownikTextField.getText()));
+        Pojazd pojazd = DBConnector.getInstance().getEntityManager().find(Pojazd.class, Long.parseLong(editReservationIdPojazduTextField.getText()));
+        Klient klient = DBConnector.getInstance().getEntityManager().find(Klient.class, Long.parseLong(editReservationIdKlientaTextField.getText()));
+        Pracownik pracownik = DBConnector.getInstance().getEntityManager().find(Pracownik.class, Long.parseLong(editReservationPracownikTextField.getText()));
 
 
         rezerwacja.setId_pojazdu(pojazd);
         rezerwacja.setId_klienta(klient);
-        rezerwacja.setData_r_rezerwacji(Date.valueOf(editReservationNewDataRTextField.getText()));
-        rezerwacja.setData_z_rezerwacji(Date.valueOf(editReservationNewDataZTextField.getText()));
-        rezerwacja.setPrzewidywana_cena(Float.parseFloat(editReservationNewPrzewidywanaCenaTextField.getText().toString()));
+        rezerwacja.setData_r_rezerwacji(Date.valueOf(editReservationDataRTextField.getValue()));
+        rezerwacja.setData_z_rezerwacji(Date.valueOf(editReservationDataZTextField.getValue()));
+        rezerwacja.setPrzewidywana_cena(Float.parseFloat(editReservationPrzewidywanaCenaTextField.getText()));
         rezerwacja.setId_pracownika(pracownik);
 
         DBConnector.getInstance().editRezerwacja(rezerwacja);
         WindowSingleton.alert("Zedytowano rezerwcje");
+
+        editReservationIdTextField.setText("");
+
+        editReservationIdPojazduTextField.setText("");
+        editReservationIdKlientaTextField.setText("");
+        editReservationPracownikTextField.setText("");
+        editReservationDataRTextField.getEditor().clear();
+        editReservationDataZTextField.getEditor().clear();
+        editReservationPrzewidywanaCenaTextField.setText("");
+
+        editReservationNewIdPojazduTextField.setText("");
+        editReservationNewIdKlientaTextField.setText("");
+        editReservationNewPracownikTextField.setText("");
+        editReservationNewDataRTextField.setText("");
+        editReservationNewDataZTextField.setText("");
+        editReservationNewPrzewidywanaCenaTextField.setText("");
     }
 
     public void showEditReservationList() {
         WindowSingleton.showRezervationTable(editReservationIdTextField);
     }
-
 
 
     public void showMainMenu() throws IOException {

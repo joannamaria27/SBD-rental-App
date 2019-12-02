@@ -10,17 +10,17 @@ public class Rezerwacja {
     @GeneratedValue
     private long id_rezerwacji;
     @OneToOne
-    @JoinColumn(name="id_pojazdu")
+    @JoinColumn(name="id_pojazdu_id_pojazdu")
     private Pojazd id_pojazdu;
 
     @OneToOne
-    @JoinColumn(name="id_klienta")
+    @JoinColumn(name="id_klienta_id_klienta")
     private Klient id_klienta;
     private Date data_r_rezerwacji;
     private Date data_z_rezerwacji;
     private float przewidywana_cena;
     @OneToOne
-    @JoinColumn(name="id_pracownika")
+    @JoinColumn(name="id_pracownika_id_pracownika")
     private Pracownik id_pracownika;
 
         public Rezerwacja( Pojazd id_pojazdu, Klient id_klienta, Date data_r_rezerwacji, Date data_z_rezerwacji, float przewidywana_cena, Pracownik id_pracownika) {
@@ -31,6 +31,10 @@ public class Rezerwacja {
         this.data_z_rezerwacji = data_z_rezerwacji;
         this.przewidywana_cena = przewidywana_cena;
         this.id_pracownika = id_pracownika;
+    }
+
+    public Rezerwacja(){
+
     }
     
     public long getId_rezerwacji() {

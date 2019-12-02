@@ -106,4 +106,9 @@ public class Pojazd {
     public void setPunkt_postoju(Punkt_Wypozyczen punkt_postoju) {
         this.punkt_postoju = punkt_postoju;
     }
+
+    @Override
+    public String toString() {
+        return String.valueOf(id_pojazdu);
+    }
 }

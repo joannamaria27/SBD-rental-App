@@ -95,4 +95,9 @@ public class Klient{
     public void setNr_prawa_jazdy(String nr_prawa_jazdy) {
         this.nr_prawa_jazdy = nr_prawa_jazdy;
     }
+
+    @Override
+    public String toString() {
+        return String.valueOf(id_klienta);
+    }
 }

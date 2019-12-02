@@ -95,4 +95,9 @@ public class Pracownik{
     public void setStanowisko(String stanowisko) {
         this.stanowisko = stanowisko;
     }
+
+    @Override
+    public String toString() {
+        return String.valueOf(id_pracownika);
+    }
 }

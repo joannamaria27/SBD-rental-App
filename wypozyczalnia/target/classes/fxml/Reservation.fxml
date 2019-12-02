@@ -26,7 +26,7 @@
                                         <Insets bottom="600.0" left="50.0" right="800.0" />
                                     </StackPane.margin>
                                 </Label>
-                                <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="201.0" text="LISTA POJAZDÓW" textAlignment="CENTER" StackPane.alignment="CENTER">
+                                <Button mnemonicParsing="false" onAction="#showAddPojazduList" prefHeight="31.0" prefWidth="201.0" text="LISTA POJAZDÓW" textAlignment="CENTER" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="500.0" left="700.0" right="50.0" />
                                     </StackPane.margin>
@@ -69,12 +69,12 @@
                                         <Insets bottom="100.0" left="50.0" right="400.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="201.0" text="LISTA PRACOWNIKÓW" textAlignment="CENTER" StackPane.alignment="CENTER">
+                                <Button mnemonicParsing="false" onAction="#showAddPracownikList" prefHeight="31.0" prefWidth="201.0" text="LISTA PRACOWNIKÓW" textAlignment="CENTER" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="100.0" left="700.0" right="50.0" />
                                     </StackPane.margin>
                                 </Button>
-                                <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="201.0" text="LISTA KLIENTÓW" textAlignment="CENTER" StackPane.alignment="CENTER">
+                                <Button mnemonicParsing="false" onAction="#showAddKlientaList" prefHeight="31.0" prefWidth="201.0" text="LISTA KLIENTÓW" textAlignment="CENTER" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="300.0" left="700.0" right="50.0" />
                                     </StackPane.margin>
@@ -199,7 +199,7 @@
                                         <Insets bottom="300.0" right="650.0" />
                                     </StackPane.margin>
                                 </Button>
-                                <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="217.0" text="LISTA KLIENTÓW">
+                                <Button mnemonicParsing="false" onAction="#showEditClientList" prefHeight="31.0" prefWidth="217.0" text="LISTA KLIENTÓW">
                                     <cursor>
                                         <Cursor fx:constant="OPEN_HAND" />
                                     </cursor>
@@ -207,7 +207,7 @@
                                         <Insets bottom="400.0" left="50.0" right="400.0" top="300.0" />
                                     </StackPane.margin>
                                 </Button>
-                                <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="217.0" text="LISTA PRACOWNIKÓW">
+                                <Button mnemonicParsing="false" onAction="#showEditEmployeeList" prefHeight="31.0" prefWidth="217.0" text="LISTA PRACOWNIKÓW">
                                     <cursor>
                                         <Cursor fx:constant="OPEN_HAND" />
                                     </cursor>
@@ -235,7 +235,7 @@
                                         <Insets bottom="200.0" left="650.0" right="50.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="217.0" text="LISTA POJAZDÓW" StackPane.alignment="CENTER">
+                                <Button mnemonicParsing="false" onAction="#showEditVehicleList" prefHeight="31.0" prefWidth="217.0" text="LISTA POJAZDÓW" StackPane.alignment="CENTER">
                                     <cursor>
                                         <Cursor fx:constant="OPEN_HAND" />
                                     </cursor>
