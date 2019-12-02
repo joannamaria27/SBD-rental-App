@@ -1,6 +1,9 @@
 package controller;
 
 //import com.sun.tools.javac.util.List;
+import domain.Klient;
+import domain.Pojazd;
+import domain.Pracownik;
 import domain.Rezerwacja;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
@@ -44,9 +47,9 @@ public class ReservationController {
     @FXML
     private TextField editReservationIdKlientaTextField;
     @FXML
-    private TextField editReservationDataRTextField;
+    private DatePicker editReservationDataRTextField;
     @FXML
-    private TextField editReservationDataZTextField;
+    private DatePicker editReservationDataZTextField;
     @FXML
     private TextField editReservationPrzewidywanaCenaTextField;
     @FXML
@@ -67,17 +70,19 @@ public class ReservationController {
 
 
 
-    public void addClient() {
-        System.out.println("addClientButton");
+    public void addReservation() {
+        System.out.println("addReservationButton");
 
 
         if (addReservationPrzewidywanaCenaTextField.getText().equals("") || addReservationIdKlientaTextField.getText().equals("") || addReservationIdPojazduTextField.getText().equals("") || addReservationIdPracownikaTextField.getText().equals("") || addReservationDataRozpTextField.getValue().equals("") || addReservationDataZakTextField.getValue().equals("") ){
             WindowSingleton.alert("Niepoprawne dane");
             return;
         }
-        List<Rezerwacja> list = (List<Rezerwacja>) DBConnector.getInstance().getEntityManager().createQuery("SELECT a FROM Rezerwacja a WHERE id_pojazdu='" + addReservationIdPojazduTextField.getText() + "'", Rezerwacja.class).getResultList();
+        //todo - daty
+        List<Rezerwacja> list = (List<Rezerwacja>) DBConnector.getInstance().getEntityManager().createQuery("SELECT a FROM Rezerwacja a WHERE id_pojazdu=' " + addReservationIdPojazduTextField.getText() + "'", Rezerwacja.class).getResultList();
         if (list.size() > 0) {
-            WindowSingleton.alert("Pojazd o podanym numerze istnieje już w bazie");
+            WindowSingleton.alert("Pojazd o podanym numerze jest już zarezerwowany");
+            return;
         }
 
         try {
@@ -94,21 +99,24 @@ public class ReservationController {
         System.out.println(Date.valueOf(addReservationDataZakTextField.getValue()).getClass().getName());
 
 
+        Pojazd pojazd = DBConnector.getInstance().getEntityManager().find(Pojazd.class, Long.parseLong(addReservationIdPojazduTextField.getText()));
+        Klient klient = DBConnector.getInstance().getEntityManager().find(Klient.class, Long.parseLong(addReservationIdKlientaTextField.getText()));
+        Pracownik pracownik = DBConnector.getInstance().getEntityManager().find(Pracownik.class, Long.parseLong(addReservationIdPracownikaTextField.getText()));
+
         DBConnector.getInstance().start();
-        //todo
-//        DBConnector.getInstance().addRezerwacja(new Rezerwacja(addReservationIdPojazduTextField.getClass(), addReservationIdKlientaTextField.getText(), Date.valueOf(addReservationDataRozpTextField.getValue()),  Date.valueOf(addReservationDataZakTextField.getValue()), addReservationPrzewidywanaCenaTextField.getText(), addReservationIdPracownikaTextField.getText());
+
+        DBConnector.getInstance().addRezerwacja(new Rezerwacja(pojazd, klient, Date.valueOf(addReservationDataRozpTextField.getValue()),  Date.valueOf(addReservationDataZakTextField.getValue()), Float.parseFloat(addReservationPrzewidywanaCenaTextField.getText()), pracownik));
         DBConnector.getInstance().stop();
-        WindowSingleton.alert("Dodano klienta");
+        WindowSingleton.alert("Dodano rezerwacje");
         addReservationPrzewidywanaCenaTextField.setText("");
         addReservationIdKlientaTextField.setText("");
         addReservationIdPojazduTextField.setText("");
         addReservationDataRozpTextField.setValue(null);
-
         addReservationDataZakTextField.setValue(null);
         addReservationIdPracownikaTextField.setText("");
     }
     public void deleteReservationShowReservationList() {
-        WindowSingleton.showClientTable(deleteReservationIdTextField);
+        WindowSingleton.showRezervationTable(deleteReservationIdTextField);
     }
 
     public void deleteReservation() {
@@ -158,8 +166,8 @@ public class ReservationController {
         Rezerwacja rezerwacja = DBConnector.getInstance().getEntityManager().find(Rezerwacja.class, Long.parseLong(editReservationIdTextField.getText()));
         editReservationIdPojazduTextField.setText(String.valueOf(rezerwacja.getId_pojazdu()));
         editReservationIdKlientaTextField.setText(String.valueOf(rezerwacja.getId_klienta()));
-        editReservationDataRTextField.setText(String.valueOf(rezerwacja.getData_r_rezerwacji()));
-        editReservationDataZTextField.setText(String.valueOf(rezerwacja.getData_z_rezerwacji()));
+        //editReservationDataRTextField.setText(String.valueOf(rezerwacja.getData_r_rezerwacji()));
+        //editReservationDataZTextField.setText(String.valueOf(rezerwacja.getData_z_rezerwacji()));
         editReservationPrzewidywanaCenaTextField.setText(String.valueOf(rezerwacja.getPrzewidywana_cena()));
         editReservationPracownikTextField.setText(String.valueOf(rezerwacja.getId_pracownika()));
 
@@ -191,13 +199,18 @@ public class ReservationController {
         }
 
         Rezerwacja rezerwacja = DBConnector.getInstance().getEntityManager().find(Rezerwacja.class, Long.parseLong(editReservationIdTextField.getText()));
-//todo
-        //        rezerwacja.setId_pojazdu(editReservationNewIdPojazduTextField.getText());
-//        rezerwacja.setId_klienta(editReservationNewIdKlientaTextField.getText());
-//        rezerwacja.setData_r_rezerwacji(editReservationNewDataRTextField.getText());
-//        rezerwacja.setData_z_rezerwacji(Date.valueOf(editReservationNewDataZTextField.getText()));
-//        rezerwacja.setPrzewidywana_cena(editReservationNewPrzewidywanaCenaTextField.getText());
-//        rezerwacja.setId_pracownika(editReservationNewPracownikTextField.getText());
+
+        Pojazd pojazd = DBConnector.getInstance().getEntityManager().find(Pojazd.class, Long.parseLong(editReservationNewIdPojazduTextField.getText()));
+        Klient klient = DBConnector.getInstance().getEntityManager().find(Klient.class, Long.parseLong(editReservationNewIdKlientaTextField.getText()));
+        Pracownik pracownik = DBConnector.getInstance().getEntityManager().find(Pracownik.class, Long.parseLong(editReservationNewPracownikTextField.getText()));
+
+
+        rezerwacja.setId_pojazdu(pojazd);
+        rezerwacja.setId_klienta(klient);
+        rezerwacja.setData_r_rezerwacji(Date.valueOf(editReservationNewDataRTextField.getText()));
+        rezerwacja.setData_z_rezerwacji(Date.valueOf(editReservationNewDataZTextField.getText()));
+        rezerwacja.setPrzewidywana_cena(Float.parseFloat(editReservationNewPrzewidywanaCenaTextField.getText().toString()));
+        rezerwacja.setId_pracownika(pracownik);
 
         DBConnector.getInstance().editRezerwacja(rezerwacja);
         WindowSingleton.alert("Zedytowano rezerwcje");

@@ -165,7 +165,7 @@ public class EmployeeOptionsController {
         WindowSingleton.alert("Zedytowano pracownika");
     }
 
-    public void showEmployeeEmployeeList() {
+    public void showEmployeeeditEmployeeList() {
         WindowSingleton.showEmployeeTable(editEmployeeIdTextField);
     }
 
@@ -177,6 +177,7 @@ public class EmployeeOptionsController {
     public void showMainMenu() throws IOException {
         WindowSingleton.getInstance().setLayout("/fxml/StartScreen.fxml");
     }
+
 
     public void deleteEmployeeShowEmployeeList() {
         WindowSingleton.showEmployeeTable(deleteEmployeeIdTextField);

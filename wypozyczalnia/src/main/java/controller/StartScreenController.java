@@ -32,17 +32,17 @@ public class StartScreenController {
 
     public void showReturnMenu() throws IOException {
         System.out.println("showReturnMenu");
-        WindowSingleton.getInstance().setLayout("/fxml/ReturnOptions.fxml");
+        WindowSingleton.getInstance().setLayout("/fxml/Return.fxml");
     }
 
     public void showRenteMenu() throws IOException {
         System.out.println("showRentMenu");
-        WindowSingleton.getInstance().setLayout("/fxml/ClientOptions.fxml");
+        WindowSingleton.getInstance().setLayout("/fxml/RentOptions.fxml");
     }
 
     public void showReservationMenu() throws IOException {
         System.out.println("showReservationMenu");
-        WindowSingleton.getInstance().setLayout("/fxml/ReservationOptions.fxml");
+        WindowSingleton.getInstance().setLayout("/fxml/Reservation.fxml");
     }
 
 }

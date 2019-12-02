@@ -173,7 +173,7 @@
                                         <Insets left="650.0" right="50.0" top="300.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <Button mnemonicParsing="false" onAction="#showEmployeeEmployeeList" prefHeight="39.0" prefWidth="186.0" text="LISTA PRACOWNIKÓW" StackPane.alignment="CENTER">
+                                <Button mnemonicParsing="false" onAction="#showEmployeeeditEmployeeList" prefHeight="39.0" prefWidth="186.0" text="LISTA PRACOWNIKÓW" StackPane.alignment="CENTER">
                                     <cursor>
                                         <Cursor fx:constant="OPEN_HAND" />
                                     </cursor>

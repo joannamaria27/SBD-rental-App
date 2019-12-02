@@ -1,9 +1,6 @@
 package domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
@@ -13,13 +10,17 @@ public class Rezerwacja {
     @GeneratedValue
     private long id_rezerwacji;
     @OneToOne
+    @JoinColumn(name="id_pojazdu")
     private Pojazd id_pojazdu;
+
     @OneToOne
+    @JoinColumn(name="id_klienta")
     private Klient id_klienta;
     private Date data_r_rezerwacji;
     private Date data_z_rezerwacji;
     private float przewidywana_cena;
     @OneToOne
+    @JoinColumn(name="id_pracownika")
     private Pracownik id_pracownika;
 
         public Rezerwacja( Pojazd id_pojazdu, Klient id_klienta, Date data_r_rezerwacji, Date data_z_rezerwacji, float przewidywana_cena, Pracownik id_pracownika) {
