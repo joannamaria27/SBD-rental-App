@@ -1,9 +1,6 @@
 package controller;
 
-import domain.Klient;
-import domain.Pojazd;
-import domain.Pracownik;
-import domain.Wypozyczenie;
+import domain.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableView;
@@ -19,8 +16,8 @@ public class RentController {
 
     @FXML
     private TextField addRentIdPojazduTextField;
-    @FXML
-    private DatePicker addRentDataWTextField;
+    //    @FXML
+//    private DatePicker addRentDataWTextField;
     @FXML
     private TextField addRentKodTextField;
     @FXML
@@ -29,8 +26,8 @@ public class RentController {
     private TextField addRentIdKlientaTextField;
     @FXML
     private TextField addRentKaucjaTextField;
-    @FXML
-    private TextField addRentIdPracownikaTextField;
+//    @FXML
+//    private TextField addRentIdPracownikaTextField;
 
 
     @FXML
@@ -50,7 +47,7 @@ public class RentController {
     @FXML
     private TextField editRentIdPojazduTextField;
     @FXML
-    private DatePicker editRentDataWTextField;
+    private TextField editRentDataWTextField;
     @FXML
     private TextField editRentKodTextField;
     @FXML
@@ -76,57 +73,86 @@ public class RentController {
     private TextField editRentNewKaucjaTextField;
     @FXML
     private TextField editRentNewIdPracownikaTextField;
+    @FXML
+    private TextField addRezerwacjaIdTextField;
+    @FXML
+    private TextField addRentPracownikIdTextField;
 
 
-    public void addRent()
-    {
+    public void addRent() {
         System.out.println("addRentButton");
 
-        if(addRentDataWTextField.getValue().equals("") || addRentIdPojazduTextField.getText().equals("") || addRentKodTextField.getText().equals("") || addRentStanTextField.getText().equals("") || addRentIdKlientaTextField.getText().equals("") || addRentKaucjaTextField.getText().equals("") || addRentIdPracownikaTextField.getText().equals(""))
-        {
-            WindowSingleton.alert("niepoprawne dane");
+        if (addRezerwacjaIdTextField.getText().equals("") ||
+                addRentPracownikIdTextField.getText().equals("") ||
+                addRentKaucjaTextField.getText().equals("") ||
+                addRentStanTextField.getText().equals("") ||
+                addRentKodTextField.getText().equals("")) {
+            WindowSingleton.alert("Niepoprawne dane");
             return;
         }
 
-        //todo - obsługa błędów???
-//        List<Wypozyczenie> list = (List<Wypozyczenie>) DBConnector.getInstance().getEntityManager().createQuery("SELECT a FROM Wypozyczenie a WHERE id_pojazdu='" + addRentIdPojazduTextField.getText() + "'", Wypozyczenie.class).getResultList();
-//        if (list.size() > 0) {
-//            WindowSingleton.alert("Wypozyczenie o podanym numerze istnieje już w bazie");
-//        }
+        if(addRentKodTextField.getText().length()>5){
+            WindowSingleton.alert("Kod dostępu może posiadać maksymalnie 5 znaków");
+            return;
+        }
 
         try {
-            Date startdate = Date.valueOf(addRentDataWTextField.getValue());
-        } catch (Exception e) {
-            System.out.println("nope");
+            Float.parseFloat(addRentKaucjaTextField.getText());
+        } catch (NumberFormatException e) {
+            WindowSingleton.alert("Niepoprawny format kaucji");
+            return;
         }
-        System.out.println(Date.valueOf(addRentDataWTextField.getValue()).getClass().getName());
 
-        DBConnector.getInstance().start();
+        Rezerwacja rezerwacja = DBConnector.getInstance().getEntityManager().find(Rezerwacja.class, Long.parseLong(addRezerwacjaIdTextField.getText()));
+        if(rezerwacja == null){
+            WindowSingleton.alert("Nie ma rezerwacji o takim ID");
+            return;
+        }
 
-        Pojazd pojazd = DBConnector.getInstance().getEntityManager().find(Pojazd.class, Long.parseLong(editRentNewIdPojazduTextField.getText()));
-        Klient klient = DBConnector.getInstance().getEntityManager().find(Klient.class, Long.parseLong(editRentNewIdKlientaTextField.getText()));
-        Pracownik pracownik = DBConnector.getInstance().getEntityManager().find(Pracownik.class, Long.parseLong(editRentNewIdPracownikaTextField.getText()));
+        Pracownik pracownik = DBConnector.getInstance().getEntityManager().find(Pracownik.class, Long.parseLong(addRentPracownikIdTextField.getText()));
+        if (pracownik == null) {
+            WindowSingleton.alert("Nie ma pracownika o takim ID");
+            return;
+        }
 
-        DBConnector.getInstance().addWypozyczenie(new Wypozyczenie(pojazd, Date.valueOf(addRentDataWTextField.getValue()), addRentKodTextField.getText(),   addRentStanTextField.getText(), klient, Float.parseFloat(addRentKaucjaTextField.getText()), pracownik ));
-        DBConnector.getInstance().stop();
-        WindowSingleton.alert("Dodano wypozyczenie");
-        addRentIdPojazduTextField.setText("");
-        addRentKodTextField.setText("");
-        addRentStanTextField.setText("");
-        addRentDataWTextField.setValue(null);
-        addRentIdPracownikaTextField.setText("");
-        addRentIdKlientaTextField.setText("");
-        addRentKaucjaTextField.setText("");
+        if(rezerwacja.getId_pojazdu().getCzyDostepny() == "nie"){
+            WindowSingleton.alert("Pojazd niedostępny");
+            return;
+        }
+
+        Wypozyczenie wypozyczenie = new Wypozyczenie(rezerwacja.getId_pojazdu(),
+                rezerwacja.getData_r_rezerwacji(),
+                addRentKodTextField.getText(),
+                addRentStanTextField.getText(),
+                rezerwacja.getId_klienta(),
+                Float.parseFloat(addRentKaucjaTextField.getText()),
+                pracownik);
+
+        rezerwacja.getId_pojazdu().setCzyDostepny("nie");
+        rezerwacja.getId_pojazdu().setStan_pojazdu(addRentStanTextField.getText());
+        DBConnector.getInstance().editPojazd(rezerwacja.getId_pojazdu());
+        DBConnector.getInstance().addWypozyczenie(wypozyczenie);
+        WindowSingleton.alert("Dodano wypożyczenie");
+
+        // todo all od nowa bo Aśce sie nie chcialo robic porzadnie
 
 
     }
 
-    public void showAddPojazduList() { WindowSingleton.showVehicleTable(addRentIdPojazduTextField); }
+    public void showAddPojazduList() {
+        WindowSingleton.showVehicleTable(addRentIdPojazduTextField);
+    }
+
     public void showAddKlientaList() {
         WindowSingleton.showClientTable(addRentIdKlientaTextField);
     }
+
+    public void showAddRezerwacjaList(){
+        WindowSingleton.showRezervationTable(addRezerwacjaIdTextField);
+    }
+
     public void showAddPracownikList() {
-        WindowSingleton.showEmployeeTable(addRentIdPracownikaTextField);
+        WindowSingleton.showEmployeeTable(addRentPracownikIdTextField);
     }
 
     public void deleteRent() {
@@ -179,7 +205,7 @@ public class RentController {
         editRentIdPojazduTextField.setText(String.valueOf(wypozyczenie.getId_pojazdu()));
         editRentIdKlientaTextField.setText(String.valueOf(wypozyczenie.getId_klienta()));
         //todo
-//        editRentDataWTextField.setText(String.valueOf(wypozyczenie.getData_wypozyczenia()));
+        editRentDataWTextField.setText(String.valueOf(wypozyczenie.getData_wypozyczenia()));
         editRentIdPracownikaTextField.setText(String.valueOf(wypozyczenie.getId_pracownika()));
         editRentKaucjaTextField.setText(String.valueOf(wypozyczenie.getKaucja()));
         editRentStanTextField.setText(String.valueOf(wypozyczenie.getStan_pojazdu()));
@@ -188,13 +214,13 @@ public class RentController {
     }
 
     public void editReservation() {
-        if(editRentNewIdKlientaTextField.getText().equals("") ||
+        if (editRentNewIdKlientaTextField.getText().equals("") ||
                 editRentNewIdPojazduTextField.getText().equals("") ||
                 editRentNewIdPracownikaTextField.getText().equals("") ||
                 editRentNewKaucjaTextField.getText().equals("") ||
                 editRentNewKodTextField.getText().equals("") ||
                 editRentNewStanTextField.getText().equals("") ||
-                editRentNewDataWTextField.getValue().equals(null) ) {
+                editRentNewDataWTextField.getValue().equals(null)) {
             WindowSingleton.alert("Niepoprawne dane");
             return;
         }
@@ -212,7 +238,8 @@ public class RentController {
         Pracownik pracownik = DBConnector.getInstance().getEntityManager().find(Pracownik.class, Long.parseLong(editRentNewIdPracownikaTextField.getText()));
 
 
-        Wypozyczenie wypozyczenie = DBConnector.getInstance().getEntityManager().find(Wypozyczenie.class, Long.parseLong(editRentNewIdTextField.getText()));
+        Wypozyczenie wypozyczenie = DBConnector.getInstance().getEntityManager().find(Wypozyczenie.class, Long.parseLong(editRentIdTextField.getText()));
+        pojazd.setStan_pojazdu(editRentNewStanTextField.getText());
         wypozyczenie.setId_pojazdu(pojazd);
         wypozyczenie.setId_klienta(klient);
         wypozyczenie.setData_wypozyczenia(Date.valueOf(editRentNewDataWTextField.getValue().toString()));
@@ -221,6 +248,7 @@ public class RentController {
         wypozyczenie.setKaucja(Float.parseFloat(editRentNewKaucjaTextField.getText()));
         wypozyczenie.setId_pracownika(pracownik);
 
+        DBConnector.getInstance().editPojazd(pojazd);
         DBConnector.getInstance().editWypozyczenie(wypozyczenie);
         WindowSingleton.alert("Zedytowano wypozyczenie");
     }
@@ -230,9 +258,20 @@ public class RentController {
     }
 
 
-
     public void showMainMenu() throws IOException {
         WindowSingleton.getInstance().setLayout("/fxml/StartScreen.fxml");
+    }
+
+    public void showEditVehicleList(){
+        WindowSingleton.showVehicleTable(editRentNewIdPojazduTextField);
+    }
+
+    public void showEditClientList(){
+        WindowSingleton.showClientTable(editRentNewIdKlientaTextField);
+    }
+
+    public void showEditEmployeeList(){
+        WindowSingleton.showEmployeeTable(editRentNewIdPracownikaTextField);
     }
 
 }

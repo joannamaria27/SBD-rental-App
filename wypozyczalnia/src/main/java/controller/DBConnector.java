@@ -70,20 +70,9 @@ public class DBConnector {
     }
 
     public void addWypozyczenie(Wypozyczenie w) {
-        //entityManager.getTransaction().begin();
-        entityManager.persist(w);
-        //entityManager.getTransaction().commit();
-    }
-
-    public void addWypozyczenie() {
         entityManager.getTransaction().begin();
-
-        // todo
-        //entityManager.persist();
-
-
+        entityManager.persist(w);
         entityManager.getTransaction().commit();
-
     }
 
     public List<Wypozyczenie> printAllRentals() {

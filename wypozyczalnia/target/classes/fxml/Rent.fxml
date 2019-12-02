@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.StackPane?>
 
-<BorderPane style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RentController">
     <center>
         <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="742.0" prefWidth="1200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
             <tabs>
@@ -21,29 +21,24 @@
                     <content>
                         <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: white;">
                             <children>
-                                <Label text="PODAJ ID POJAZDU KTÓRY CHCESZ WYPOŻYCZYĆ:" StackPane.alignment="CENTER">
+                                <Label prefHeight="21.0" prefWidth="380.0" text="PODAJ ID REZERWACJI DO ZREALIZOWANIA" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="600.0" left="50.0" right="800.0" />
                                     </StackPane.margin>
                                 </Label>
-                                <Button fx:id="showAddPojazduList" mnemonicParsing="false" prefHeight="31.0" prefWidth="201.0" text="LISTA POJAZDÓW" textAlignment="CENTER" StackPane.alignment="CENTER">
+                                <Button mnemonicParsing="false" onAction="#showAddRezerwacjaList" prefHeight="31.0" prefWidth="201.0" text="LISTA REZERWACJI" textAlignment="CENTER" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="500.0" left="700.0" right="50.0" />
                                     </StackPane.margin>
                                 </Button>
                                 <TextField fx:id="addRentKaucjaTextField" prefHeight="31.0" prefWidth="599.0" promptText="KAUCJA" StackPane.alignment="CENTER">
                                     <StackPane.margin>
-                                        <Insets left="50.0" right="400.0" top="200.0" />
+                                        <Insets bottom="300.0" left="50.0" right="400.0" top="200.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <TextField fx:id="addRentIdPojazduTextField" prefHeight="31.0" prefWidth="599.0" promptText="ID POJAZDU" StackPane.alignment="CENTER">
+                                <TextField fx:id="addRezerwacjaIdTextField" prefHeight="31.0" prefWidth="599.0" promptText="ID REZERWACJI" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="500.0" left="50.0" right="400.0" />
-                                    </StackPane.margin>
-                                </TextField>
-                                <TextField fx:id="addRentIdKlientaTextField" prefHeight="31.0" prefWidth="599.0" promptText="ID KLIENTA" StackPane.alignment="CENTER">
-                                    <StackPane.margin>
-                                        <Insets bottom="300.0" left="50.0" right="400.0" />
                                     </StackPane.margin>
                                 </TextField>
                                 <TextField fx:id="addRentKodTextField" prefHeight="31.0" prefWidth="599.0" promptText="KOD DOSTEPU" StackPane.alignment="CENTER">
@@ -51,44 +46,34 @@
                                         <Insets left="50.0" right="400.0" top="100.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <Button fx:id="addRent" mnemonicParsing="false" prefHeight="39.0" prefWidth="186.0" text="DODAJ" StackPane.alignment="CENTER">
+                                <Button mnemonicParsing="false" onAction="#addRent" prefHeight="39.0" prefWidth="186.0" text="DODAJ" StackPane.alignment="CENTER">
                                     <StackPane.margin>
-                                        <Insets right="400.0" top="400.0" />
+                                        <Insets right="400.0" top="200.0" />
                                     </StackPane.margin>
                                     <cursor>
                                         <Cursor fx:constant="OPEN_HAND" />
                                     </cursor>
                                 </Button>
-                                <Label prefHeight="21.0" prefWidth="420.0" text="PODAJ ID KLIENTA KTÓRY CHCE DOKONAĆ WYPOŻYCZENIA:">
+                                <Label prefHeight="21.0" prefWidth="420.0" text="PODAJ ID PRACOWNIKA KTÓRY CHCE ZAPISAĆ WYPOZYCZENIE:">
                                     <StackPane.margin>
                                         <Insets bottom="400.0" left="50.0" right="800.0" />
                                     </StackPane.margin>
                                 </Label>
-                                <Label prefHeight="21.0" prefWidth="420.0" text="PODAJ ID PRACOWNIKA KTÓRY CHCE ZAPISAĆ WYPOZYCZENIE:">
+                                <TextField fx:id="addRentPracownikIdTextField" promptText="ID PRACOWNIKA" StackPane.alignment="CENTER">
                                     <StackPane.margin>
-                                        <Insets bottom="200.0" left="50.0" right="800.0" />
-                                    </StackPane.margin>
-                                </Label>
-                                <TextField fx:id="addRentIdPracownikaTextField" promptText="ID PRACOWNIKA" StackPane.alignment="CENTER">
-                                    <StackPane.margin>
-                                        <Insets bottom="100.0" left="50.0" right="400.0" />
+                                        <Insets bottom="300.0" left="50.0" right="400.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <Button fx:id="showAddPracownikList" mnemonicParsing="false" prefHeight="31.0" prefWidth="201.0" text="LISTA PRACOWNIKÓW" textAlignment="CENTER" StackPane.alignment="CENTER">
-                                    <StackPane.margin>
-                                        <Insets bottom="100.0" left="700.0" right="50.0" />
-                                    </StackPane.margin>
-                                </Button>
-                                <Button fx:id="showAddKlientaList" mnemonicParsing="false" prefHeight="31.0" prefWidth="201.0" text="LISTA KLIENTÓW" textAlignment="CENTER" StackPane.alignment="CENTER">
+                        <TextField fx:id="addRentStanTextField" prefHeight="31.0" prefWidth="599.0" promptText="STAN POJAZDU">
+                           <StackPane.margin>
+                              <Insets bottom="300.0" left="50.0" right="400.0" top="300.0" />
+                           </StackPane.margin>
+                        </TextField>
+                                <Button fx:id="showAddPracownikList" mnemonicParsing="false" onAction="#showAddPracownikList" prefHeight="31.0" prefWidth="201.0" text="LISTA PRACOWNIKÓW" textAlignment="CENTER" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="300.0" left="700.0" right="50.0" />
                                     </StackPane.margin>
                                 </Button>
-                        <TextField fx:id="addRentStanTextField" prefHeight="31.0" prefWidth="599.0" promptText="STAN POJAZDU">
-                           <StackPane.margin>
-                              <Insets left="50.0" right="400.0" top="300.0" />
-                           </StackPane.margin>
-                        </TextField>
                             </children>
                         </StackPane>
                     </content>
@@ -204,7 +189,7 @@
                                         <Insets bottom="300.0" right="650.0" />
                                     </StackPane.margin>
                                 </Button>
-                                <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="217.0" text="LISTA KLIENTÓW">
+                                <Button mnemonicParsing="false" onAction="#showEditClientList" prefHeight="31.0" prefWidth="217.0" text="LISTA KLIENTÓW">
                                     <cursor>
                                         <Cursor fx:constant="OPEN_HAND" />
                                     </cursor>
@@ -212,7 +197,7 @@
                                         <Insets bottom="400.0" left="50.0" right="400.0" top="300.0" />
                                     </StackPane.margin>
                                 </Button>
-                                <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="217.0" text="LISTA PRACOWNIKÓW">
+                                <Button mnemonicParsing="false" onAction="#showEditEmployeeList" prefHeight="31.0" prefWidth="217.0" text="LISTA PRACOWNIKÓW">
                                     <cursor>
                                         <Cursor fx:constant="OPEN_HAND" />
                                     </cursor>
@@ -240,7 +225,7 @@
                               <Insets bottom="200.0" left="50.0" right="900.0" />
                            </StackPane.margin>
                         </TextField>
-                        <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="217.0" text="LISTA KLIENTÓW" StackPane.alignment="CENTER">
+                        <Button mnemonicParsing="false" onAction="#showEditVehicleList" prefHeight="31.0" prefWidth="217.0" text="LISTA POJAZDÓW" StackPane.alignment="CENTER">
                            <cursor>
                               <Cursor fx:constant="OPEN_HAND" />
                            </cursor>
@@ -278,7 +263,7 @@
         </TabPane>
     </center>
     <bottom>
-        <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="129.0" text="MENU GŁÓWNE" BorderPane.alignment="CENTER_RIGHT">
+        <Button mnemonicParsing="false" onAction="#showMainMenu" prefHeight="31.0" prefWidth="129.0" text="MENU GŁÓWNE" BorderPane.alignment="CENTER_RIGHT">
             <BorderPane.margin>
                 <Insets bottom="50.0" right="50.0" />
             </BorderPane.margin>

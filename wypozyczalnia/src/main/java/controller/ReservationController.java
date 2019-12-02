@@ -103,8 +103,11 @@ public class ReservationController {
         Klient klient = DBConnector.getInstance().getEntityManager().find(Klient.class, Long.parseLong(addReservationIdKlientaTextField.getText()));
         Pracownik pracownik = DBConnector.getInstance().getEntityManager().find(Pracownik.class, Long.parseLong(addReservationIdPracownikaTextField.getText()));
 
-        DBConnector.getInstance().start();
 
+        pojazd.setCzyDostepny("nie");
+        DBConnector.getInstance().editPojazd(pojazd);
+
+        DBConnector.getInstance().start();
         DBConnector.getInstance().addRezerwacja(new Rezerwacja(pojazd, klient, Date.valueOf(addReservationDataRozpTextField.getValue()), Date.valueOf(addReservationDataZakTextField.getValue()), Float.parseFloat(addReservationPrzewidywanaCenaTextField.getText()), pracownik));
         DBConnector.getInstance().stop();
         WindowSingleton.alert("Dodano rezerwacje");

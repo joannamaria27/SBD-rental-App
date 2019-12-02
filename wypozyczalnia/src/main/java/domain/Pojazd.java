@@ -83,7 +83,7 @@ public class Pojazd {
         this.stan_pojazdu = stan_pojazdu;
     }
 
-    public String isCzyDostepny() {
+    public String getCzyDostepny() {
         return czyDostepny;
     }
 

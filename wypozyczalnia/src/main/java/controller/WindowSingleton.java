@@ -556,17 +556,17 @@ public class WindowSingleton {
 
         // data_rozp
         TableColumn<Rezerwacja, Date> datarozColumn = new TableColumn<Rezerwacja, Date>("Data rozpoczęcia");
-        datarozColumn.setMinWidth(100);
+        datarozColumn.setMinWidth(180);
         datarozColumn.setCellValueFactory(new PropertyValueFactory<Rezerwacja, Date>("data_r_rezerwacji"));
 
         // data_zak
         TableColumn<Rezerwacja, Date> datazakColumn = new TableColumn<Rezerwacja, Date>("Data zakończenia");
-        datazakColumn.setMinWidth(100);
+        datazakColumn.setMinWidth(180);
         datazakColumn.setCellValueFactory(new PropertyValueFactory<Rezerwacja, Date>("data_z_rezerwacji"));
 
         // przewidywana_cena
         TableColumn<Rezerwacja, Float> cenaColumn = new TableColumn<Rezerwacja, Float>("Przewidywana cena");
-        cenaColumn.setMinWidth(100);
+        cenaColumn.setMinWidth(180);
         cenaColumn.setCellValueFactory(new PropertyValueFactory<Rezerwacja, Float>("przewidywana_cena"));
 
         // pracownik
@@ -638,7 +638,7 @@ public class WindowSingleton {
 
         // data_wypozyczenia
         TableColumn<Wypozyczenie, Date> dataColumn = new TableColumn<Wypozyczenie, Date>("Data wypożyczenia");
-        dataColumn.setMinWidth(100);
+        dataColumn.setMinWidth(180);
         dataColumn.setCellValueFactory(new PropertyValueFactory<Wypozyczenie, Date>("data_wypozyczenia"));
 
         // kod_dostepu
@@ -746,7 +746,7 @@ public class WindowSingleton {
 
         // cena_ostateczna
         TableColumn<Zwrot, Float> cenaColumn = new TableColumn<Zwrot, Float>("Ostateczna cena");
-        cenaColumn.setMinWidth(100);
+        cenaColumn.setMinWidth(130);
         cenaColumn.setCellValueFactory(new PropertyValueFactory<Zwrot, Float>("cena_ostateczna"));
 
         // pracownik
