@@ -118,6 +118,12 @@ public class DBConnector {
         entityManager.getTransaction().commit();
     }
 
+    public void addService(Serwis s){
+        entityManager.getTransaction().begin();
+        entityManager.persist(s);
+        entityManager.getTransaction().commit();
+    }
+
     public void deletePojazd(Pojazd p) {
         entityManager.remove(p);
     }
@@ -162,6 +168,12 @@ public class DBConnector {
     public void editWypozyczenie(Wypozyczenie w) {
         entityManager.getTransaction().begin();
         entityManager.merge(w);
+        entityManager.getTransaction().commit();
+    }
+
+    public void editUbezpieczenie(Ubezpieczenie u){
+        entityManager.getTransaction().begin();
+        entityManager.merge(u);
         entityManager.getTransaction().commit();
     }
 

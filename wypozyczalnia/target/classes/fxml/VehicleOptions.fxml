@@ -349,12 +349,7 @@
                                                         <Insets bottom="400.0" left="50.0" right="650.0" top="100.0" />
                                                     </StackPane.margin>
                                                 </TextField>
-                                                <TextField prefHeight="31.0" prefWidth="422.0" promptText="DATA WAŻNOŚCI" StackPane.alignment="CENTER">
-                                                    <StackPane.margin>
-                                                        <Insets bottom="300.0" left="50.0" right="900.0" top="100.0" />
-                                                    </StackPane.margin>
-                                                </TextField>
-                                                <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="186.0" text="ZATWIERDZ" StackPane.alignment="CENTER">
+                                                <Button mnemonicParsing="false" onAction="#editInsurance" prefHeight="39.0" prefWidth="186.0" text="ZATWIERDZ" StackPane.alignment="CENTER">
                                                     <StackPane.margin>
                                                         <Insets bottom="100.0" right="650.0" />
                                                     </StackPane.margin>
@@ -393,9 +388,9 @@
                                                         <Insets bottom="400.0" left="650.0" right="50.0" />
                                                     </StackPane.margin>
                                                 </TextField>
-                                    <DatePicker fx:id="editInsuranceDataWaznosciDatePicker" onAction="#setEditInsuranceDataWaznosci" StackPane.alignment="CENTER">
+                                    <DatePicker fx:id="editInsuranceDataWaznosciDatePicker" prefHeight="31.0" prefWidth="843.0" promptText="DATA WAŻNOŚCI" StackPane.alignment="CENTER">
                                        <StackPane.margin>
-                                          <Insets bottom="200.0" right="350.0" />
+                                          <Insets bottom="200.0" left="50.0" right="650.0" />
                                        </StackPane.margin>
                                     </DatePicker>
                                     <TextField fx:id="editInsuranceNewTypTextField" promptText="TYP" StackPane.alignment="CENTER">

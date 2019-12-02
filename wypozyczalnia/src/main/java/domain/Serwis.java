@@ -9,11 +9,22 @@ public class Serwis {
     @Id
     @GeneratedValue
     private long id_serwisu;
-    @ManyToOne
+    @OneToOne
+    @JoinColumn(name="id_pojazdu")
     private Pojazd id_pojazdu;
     private Date data_r_naprawy;
     private Date data_z_naprawy;
     private float cena;
+
+    public Serwis(Date data_r, Date data_z, float _cena){
+        this.data_r_naprawy = data_r;
+        this.data_z_naprawy = data_z;
+        this.cena = _cena;
+    }
+
+    public Serwis() {
+
+    }
 
     public long getId_serwisu() {
         return id_serwisu;
@@ -54,4 +65,6 @@ public class Serwis {
     public void setCena(float cena) {
         this.cena = cena;
     }
+
+
 }

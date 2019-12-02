@@ -1,9 +1,6 @@
 package controller;
 
-import domain.Pojazd;
-import domain.Punkt_Wypozyczen;
-import domain.Ubezpieczenie;
-import domain.Wypozyczenie;
+import domain.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableView;
@@ -79,8 +76,52 @@ public class VehicleOptionsController {
     private TextField deleteInsuranceIdTextField;
     @FXML
     private TextField editInsuranceTextField;
+    @FXML
+    private TextField editInsuranceTypTextField;
+    @FXML
+    private TextField editInsuranceCenaTextField;
+    @FXML
+    private TextField editInsuranceDataWaznosciTextField;
+    @FXML
+    private TextField editInsuranceNewTypTextField;
+    @FXML
+    private TextField editInsuranceNewCenaTextField;
+    @FXML
+    private DatePicker editInsuranceDataWaznosciDatePicker;
 
-    public void addVehicle(){
+    private TextField addServiceTypTextField;
+    private TextField addServiceCenaTextField;
+    private TextField addServiceDataWaznosciTextField;
+    private DatePicker addServiceDataWaznosciDatePicker;
+
+    public void addService(){
+        if(addServiceTypTextField.getText().equals("") || addServiceCenaTextField.getText().equals("") || addServiceDataWaznosciTextField.getText().equals("")){
+            WindowSingleton.alert("Niepoprawne dane");
+            return;
+        }
+        try {
+            Float.parseFloat(addServiceCenaTextField.getText());
+        } catch (NumberFormatException e) {
+            WindowSingleton.alert("Niepoprawna cena");
+            return;
+        }
+
+        DBConnector.getInstance().addService(
+                new Serwis(
+                        // todo
+                )
+        );
+    }
+
+    public void deleteService(){
+
+    }
+
+    public void editService(){
+
+    }
+
+    public void addVehicle() {
         if (addVehicleTypTextField.getText().equals("") || addVehicleMarkaTextField.getText().equals("") || addVehicleModelTextField.getText().equals("") || addVehicleUbezpieczenieTextField.getText().equals("") || addVehicleStanPojazduTextField.getText().equals("") || addVehicleTerminWaznosciBadaniaDatePicker.getValue().toString().equals("") || addVehiclePunktPostojuTextField.getText().equals("")) {
             WindowSingleton.alert("Niepoprawne dane");
             return;
@@ -106,17 +147,20 @@ public class VehicleOptionsController {
         addVehicleModelTextField.setText("");
         addVehicleStanPojazduTextField.setText("");
         addVehicleTerminWaznosciBadaniaDatePicker.setAccessibleText("");
+        addVehiclePunktPostojuTextField.setText("");
+        addVehicleUbezpieczenieTextField.setText("");
+        addVehicleTerminWaznosciBadaniaDatePicker.getEditor().clear();
     }
 
-    public void showAddRentalPointList(){
+    public void showAddRentalPointList() {
         WindowSingleton.showRentalPointTable(addVehiclePunktPostojuTextField);
     }
 
-    public void showDeleteVehicleList(){
+    public void showDeleteVehicleList() {
         WindowSingleton.showVehicleTable(deleteVehicleIdTextField);
     }
 
-    public void showEditVehicleList(){
+    public void showEditVehicleList() {
         WindowSingleton.showVehicleTable(editVehicleIdTextField);
     }
 
@@ -124,11 +168,11 @@ public class VehicleOptionsController {
         WindowSingleton.getInstance().setLayout("/fxml/StartScreen.fxml");
     }
 
-    public void addInsuranceSetDate(){
+    public void addInsuranceSetDate() {
         addInsuranceDataWaznosciTextField.setText(String.valueOf(addInsuranceDataWaznosciDatePicker.getValue()));
     }
 
-    public void fillEditedVehicleFields(){
+    public void fillEditedVehicleFields() {
         try {
             long _id = Long.parseLong(editVehicleIdTextField.getText());
         } catch (NumberFormatException e) {
@@ -152,8 +196,8 @@ public class VehicleOptionsController {
 
     }
 
-    public void addInsurance(){
-        if(addInsuranceCenaTextField.getText().equals("") || addInsuranceDataWaznosciTextField.getText().equals("") || addInsuranceDataWaznosciTextField.getText().equals("")){
+    public void addInsurance() {
+        if (addInsuranceCenaTextField.getText().equals("") || addInsuranceDataWaznosciTextField.getText().equals("") || addInsuranceTypTextField.getText().equals("")) {
             WindowSingleton.alert("Niepoprawne dane");
             return;
         }
@@ -178,12 +222,40 @@ public class VehicleOptionsController {
         addInsuranceDataWaznosciTextField.setText("");
     }
 
-    public void deleteInsurance(){
-        if(deleteInsuranceIdTextField.getText().equals("")){
+    public void editInsurance(){
+        if(editInsuranceTextField.getText().equals("") || editInsuranceNewCenaTextField.getText().equals("") || editInsuranceNewTypTextField.getText().equals("") || editInsuranceDataWaznosciDatePicker.getValue().toString().equals("")){
+            WindowSingleton.alert("Niepoprawne dane");
+            return;
+        }
+
+        try {
+            long _id = Long.parseLong(editInsuranceTextField.getText());
+        } catch (NumberFormatException e) {
+            WindowSingleton.alert("Niepoprawny format");
+            return;
+        }
+        Ubezpieczenie ubezpieczenie = DBConnector.getInstance().getEntityManager().find(Ubezpieczenie.class, Long.parseLong(editInsuranceTextField.getText()));
+
+        ubezpieczenie.setTyp(editVehicleNewTypTextField.getText());
+        ubezpieczenie.setData_waznosci(Date.valueOf(editInsuranceDataWaznosciDatePicker.getValue().toString()));
+        ubezpieczenie.setCena(Float.parseFloat(editInsuranceNewCenaTextField.getText()));
+
+        DBConnector.getInstance().editUbezpieczenie(ubezpieczenie);
+        WindowSingleton.alert("Zedytowano ubezpieczenie");
+        editInsuranceNewCenaTextField.setText("");
+        editInsuranceNewTypTextField.setText("");
+        editInsuranceTextField.setText("");
+        editInsuranceTypTextField.setText("");
+        editInsuranceCenaTextField.setText("");
+        editInsuranceDataWaznosciTextField.setText("");
+    }
+
+    public void deleteInsurance() {
+        if (deleteInsuranceIdTextField.getText().equals("")) {
             WindowSingleton.alert("Niepoprawne ID");
         }
         Ubezpieczenie ubezpieczenie = DBConnector.getInstance().getEntityManager().find(Ubezpieczenie.class, Long.parseLong(deleteInsuranceIdTextField.getText()));
-        if(ubezpieczenie == null){
+        if (ubezpieczenie == null) {
             WindowSingleton.alert("Nie ma ubezpieczenia o podanym ID");
             return;
         }
@@ -195,22 +267,37 @@ public class VehicleOptionsController {
 
 
         DBConnector.getInstance().deleteUbezpieczenie(ubezpieczenie);
-        WindowSingleton.alert("Usunięto ubezpieczenie o ID = "+ deleteInsuranceIdTextField.getText());
+        WindowSingleton.alert("Usunięto ubezpieczenie o ID = " + deleteInsuranceIdTextField.getText());
 
     }
 
-    public void showDeleteInsuranceList(){
+    public void showDeleteInsuranceList() {
         WindowSingleton.showInsuranceTable(deleteInsuranceIdTextField);
     }
-    public void showEditInsuranceList(){
+
+    public void showEditInsuranceList() {
         WindowSingleton.showInsuranceTable(editInsuranceTextField);
     }
 
-    public void fillEditInsuranceField(){
+    public void fillEditInsuranceField() {
+        try {
+            long _id = Long.parseLong(editInsuranceTextField.getText());
+        } catch (NumberFormatException e) {
+            WindowSingleton.alert("Niepoprawny format");
+            return;
+        }
+        Ubezpieczenie ubezpieczenie = DBConnector.getInstance().getEntityManager().find(Ubezpieczenie.class, Long.parseLong(editInsuranceTextField.getText()));
+        if (ubezpieczenie == null) {
+            WindowSingleton.alert("Nie ma ubezpieczenia o tym ID");
+            return;
+        }
+        editInsuranceCenaTextField.setText(String.valueOf(ubezpieczenie.getCena()));
+        editInsuranceDataWaznosciTextField.setText(String.valueOf(ubezpieczenie.getData_waznosci()));
+        editInsuranceTypTextField.setText(ubezpieczenie.getTyp());
 
     }
 
-    public void deleteCar(){
+    public void deleteCar() {
         try {
             long _id = Long.parseLong(deleteVehicleIdTextField.getText());
         } catch (NumberFormatException e) {
@@ -238,12 +325,12 @@ public class VehicleOptionsController {
         deleteVehicleIdTextField.setText("");
     }
 
-    public void showAddCarInsuranceList(){
+    public void showAddCarInsuranceList() {
         WindowSingleton.showInsuranceTable(addVehicleUbezpieczenieTextField);
     }
 
-    public void editVehicle(){
-        if(editVehicleMarkaTextField.getText().equals("") || editVehicleNewModelTextField.getText().equals("") || editVehicleNewTypTextField.getText().equals("") || editVehicleNewUbezpieczenieTextField.getText().equals("") || editVehicleNewStanPojazduTextField.getText().equals("") || editVehicleNewDataWaznosciBadaniaDatePicker.getValue().toString().equals("") || editVehicleNewPunktPostojuTextField.getText().equals("")){
+    public void editVehicle() {
+        if (editVehicleMarkaTextField.getText().equals("") || editVehicleNewModelTextField.getText().equals("") || editVehicleNewTypTextField.getText().equals("") || editVehicleNewUbezpieczenieTextField.getText().equals("") || editVehicleNewStanPojazduTextField.getText().equals("") || editVehicleNewDataWaznosciBadaniaDatePicker.getValue().toString().equals("") || editVehicleNewPunktPostojuTextField.getText().equals("")) {
             WindowSingleton.alert("Niepoprawne dane");
             return;
         }
@@ -266,20 +353,20 @@ public class VehicleOptionsController {
 
     }
 
-    public void showEditVehicleInsuranceList(){
+    public void showEditVehicleInsuranceList() {
         WindowSingleton.showInsuranceTable(editVehicleNewUbezpieczenieTextField);
     }
 
-    public void editVehicleShowRentalPointList(){
+    public void editVehicleShowRentalPointList() {
         WindowSingleton.showRentalPointTable(editVehicleNewPunktPostojuTextField);
     }
 
-    public void printVehicleList(){
+    public void printVehicleList() {
         final TableView<Pojazd> table = WindowSingleton.createVehicleTable();
         printVehicleStackPane.getChildren().add(table);
     }
 
-    public void printInsuranceList(){
+    public void printInsuranceList() {
         final TableView<Ubezpieczenie> table = WindowSingleton.createInsuranceTable();
         printInsuranceStackPane.getChildren().add(table);
     }
