@@ -66,7 +66,7 @@
                                         <Insets left="50.0" right="400.0" top="100.0" />
                                     </StackPane.margin>
                                 </DatePicker>
-                                <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="201.0" text="LISTA UBEZPIECZEŃ" StackPane.alignment="CENTER_LEFT">
+                                <Button mnemonicParsing="false" onAction="#showAddCarInsuranceList" prefHeight="31.0" prefWidth="201.0" text="LISTA UBEZPIECZEŃ" StackPane.alignment="CENTER_LEFT">
                                     <StackPane.margin>
                                         <Insets bottom="100.0" left="820.0" />
                                     </StackPane.margin>
@@ -89,17 +89,17 @@
                                         <Insets left="50.0" top="100.0" />
                                     </StackPane.margin>
                                 </Label>
-                                <TextField promptText="ID" StackPane.alignment="CENTER">
+                                <TextField fx:id="deleteVehicleIdTextField" promptText="ID" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="400.0" left="50.0" right="400.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <Button mnemonicParsing="false" text="USUŃ" StackPane.alignment="CENTER">
+                                <Button mnemonicParsing="false" onAction="#deleteCar" text="USUŃ" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="300.0" right="400.0" />
                                     </StackPane.margin>
                                 </Button>
-                                <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="201.0" text="LISTA POJAZDÓW" textAlignment="CENTER" StackPane.alignment="CENTER">
+                                <Button mnemonicParsing="false" onAction="#showDeleteVehicleList" prefHeight="31.0" prefWidth="201.0" text="LISTA POJAZDÓW" textAlignment="CENTER" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="400.0" left="700.0" right="50.0" />
                                     </StackPane.margin>
@@ -117,37 +117,37 @@
                                         <Insets left="50.0" top="100.0" />
                                     </StackPane.margin>
                                 </Label>
-                                <TextField promptText="ID" StackPane.alignment="CENTER">
+                                <TextField fx:id="editVehicleIdTextField" promptText="ID" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="400.0" left="50.0" right="50.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <TextField prefHeight="31.0" prefWidth="599.0" promptText="MARKA" StackPane.alignment="CENTER">
+                                <TextField fx:id="editVehicleNewMarkaTextField" prefHeight="31.0" prefWidth="599.0" promptText="MARKA" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="400.0" left="50.0" right="650.0" top="300.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <TextField prefHeight="31.0" prefWidth="599.0" promptText="MODEL" StackPane.alignment="CENTER">
+                                <TextField fx:id="editVehicleNewModelTextField" prefHeight="31.0" prefWidth="599.0" promptText="MODEL" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="300.0" left="50.0" right="650.0" top="300.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <TextField prefHeight="31.0" prefWidth="419.0" promptText="UBEZPIECZENIE" StackPane.alignment="CENTER">
+                                <TextField fx:id="editVehicleNewUbezpieczenieTextField" prefHeight="31.0" prefWidth="419.0" promptText="UBEZPIECZENIE" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="200.0" left="50.0" right="900.0" top="300.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <TextField prefHeight="31.0" prefWidth="355.0" promptText="STAN POJAZDU" StackPane.alignment="CENTER">
+                                <TextField fx:id="editVehicleNewStanPojazduTextField" prefHeight="31.0" prefWidth="355.0" promptText="STAN POJAZDU" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="100.0" left="50.0" right="650.0" top="300.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <TextField prefHeight="31.0" prefWidth="599.0" promptText="PUNKT POSTOJU" StackPane.alignment="CENTER">
+                                <TextField fx:id="editVehicleNewPunktPostojuTextField" prefHeight="31.0" prefWidth="599.0" promptText="PUNKT POSTOJU" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets left="50.0" right="900.0" top="400.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="186.0" text="ZATWIERDZ" StackPane.alignment="CENTER">
+                                <Button mnemonicParsing="false" onAction="#editVehicle" prefHeight="39.0" prefWidth="186.0" text="ZATWIERDZ" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets right="650.0" top="500.0" />
                                     </StackPane.margin>
@@ -155,32 +155,32 @@
                                         <Cursor fx:constant="OPEN_HAND" />
                                     </cursor>
                                 </Button>
-                                <TextField disable="true" prefHeight="31.0" prefWidth="599.0" promptText="STAN POJAZDU" StackPane.alignment="CENTER">
+                                <TextField fx:id="editVehicleStanPojazduTextField" disable="true" prefHeight="31.0" prefWidth="599.0" promptText="STAN POJAZDU" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="100.0" left="650.0" right="50.0" top="300.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <TextField disable="true" prefHeight="31.0" prefWidth="599.0" promptText="UBEZPIECZENIE" StackPane.alignment="CENTER">
+                                <TextField fx:id="editVehicleUbezpieczenieTextField" disable="true" prefHeight="31.0" prefWidth="599.0" promptText="UBEZPIECZENIE" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="200.0" left="650.0" right="50.0" top="300.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <TextField disable="true" prefHeight="31.0" prefWidth="793.0" promptText="MARKA" StackPane.alignment="CENTER">
+                                <TextField fx:id="editVehicleMarkaTextField" disable="true" prefHeight="31.0" prefWidth="793.0" promptText="MARKA" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="400.0" left="650.0" right="50.0" top="300.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <TextField disable="true" prefHeight="31.0" prefWidth="599.0" promptText="MODEL" StackPane.alignment="CENTER">
+                                <TextField fx:id="editVehicleModelTextField" disable="true" prefHeight="31.0" prefWidth="599.0" promptText="MODEL" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="300.0" left="650.0" right="50.0" top="300.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <TextField disable="true" prefHeight="31.0" prefWidth="599.0" promptText="DATA WAZNOSCI BADANIA" StackPane.alignment="CENTER">
+                                <TextField fx:id="editVehicleDataWaznosciBadaniaTextField" disable="true" prefHeight="31.0" prefWidth="599.0" promptText="DATA WAZNOSCI BADANIA" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets left="650.0" right="50.0" top="300.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="186.0" text="LISTA POJAZDÓW" StackPane.alignment="CENTER">
+                                <Button mnemonicParsing="false" onAction="#showEditVehicleList" prefHeight="39.0" prefWidth="186.0" text="LISTA POJAZDÓW" StackPane.alignment="CENTER">
                                     <cursor>
                                         <Cursor fx:constant="OPEN_HAND" />
                                     </cursor>
@@ -188,7 +188,7 @@
                                         <Insets bottom="300.0" left="650.0" />
                                     </StackPane.margin>
                                 </Button>
-                                <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="186.0" text="EDYTUJ" StackPane.alignment="CENTER">
+                                <Button mnemonicParsing="false" onAction="#fillEditedVehicleFields" prefHeight="39.0" prefWidth="186.0" text="EDYTUJ" StackPane.alignment="CENTER">
                                     <cursor>
                                         <Cursor fx:constant="OPEN_HAND" />
                                     </cursor>
@@ -196,22 +196,22 @@
                                         <Insets bottom="300.0" right="650.0" />
                                     </StackPane.margin>
                                 </Button>
-                                <TextField prefHeight="31.0" prefWidth="599.0" promptText="TYP" StackPane.alignment="CENTER">
+                                <TextField fx:id="editVehicleNewTypTextField" prefHeight="31.0" prefWidth="599.0" promptText="TYP" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="200.0" left="50.0" right="650.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <TextField disable="true" prefHeight="31.0" prefWidth="599.0" promptText="TYP" StackPane.alignment="CENTER">
+                                <TextField fx:id="editVehicleTypTextField" disable="true" prefHeight="31.0" prefWidth="599.0" promptText="TYP" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="200.0" left="650.0" right="50.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <DatePicker prefHeight="31.0" prefWidth="525.0" promptText="DATA WAŻNOŚCI BADANIA" StackPane.alignment="CENTER">
+                                <DatePicker fx:id="editVehicleNewDataWaznosciBadaniaDatePicker" prefHeight="31.0" prefWidth="525.0" promptText="DATA WAŻNOŚCI BADANIA" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets left="50.0" right="650.0" top="300.0" />
                                     </StackPane.margin>
                                 </DatePicker>
-                                <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="195.0" text="LISTA UBEZPIECZEŃ" StackPane.alignment="CENTER">
+                                <Button mnemonicParsing="false" onAction="#showEditVehicleInsuranceList" prefHeight="31.0" prefWidth="195.0" text="LISTA UBEZPIECZEŃ" StackPane.alignment="CENTER">
                                     <cursor>
                                         <Cursor fx:constant="OPEN_HAND" />
                                     </cursor>
@@ -219,7 +219,7 @@
                                         <Insets right="300.0" top="100.0" />
                                     </StackPane.margin>
                                 </Button>
-                                <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="195.0" text="LISTA POSTOJI" StackPane.alignment="CENTER">
+                                <Button mnemonicParsing="false" onAction="#editVehicleShowRentalPointList" prefHeight="31.0" prefWidth="195.0" text="LISTA POSTOJI" StackPane.alignment="CENTER">
                                     <cursor>
                                         <Cursor fx:constant="OPEN_HAND" />
                                     </cursor>
@@ -227,7 +227,7 @@
                                         <Insets right="300.0" top="400.0" />
                                     </StackPane.margin>
                                 </Button>
-                                <TextField disable="true" prefHeight="31.0" prefWidth="599.0" promptText="PUNKT POSTOJU">
+                                <TextField fx:id="editVehiclePunktPostojuTextField" disable="true" prefHeight="31.0" prefWidth="599.0" promptText="PUNKT POSTOJU">
                                     <StackPane.margin>
                                         <Insets left="650.0" right="50.0" top="400.0" />
                                     </StackPane.margin>
@@ -236,9 +236,9 @@
                         </StackPane>
                     </content>
                 </Tab>
-                <Tab text="WYPISZ">
+                <Tab onSelectionChanged="#printVehicleList" text="WYPISZ">
                     <content>
-                        <StackPane prefHeight="150.0" prefWidth="200.0">
+                        <StackPane fx:id="printVehicleStackPane" prefHeight="150.0" prefWidth="200.0">
                             <children>
                                 <TableView prefHeight="200.0" prefWidth="200.0">
                                     <columns>
@@ -253,9 +253,9 @@
                     <content>
                         <Accordion>
                             <panes>
-                                <TitledPane animated="false" text="WYPISZ">
+                                <TitledPane animated="false" onMouseClicked="#printInsuranceList" text="WYPISZ">
                                     <content>
-                                        <StackPane prefHeight="150.0" prefWidth="200.0">
+                                        <StackPane fx:id="printInsuranceStackPane" prefHeight="150.0" prefWidth="200.0">
                                             <children>
                                                 <TableView prefHeight="200.0" prefWidth="200.0">
                                                     <columns>
@@ -270,12 +270,12 @@
                                     <content>
                                         <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: white;">
                                             <children>
-                                                <TextField prefHeight="31.0" prefWidth="599.0" promptText="CENA" StackPane.alignment="CENTER">
+                                                <TextField fx:id="addInsuranceCenaTextField" prefHeight="31.0" prefWidth="599.0" promptText="CENA" StackPane.alignment="CENTER">
                                                     <StackPane.margin>
                                                         <Insets bottom="300.0" left="50.0" right="400.0" />
                                                     </StackPane.margin>
                                                 </TextField>
-                                                <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="186.0" text="DODAJ" StackPane.alignment="CENTER">
+                                                <Button fx:id="addInsurance" mnemonicParsing="false" onAction="#addInsurance" prefHeight="39.0" prefWidth="186.0" text="DODAJ" StackPane.alignment="CENTER">
                                                     <StackPane.margin>
                                                         <Insets bottom="100.0" right="400.0" />
                                                     </StackPane.margin>
@@ -283,17 +283,17 @@
                                                         <Cursor fx:constant="OPEN_HAND" />
                                                     </cursor>
                                                 </Button>
-                                                <TextField prefHeight="31.0" prefWidth="599.0" promptText="TYP" StackPane.alignment="CENTER">
+                                                <TextField fx:id="addInsuranceTypTextField" prefHeight="31.0" prefWidth="599.0" promptText="TYP" StackPane.alignment="CENTER">
                                                     <StackPane.margin>
                                                         <Insets bottom="400.0" left="50.0" right="400.0" />
                                                     </StackPane.margin>
                                                 </TextField>
-                                                <TextField prefHeight="31.0" prefWidth="403.0" promptText="DATA WAŻNOŚCI" StackPane.alignment="CENTER">
+                                                <TextField fx:id="addInsuranceDataWaznosciTextField" prefHeight="31.0" prefWidth="403.0" promptText="DATA WAŻNOŚCI" StackPane.alignment="CENTER">
                                                     <StackPane.margin>
                                                         <Insets bottom="200.0" left="50.0" right="400.0" />
                                                     </StackPane.margin>
                                                 </TextField>
-                                                <DatePicker promptText="DATA WAŻNOŚCI" StackPane.alignment="CENTER">
+                                                <DatePicker fx:id="addInsuranceDataWaznosciDatePicker" onAction="#addInsuranceSetDate" promptText="DATA WAŻNOŚCI" StackPane.alignment="CENTER">
                                                     <StackPane.margin>
                                                         <Insets bottom="200.0" left="700.0" />
                                                     </StackPane.margin>
@@ -311,17 +311,17 @@
                                                         <Insets bottom="400.0" left="50.0" right="400.0" />
                                                     </StackPane.margin>
                                                 </Label>
-                                                <TextField promptText="ID" StackPane.alignment="CENTER">
+                                                <TextField fx:id="deleteInsuranceIdTextField" promptText="ID" StackPane.alignment="CENTER">
                                                     <StackPane.margin>
                                                         <Insets bottom="300.0" left="50.0" right="400.0" />
                                                     </StackPane.margin>
                                                 </TextField>
-                                                <Button mnemonicParsing="false" text="USUŃ" StackPane.alignment="CENTER">
+                                                <Button mnemonicParsing="false" onAction="#deleteInsurance" text="USUŃ" StackPane.alignment="CENTER">
                                                     <StackPane.margin>
                                                         <Insets bottom="200.0" right="400.0" />
                                                     </StackPane.margin>
                                                 </Button>
-                                                <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="201.0" text="LISTA UBEZPIECZEŃ" textAlignment="CENTER" StackPane.alignment="CENTER">
+                                                <Button mnemonicParsing="false" onAction="#showDeleteInsuranceList" prefHeight="31.0" prefWidth="201.0" text="LISTA UBEZPIECZEŃ" textAlignment="CENTER" StackPane.alignment="CENTER">
                                                     <StackPane.margin>
                                                         <Insets bottom="300.0" left="700.0" right="50.0" />
                                                     </StackPane.margin>
@@ -339,7 +339,7 @@
                                                         <Insets left="50.0" />
                                                     </StackPane.margin>
                                                 </Label>
-                                                <TextField promptText="ID" StackPane.alignment="CENTER">
+                                                <TextField fx:id="editInsuranceTextField" promptText="ID" StackPane.alignment="CENTER">
                                                     <StackPane.margin>
                                                         <Insets bottom="600.0" left="50.0" right="50.0" />
                                                     </StackPane.margin>
@@ -372,7 +372,7 @@
                                                         <Insets bottom="300.0" left="650.0" right="50.0" top="100.0" />
                                                     </StackPane.margin>
                                                 </TextField>
-                                                <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="186.0" text="LISTA UBEZPIECZEŃ" StackPane.alignment="CENTER">
+                                                <Button mnemonicParsing="false" onAction="#showEditInsuranceList" prefHeight="39.0" prefWidth="186.0" text="LISTA UBEZPIECZEŃ" StackPane.alignment="CENTER">
                                                     <cursor>
                                                         <Cursor fx:constant="OPEN_HAND" />
                                                     </cursor>
@@ -580,7 +580,7 @@
         </TabPane>
     </center>
     <bottom>
-        <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="129.0" text="MENU GŁÓWNE" BorderPane.alignment="CENTER_RIGHT">
+        <Button mnemonicParsing="false" onAction="#showMainMenu" prefHeight="31.0" prefWidth="129.0" text="MENU GŁÓWNE" BorderPane.alignment="CENTER_RIGHT">
             <BorderPane.margin>
                 <Insets bottom="50.0" right="50.0" />
             </BorderPane.margin>

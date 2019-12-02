@@ -1,8 +1,6 @@
 package controller;
 
-import domain.Klient;
-import domain.Pracownik;
-import domain.Punkt_Wypozyczen;
+import domain.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -178,6 +176,130 @@ public class WindowSingleton {
         window.show();
     }
 
+    public static void showInsuranceTable(final TextField idField){
+        final Stage window = new Stage();
+        Button button = new Button("Wybierz");
+        window.setTitle("Lista ubezpieczeń");
+
+
+        final TableView<Ubezpieczenie> table = createInsuranceTable();
+        Ubezpieczenie ubezpieczenie = table.getSelectionModel().getSelectedItem();
+
+        VBox vBox = new VBox();
+        vBox.getChildren().addAll(table, button);
+
+        button.setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent e) {
+                Ubezpieczenie selection;
+                selection = table.getSelectionModel().getSelectedItem();
+                //System.out.println(selection.getId());
+                idField.setText(String.valueOf(selection.getId_ubezpieczenia()));
+                window.close();
+            }
+        });
+
+        Scene scene = new Scene(vBox);
+        window.setScene(scene);
+        window.show();
+    }
+
+    public static void showVehicleTable(final TextField idField) {
+
+        final Stage window = new Stage();
+        Button button = new Button("Wybierz");
+        window.setTitle("Lista pojazdów");
+
+
+        final TableView<Pojazd> table = createVehicleTable();
+        Pojazd pojazd = table.getSelectionModel().getSelectedItem();
+
+        VBox vBox = new VBox();
+        vBox.getChildren().addAll(table, button);
+
+        button.setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent e) {
+                Pojazd selection;
+                selection = table.getSelectionModel().getSelectedItem();
+                //System.out.println(selection.getId());
+                idField.setText(String.valueOf(selection.getId_pojazdu()));
+                window.close();
+            }
+        });
+
+        Scene scene = new Scene(vBox);
+        window.setScene(scene);
+        window.show();
+    }
+
+    public static TableView createVehicleTable() {
+        final TableView<Pojazd> table;
+//        final Button select = new Button("Select");
+//        String choice = "";
+
+        // id
+        TableColumn<Pojazd, Long> idColumn = new TableColumn<Pojazd, Long>("ID");
+        idColumn.setMinWidth(50);
+        idColumn.setCellValueFactory(new PropertyValueFactory<Pojazd, Long>("id_pojazdu"));
+
+        // marka
+        TableColumn<Pojazd, String> markaColumn = new TableColumn<Pojazd, String>("Marka");
+        markaColumn.setMinWidth(100);
+        markaColumn.setCellValueFactory(new PropertyValueFactory<Pojazd, String>("marka"));
+
+        // model
+        TableColumn<Pojazd, String> modelColumn = new TableColumn<Pojazd, String>("Model");
+        modelColumn.setMinWidth(100);
+        modelColumn.setCellValueFactory(new PropertyValueFactory<Pojazd, String>("model"));
+
+        // id ubezpieczenia
+        TableColumn<Pojazd, Long> idUbezpieczeniaColumn = new TableColumn<Pojazd, Long>("ID ubezpieczenia");
+        idUbezpieczeniaColumn.setMinWidth(150);
+        idUbezpieczeniaColumn.setCellValueFactory(new PropertyValueFactory<Pojazd, Long>("id_ubezpieczenia"));
+
+        // stan pojazdu
+        TableColumn<Pojazd, String> stanPojazduColumn = new TableColumn<Pojazd, String>("Stan pojazdu");
+        stanPojazduColumn.setMinWidth(100);
+        stanPojazduColumn.setCellValueFactory(new PropertyValueFactory<Pojazd, String>("stan_pojazdu"));
+
+        // data badania
+        TableColumn<Pojazd, Date> terminWaznosciBadaniaColumn = new TableColumn<Pojazd, Date>("Termin ważności badania");
+        terminWaznosciBadaniaColumn.setMinWidth(200);
+        terminWaznosciBadaniaColumn.setCellValueFactory(new PropertyValueFactory<Pojazd, Date>("termin_waz_badania"));
+
+        // punkt postoju
+        TableColumn<Pojazd, Long> rentalPointColumn = new TableColumn<Pojazd, Long>("Punkt wypożyczenia");
+        rentalPointColumn.setMinWidth(150);
+        rentalPointColumn.setCellValueFactory(new PropertyValueFactory<Pojazd, Long>("punkt_postoju"));
+
+        // typ
+        TableColumn<Pojazd, String> typeColumn = new TableColumn<Pojazd, String>("Typ");
+        typeColumn.setMinWidth(100);
+        typeColumn.setCellValueFactory(new PropertyValueFactory<Pojazd, String>("typ"));
+
+        // dostepnosc
+        TableColumn<Pojazd, Boolean> dostepnosColumn = new TableColumn<Pojazd, Boolean>("Czy dostępny");
+        dostepnosColumn.setMinWidth(130);
+        dostepnosColumn.setCellValueFactory(new PropertyValueFactory<Pojazd, Boolean>("czyDostepny"));
+
+        table = new TableView<Pojazd>();
+        table.setItems(WindowSingleton.getVehiclesObservableList());
+        table.getColumns().addAll(idColumn, markaColumn, modelColumn, idUbezpieczeniaColumn, stanPojazduColumn, terminWaznosciBadaniaColumn, rentalPointColumn, dostepnosColumn, typeColumn);
+
+
+
+        return table;
+    }
+
+    private static ObservableList<Pojazd> getVehiclesObservableList() {
+        ObservableList<Pojazd> vehicles = FXCollections.observableArrayList();
+        List<Pojazd> list = DBConnector.getInstance().getEntityManager().createQuery("SELECT a FROM Pojazd a", Pojazd.class).getResultList();
+
+        for (Pojazd pojazd : list) {
+            vehicles.add(pojazd);
+        }
+        return vehicles;
+    }
+
     public static TableView createClientTable() {
         final TableView<Klient> table;
 //        final Button select = new Button("Select");
@@ -306,10 +428,43 @@ public class WindowSingleton {
         return table;
     }
 
+    public static TableView createInsuranceTable() {
+        final TableView<Ubezpieczenie> table;
+//        final Button select = new Button("Select");
+//        String choice = "";
+
+        // id
+        TableColumn<Ubezpieczenie, Long> idColumn = new TableColumn<Ubezpieczenie, Long>("ID");
+        idColumn.setMinWidth(50);
+        idColumn.setCellValueFactory(new PropertyValueFactory<Ubezpieczenie, Long>("id_ubezpieczenia"));
+
+        // typ
+        TableColumn<Ubezpieczenie, String> typeColumn = new TableColumn<Ubezpieczenie, String>("Typ");
+        typeColumn.setMinWidth(100);
+        typeColumn.setCellValueFactory(new PropertyValueFactory<Ubezpieczenie, String>("typ"));
+
+        // cena
+        TableColumn<Ubezpieczenie, Float> priceColumn = new TableColumn<Ubezpieczenie, Float>("Cena");
+        priceColumn.setMinWidth(100);
+        priceColumn.setCellValueFactory(new PropertyValueFactory<Ubezpieczenie, Float>("cena"));
+
+        // data waznosci
+        TableColumn<Ubezpieczenie, Date> dateColumn = new TableColumn<Ubezpieczenie, Date>("Data ważności");
+        dateColumn.setMinWidth(100);
+        dateColumn.setCellValueFactory(new PropertyValueFactory<Ubezpieczenie, Date>("data_waznosci"));
+
+
+
+        table = new TableView<Ubezpieczenie>();
+        table.setItems(WindowSingleton.getInsuranceObservableList());
+        table.getColumns().addAll(idColumn, typeColumn, priceColumn, dateColumn);
+
+        return table;
+    }
+
     private static ObservableList<Klient> getClientObservableList() {
         ObservableList<Klient> clients = FXCollections.observableArrayList();
 
-        // todo FROM Klient a???
         List<Klient> list = DBConnector.getInstance().getEntityManager().createQuery("SELECT a FROM Klient a", Klient.class).getResultList();
 
         for (Klient klient : list) {
@@ -321,7 +476,6 @@ public class WindowSingleton {
     private static ObservableList<Pracownik> getEmployeeObservableList() {
         ObservableList<Pracownik> employee = FXCollections.observableArrayList();
 
-        // todo FROM Pracownik a???
         List<Pracownik> list = DBConnector.getInstance().getEntityManager().createQuery("SELECT a FROM Klient a", Pracownik.class).getResultList();
 
         for (Pracownik pracownik : list) {
@@ -333,13 +487,23 @@ public class WindowSingleton {
     private static ObservableList<Punkt_Wypozyczen> getRentalPointObservableList() {
         ObservableList<Punkt_Wypozyczen> rental_points = FXCollections.observableArrayList();
 
-        // todo FROM Klient a???
         List<Punkt_Wypozyczen> list = DBConnector.getInstance().getEntityManager().createQuery("SELECT a FROM Punkt_Wypozyczen a", Punkt_Wypozyczen.class).getResultList();
 
         for (Punkt_Wypozyczen punkt_wypozyczen : list) {
             rental_points.add(punkt_wypozyczen);
         }
         return rental_points;
+    }
+
+    private static ObservableList<Ubezpieczenie> getInsuranceObservableList() {
+        ObservableList<Ubezpieczenie> insurances = FXCollections.observableArrayList();
+
+        List<Ubezpieczenie> list = DBConnector.getInstance().getEntityManager().createQuery("SELECT a FROM Ubezpieczenie a", Ubezpieczenie.class).getResultList();
+
+        for (Ubezpieczenie ubezpieczenie : list) {
+            insurances.add(ubezpieczenie);
+        }
+        return insurances;
     }
 
 

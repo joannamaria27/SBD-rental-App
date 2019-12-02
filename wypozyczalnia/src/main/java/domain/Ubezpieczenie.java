@@ -46,4 +46,9 @@ public class Ubezpieczenie {
     public void setData_waznosci(Date data_waznosci) {
         this.data_waznosci = data_waznosci;
     }
+
+    @Override
+    public String toString() {
+        return String.valueOf(id_ubezpieczenia);
+    }
 }

@@ -140,7 +140,7 @@
                                     <columns>
                                         <TableColumn prefWidth="108.0" text="ID" />
                                         <TableColumn prefWidth="117.0" text="LOKALIZACJA" />
-                              <TableColumn prefWidth="75.0" text="NAZWA" />
+                                        <TableColumn prefWidth="75.0" text="NAZWA" />
                                     </columns>
                                 </TableView>
                             </children>

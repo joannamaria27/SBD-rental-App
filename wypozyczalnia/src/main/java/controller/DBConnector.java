@@ -101,14 +101,20 @@ public class DBConnector {
     }
 
     public void addPojazd(Pojazd p) {
-        //entityManager.getTransaction().begin();
+        entityManager.getTransaction().begin();
         entityManager.persist(p);
-        //entityManager.getTransaction().commit();
+        entityManager.getTransaction().commit();
     }
 
     public void addRentalPoint(Punkt_Wypozyczen p) {
         entityManager.getTransaction().begin();
         entityManager.persist(p);
+        entityManager.getTransaction().commit();
+    }
+
+    public void addInsurance(Ubezpieczenie u){
+        entityManager.getTransaction().begin();
+        entityManager.persist(u);
         entityManager.getTransaction().commit();
     }
 
@@ -123,13 +129,24 @@ public class DBConnector {
     public void deleteWypozyczenie(Wypozyczenie w) {
         entityManager.remove(w);
     }
+
+    public void deletePracownik(Pracownik p) {
+        entityManager.remove(p);
+    }
+
     public void deleteRentalPoint(Punkt_Wypozyczen p) {
         entityManager.getTransaction().begin();
         entityManager.remove(p);
         entityManager.getTransaction().commit();
     }
 
+    public void deleteUbezpieczenie(Ubezpieczenie u){
+        entityManager.getTransaction().begin();
+        entityManager.remove(u);
+        entityManager.getTransaction().commit();
+    }
     // nie wiem czy działa
+
     public void editPojazd(Pojazd p) {
         entityManager.getTransaction().begin();
         entityManager.merge(p);
@@ -165,9 +182,5 @@ public class DBConnector {
 
     public void addPracownik(Pracownik pracownik) {
         entityManager.persist(pracownik);
-    }
-
-    public void deletePracownik(Pracownik p) {
-        entityManager.remove(p);
     }
 }

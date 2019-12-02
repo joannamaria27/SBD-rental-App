@@ -1,9 +1,6 @@
 package domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -16,11 +13,13 @@ public class Pojazd {
     private String marka;
     private String model;
     @OneToOne
+    @JoinColumn(name="id_ubezpieczenia")
     private Ubezpieczenie id_ubezpieczenia;
     private String stan_pojazdu;
     private String czyDostepny;
     private Date termin_waz_badania;
     @OneToOne
+    @JoinColumn(name="punkt_postoju")
     private Punkt_Wypozyczen punkt_postoju;
 
     public Pojazd(String _typ, String _marka, String _model, Ubezpieczenie _id_ubezpieczenia, String _stan_pojazdu, Date _termin_waz_badania, Punkt_Wypozyczen _punkt_postoju){
@@ -31,8 +30,10 @@ public class Pojazd {
         stan_pojazdu = _stan_pojazdu;
         termin_waz_badania = _termin_waz_badania;
         punkt_postoju = _punkt_postoju;
-        czyDostepny = "nie";
+        czyDostepny = "tak";
     }
+
+    public Pojazd(){}
 
     public long getId_pojazdu() {
         return id_pojazdu;

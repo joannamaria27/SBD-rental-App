@@ -43,4 +43,9 @@ public class Punkt_Wypozyczen {
     public void setNazwa_punktu(String nazwa_punktu) {
         this.nazwa_punktu = nazwa_punktu;
     }
+
+    @Override
+    public String toString() {
+        return String.valueOf(id_punktu);
+    }
 }
