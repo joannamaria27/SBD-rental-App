@@ -130,9 +130,9 @@ public class DBConnector {
         entityManager.remove(w);
     }
 
-    public void deletePracownik(Pracownik p) {
-        entityManager.remove(p);
-    }
+//    public void deletePracownik(Pracownik p) {
+//        entityManager.remove(p);
+//    }
 
     public void deleteRentalPoint(Punkt_Wypozyczen p) {
         entityManager.getTransaction().begin();

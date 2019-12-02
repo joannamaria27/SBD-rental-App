@@ -1,6 +1,6 @@
 package controller;
 
-import com.sun.tools.javac.util.List;
+//import com.sun.tools.javac.util.List;
 import domain.Rezerwacja;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
@@ -10,6 +10,7 @@ import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.util.List;
 
 public class ReservationController {
 
