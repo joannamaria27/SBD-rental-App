@@ -116,14 +116,14 @@ public class ReservationController {
         addReservationIdPracownikaTextField.setText("");
     }
 
-    public void showAddKlientList() {
-        WindowSingleton.showEmployeeTable(editReservationNewIdKlientaTextField);
+    public void showAddPojazduList() {
+        WindowSingleton.showVehicleTable(addReservationIdPojazduTextField);
+    }
+    public void showAddKlientaList() {
+        WindowSingleton.showClientTable(addReservationIdKlientaTextField);
     }
     public void showAddPracownikList() {
-        WindowSingleton.showEmployeeTable(editReservationNewPracownikTextField);
-    }
-    public void showAddPojazdList() {
-        WindowSingleton.showEmployeeTable(editReservationNewIdPojazduTextField);
+        WindowSingleton.showEmployeeTable(editReservationPracownikTextField);
     }
 
 
