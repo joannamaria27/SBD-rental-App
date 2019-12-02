@@ -115,6 +115,18 @@ public class ReservationController {
         addReservationDataZakTextField.setValue(null);
         addReservationIdPracownikaTextField.setText("");
     }
+
+    public void showAddKlientList() {
+        WindowSingleton.showEmployeeTable(editReservationNewIdKlientaTextField);
+    }
+    public void showAddPracownikList() {
+        WindowSingleton.showEmployeeTable(editReservationNewPracownikTextField);
+    }
+    public void showAddPojazdList() {
+        WindowSingleton.showEmployeeTable(editReservationNewIdPojazduTextField);
+    }
+
+
     public void deleteReservationShowReservationList() {
         WindowSingleton.showRezervationTable(deleteReservationIdTextField);
     }
