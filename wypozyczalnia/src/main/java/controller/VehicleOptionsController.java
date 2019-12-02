@@ -89,13 +89,22 @@ public class VehicleOptionsController {
     @FXML
     private DatePicker editInsuranceDataWaznosciDatePicker;
 
-    private TextField addServiceTypTextField;
-    private TextField addServiceCenaTextField;
-    private TextField addServiceDataWaznosciTextField;
-    private DatePicker addServiceDataWaznosciDatePicker;
 
-    public void addService(){
-        if(addServiceTypTextField.getText().equals("") || addServiceCenaTextField.getText().equals("") || addServiceDataWaznosciTextField.getText().equals("")){
+    @FXML
+    private TextField deleteServiceIdTextField;
+    @FXML
+    private TextField editServiceIdTextField;
+    @FXML
+    private TextField addServiceCenaTextField;
+    @FXML
+    private DatePicker addServiceDataRDatePicker;
+    @FXML
+    private DatePicker addServiceDataZDatePicker;
+    @FXML
+    private StackPane printServiceStackPane;
+
+    public void addService() {
+        if (addServiceCenaTextField.getText().equals("")  ||  addServiceDataRDatePicker.getValue().equals("") || addServiceDataZDatePicker.getValue().equals("")) {
             WindowSingleton.alert("Niepoprawne dane");
             return;
         }
@@ -112,14 +121,38 @@ public class VehicleOptionsController {
                 )
         );
     }
+    public void printService() {
+        final TableView<Serwis> table = WindowSingleton.createServiceTable();
+        printServiceStackPane.getChildren().add(table);
+    }
 
-    public void deleteService(){
+    public void showDeleteServiceList() {
+        WindowSingleton.showServiceTable(deleteServiceIdTextField);
+    }
+
+
+    public void deleteService() {
+
+        if (deleteServiceIdTextField.getText().equals("")) {
+            WindowSingleton.alert("Niepoprawne ID");
+        }
+        Serwis serwis = DBConnector.getInstance().getEntityManager().find(Serwis.class, Long.parseLong(deleteServiceIdTextField.getText()));
+        if (serwis == null) {
+            WindowSingleton.alert("Nie ma serwisu o podanym ID");
+            return;
+        }
+
+        if (DBConnector.getInstance().getEntityManager().createQuery("SELECT a FROM Pojazd a WHERE id_serwisu='" + deleteServiceIdTextField.getText() + "'", Serwis.class).getResultList().size() > 0) {
+            WindowSingleton.alert(" Nie można usunąć. Serwis jest przypisany do pojazdu ");
+            return;
+        }
+
+        DBConnector.getInstance().deleteService(serwis);
+        WindowSingleton.alert("Usunięto serwis o ID = " + deleteServiceIdTextField.getText());
 
     }
 
-    public void editService(){
 
-    }
 
     public void addVehicle() {
         if (addVehicleTypTextField.getText().equals("") || addVehicleMarkaTextField.getText().equals("") || addVehicleModelTextField.getText().equals("") || addVehicleUbezpieczenieTextField.getText().equals("") || addVehicleStanPojazduTextField.getText().equals("") || addVehicleTerminWaznosciBadaniaDatePicker.getValue().toString().equals("") || addVehiclePunktPostojuTextField.getText().equals("")) {
@@ -222,8 +255,8 @@ public class VehicleOptionsController {
         addInsuranceDataWaznosciTextField.setText("");
     }
 
-    public void editInsurance(){
-        if(editInsuranceTextField.getText().equals("") || editInsuranceNewCenaTextField.getText().equals("") || editInsuranceNewTypTextField.getText().equals("") || editInsuranceDataWaznosciDatePicker.getValue().toString().equals("")){
+    public void editInsurance() {
+        if (editInsuranceTextField.getText().equals("") || editInsuranceNewCenaTextField.getText().equals("") || editInsuranceNewTypTextField.getText().equals("") || editInsuranceDataWaznosciDatePicker.getValue().toString().equals("")) {
             WindowSingleton.alert("Niepoprawne dane");
             return;
         }

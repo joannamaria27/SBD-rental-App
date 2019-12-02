@@ -780,4 +780,77 @@ public class WindowSingleton {
         return zwrots;
     }
 
+
+
+    public static void showServiceTable(final TextField idField) {
+
+        final Stage window = new Stage();
+        Button button = new Button("Wybierz");
+        window.setTitle("Lista serwisów");
+
+
+        final TableView<Serwis> table = createServiceTable();
+        Serwis serwis = table.getSelectionModel().getSelectedItem();
+
+        VBox vBox = new VBox();
+        vBox.getChildren().addAll(table, button);
+
+        button.setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent e) {
+                Serwis selection;
+                selection = table.getSelectionModel().getSelectedItem();
+                //System.out.println(selection.getId());
+                idField.setText(String.valueOf(selection.getId_serwisu()));
+                window.close();
+            }
+        });
+
+        Scene scene = new Scene(vBox);
+        window.setScene(scene);
+        window.show();
+    }
+
+
+    public static TableView createServiceTable() {
+        final TableView<Serwis> table;
+
+        // id
+        TableColumn<Serwis, Long> idColumn = new TableColumn<Serwis, Long>("ID");
+        idColumn.setMinWidth(50);
+        idColumn.setCellValueFactory(new PropertyValueFactory<Serwis, Long>("id_serwisu"));
+
+        // data_r_naprawy
+        TableColumn<Serwis, Date > cenaColumn = new TableColumn<Serwis, Date>("Data rozpoczecia naprawy");
+        cenaColumn.setMinWidth(100);
+        cenaColumn.setCellValueFactory(new PropertyValueFactory<Serwis, Date>("data_r_naprawy"));
+
+        // data_z_naprawy
+        TableColumn<Serwis, Date> datarColumn = new TableColumn<Serwis, Date>("Data zakonczenia naprawy");
+        datarColumn.setMinWidth(100);
+        datarColumn.setCellValueFactory(new PropertyValueFactory<Serwis, Date>("data_z_naprawy"));
+
+        // cena_ostateczna
+        TableColumn<Serwis, Float> datazColumn = new TableColumn<Serwis, Float>("Ostateczna cena");
+        datazColumn.setMinWidth(100);
+        datazColumn.setCellValueFactory(new PropertyValueFactory<Serwis, Float>("cena_ostateczna"));
+
+
+        table = new TableView<Serwis>();
+        table.setItems(WindowSingleton.getServiceObservableList());
+        table.getColumns().addAll(idColumn,cenaColumn,datarColumn,datazColumn);
+
+        return table;
+    }
+
+
+    private static ObservableList<Serwis> getServiceObservableList() {
+        ObservableList<Serwis> serwiss = FXCollections.observableArrayList();
+
+        List<Serwis> list = DBConnector.getInstance().getEntityManager().createQuery("SELECT a FROM Serwis a", Serwis.class).getResultList();
+
+        for (Serwis serwis : list) {
+            serwiss.add(serwis);
+        }
+        return serwiss;
+    }
 }

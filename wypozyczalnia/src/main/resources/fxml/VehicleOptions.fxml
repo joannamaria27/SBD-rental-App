@@ -330,89 +330,17 @@
                                         </StackPane>
                                     </content>
                                 </TitledPane>
-                                <TitledPane animated="false" text="EDYTUJ">
-                                    <content>
-                                        <StackPane prefHeight="400.0" prefWidth="1198.0">
-                                            <children>
-                                                <Label text="PODAJ ID UBEZPIECZENIA KTÓRE CHCESZ EDYTOWAĆ:" StackPane.alignment="TOP_LEFT">
-                                                    <StackPane.margin>
-                                                        <Insets left="50.0" />
-                                                    </StackPane.margin>
-                                                </Label>
-                                                <TextField fx:id="editInsuranceTextField" promptText="ID" StackPane.alignment="CENTER">
-                                                    <StackPane.margin>
-                                                        <Insets bottom="600.0" left="50.0" right="50.0" />
-                                                    </StackPane.margin>
-                                                </TextField>
-                                                <TextField fx:id="editInsuranceNewCenaTextField" prefHeight="31.0" prefWidth="599.0" promptText="CENA" StackPane.alignment="CENTER">
-                                                    <StackPane.margin>
-                                                        <Insets bottom="400.0" left="50.0" right="650.0" top="100.0" />
-                                                    </StackPane.margin>
-                                                </TextField>
-                                                <Button mnemonicParsing="false" onAction="#editInsurance" prefHeight="39.0" prefWidth="186.0" text="ZATWIERDZ" StackPane.alignment="CENTER">
-                                                    <StackPane.margin>
-                                                        <Insets bottom="100.0" right="650.0" />
-                                                    </StackPane.margin>
-                                                    <cursor>
-                                                        <Cursor fx:constant="OPEN_HAND" />
-                                                    </cursor>
-                                                </Button>
-                                                <TextField fx:id="editInsuranceCenaTextField" disable="true" prefHeight="31.0" prefWidth="793.0" promptText="CENA" StackPane.alignment="CENTER">
-                                                    <StackPane.margin>
-                                                        <Insets bottom="400.0" left="650.0" right="50.0" top="100.0" />
-                                                    </StackPane.margin>
-                                                </TextField>
-                                                <TextField fx:id="editInsuranceDataWaznosciTextField" disable="true" prefHeight="31.0" prefWidth="599.0" promptText="DATA WAŻNOŚCI" StackPane.alignment="CENTER">
-                                                    <StackPane.margin>
-                                                        <Insets bottom="300.0" left="650.0" right="50.0" top="100.0" />
-                                                    </StackPane.margin>
-                                                </TextField>
-                                                <Button mnemonicParsing="false" onAction="#showEditInsuranceList" prefHeight="39.0" prefWidth="186.0" text="LISTA UBEZPIECZEŃ" StackPane.alignment="CENTER">
-                                                    <cursor>
-                                                        <Cursor fx:constant="OPEN_HAND" />
-                                                    </cursor>
-                                                    <StackPane.margin>
-                                                        <Insets bottom="500.0" left="650.0" />
-                                                    </StackPane.margin>
-                                                </Button>
-                                                <Button mnemonicParsing="false" onAction="#fillEditInsuranceField" prefHeight="39.0" prefWidth="186.0" text="EDYTUJ" StackPane.alignment="CENTER">
-                                                    <cursor>
-                                                        <Cursor fx:constant="OPEN_HAND" />
-                                                    </cursor>
-                                                    <StackPane.margin>
-                                                        <Insets bottom="500.0" right="650.0" />
-                                                    </StackPane.margin>
-                                                </Button>
-                                                <TextField fx:id="editInsuranceTypTextField" disable="true" prefHeight="31.0" prefWidth="599.0" promptText="TYP" StackPane.alignment="CENTER">
-                                                    <StackPane.margin>
-                                                        <Insets bottom="400.0" left="650.0" right="50.0" />
-                                                    </StackPane.margin>
-                                                </TextField>
-                                    <DatePicker fx:id="editInsuranceDataWaznosciDatePicker" prefHeight="31.0" prefWidth="843.0" promptText="DATA WAŻNOŚCI" StackPane.alignment="CENTER">
-                                       <StackPane.margin>
-                                          <Insets bottom="200.0" left="50.0" right="650.0" />
-                                       </StackPane.margin>
-                                    </DatePicker>
-                                    <TextField fx:id="editInsuranceNewTypTextField" promptText="TYP" StackPane.alignment="CENTER">
-                                       <StackPane.margin>
-                                          <Insets bottom="500.0" left="50.0" right="650.0" top="100.0" />
-                                       </StackPane.margin>
-                                    </TextField>
-                                            </children>
-                                        </StackPane>
-                                    </content>
-                                </TitledPane>
                             </panes>
                         </Accordion>
                     </content>
                 </Tab>
-                <Tab text="SERWIS">
+                <Tab onSelectionChanged="#printService" text="SERWIS">
                     <content>
                         <Accordion>
                             <panes>
                                 <TitledPane animated="false" text="WYPISZ">
                                     <content>
-                                        <StackPane prefHeight="150.0" prefWidth="200.0">
+                                        <StackPane fx:id="printServiceStackPane" prefHeight="150.0" prefWidth="200.0">
                                             <children>
                                                 <TableView prefHeight="200.0" prefWidth="200.0">
                                                     <columns>
@@ -463,93 +391,21 @@
                                                         <Insets bottom="400.0" left="50.0" right="400.0" />
                                                     </StackPane.margin>
                                                 </Label>
-                                                <TextField promptText="ID" StackPane.alignment="CENTER">
+                                                <TextField fx:id="deleteServiceIdTextField" promptText="ID" StackPane.alignment="CENTER">
                                                     <StackPane.margin>
                                                         <Insets bottom="300.0" left="50.0" right="400.0" />
                                                     </StackPane.margin>
                                                 </TextField>
-                                                <Button mnemonicParsing="false" text="USUŃ" StackPane.alignment="CENTER">
+                                                <Button mnemonicParsing="false" onAction="#deleteService" text="USUŃ" StackPane.alignment="CENTER">
                                                     <StackPane.margin>
                                                         <Insets bottom="200.0" right="400.0" />
                                                     </StackPane.margin>
                                                 </Button>
-                                                <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="201.0" text="LISTA UBEZPIECZEŃ" textAlignment="CENTER" StackPane.alignment="CENTER">
+                                                <Button mnemonicParsing="false" onAction="#fillEditServiceField" prefHeight="31.0" prefWidth="201.0" text="LISTA UBEZPIECZEŃ" textAlignment="CENTER" StackPane.alignment="CENTER">
                                                     <StackPane.margin>
                                                         <Insets bottom="300.0" left="700.0" right="50.0" />
                                                     </StackPane.margin>
                                                 </Button>
-                                            </children>
-                                        </StackPane>
-                                    </content>
-                                </TitledPane>
-                                <TitledPane animated="false" text="EDYTUJ">
-                                    <content>
-                                        <StackPane prefHeight="400.0" prefWidth="1198.0">
-                                            <children>
-                                                <Label text="PODAJ ID UBEZPIECZENIA KTÓRE CHCESZ EDYTOWAĆ:" StackPane.alignment="TOP_LEFT">
-                                                    <StackPane.margin>
-                                                        <Insets left="50.0" />
-                                                    </StackPane.margin>
-                                                </Label>
-                                                <TextField promptText="ID" StackPane.alignment="CENTER">
-                                                    <StackPane.margin>
-                                                        <Insets bottom="600.0" left="50.0" right="50.0" />
-                                                    </StackPane.margin>
-                                                </TextField>
-                                                <TextField prefHeight="31.0" prefWidth="599.0" promptText="CENA" StackPane.alignment="CENTER">
-                                                    <StackPane.margin>
-                                                        <Insets bottom="400.0" left="50.0" right="650.0" top="100.0" />
-                                                    </StackPane.margin>
-                                                </TextField>
-                                                <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="186.0" text="ZATWIERDZ" StackPane.alignment="CENTER">
-                                                    <StackPane.margin>
-                                                        <Insets right="650.0" />
-                                                    </StackPane.margin>
-                                                    <cursor>
-                                                        <Cursor fx:constant="OPEN_HAND" />
-                                                    </cursor>
-                                                </Button>
-                                                <TextField disable="true" prefHeight="31.0" prefWidth="793.0" promptText="CENA" StackPane.alignment="CENTER">
-                                                    <StackPane.margin>
-                                                        <Insets bottom="400.0" left="650.0" right="50.0" top="100.0" />
-                                                    </StackPane.margin>
-                                                </TextField>
-                                                <TextField disable="true" prefHeight="31.0" prefWidth="599.0" promptText="DATA ROZPOCZECIA NAPRAWY" StackPane.alignment="CENTER">
-                                                    <StackPane.margin>
-                                                        <Insets bottom="300.0" left="650.0" right="50.0" top="100.0" />
-                                                    </StackPane.margin>
-                                                </TextField>
-                                                <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="186.0" text="LISTA UBEZPIECZEŃ" StackPane.alignment="CENTER">
-                                                    <cursor>
-                                                        <Cursor fx:constant="OPEN_HAND" />
-                                                    </cursor>
-                                                    <StackPane.margin>
-                                                        <Insets bottom="500.0" left="650.0" />
-                                                    </StackPane.margin>
-                                                </Button>
-                                                <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="186.0" text="EDYTUJ" StackPane.alignment="CENTER">
-                                                    <cursor>
-                                                        <Cursor fx:constant="OPEN_HAND" />
-                                                    </cursor>
-                                                    <StackPane.margin>
-                                                        <Insets bottom="500.0" right="650.0" />
-                                                    </StackPane.margin>
-                                                </Button>
-                                                <TextField disable="true" prefHeight="31.0" prefWidth="599.0" promptText="DATA ZAKOŃCZENIA NAPRAWY" StackPane.alignment="CENTER">
-                                                    <StackPane.margin>
-                                                        <Insets bottom="100.0" left="650.0" right="50.0" />
-                                                    </StackPane.margin>
-                                                </TextField>
-                                    <DatePicker prefHeight="31.0" prefWidth="501.0" promptText="DATA ROZPOCZECIA NAPRAWY" StackPane.alignment="CENTER">
-                                       <StackPane.margin>
-                                          <Insets bottom="200.0" left="50.0" right="650.0" />
-                                       </StackPane.margin>
-                                    </DatePicker>
-                                    <DatePicker prefHeight="31.0" prefWidth="501.0" promptText="DATA ZAKOŃCZENIA NAPRAWY">
-                                       <StackPane.margin>
-                                          <Insets bottom="100.0" left="50.0" right="650.0" />
-                                       </StackPane.margin>
-                                    </DatePicker>
                                             </children>
                                         </StackPane>
                                     </content>

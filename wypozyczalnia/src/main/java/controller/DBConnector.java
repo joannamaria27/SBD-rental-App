@@ -140,6 +140,11 @@ public class DBConnector {
         entityManager.remove(u);
         entityManager.getTransaction().commit();
     }
+    public void deleteService(Serwis u){
+        entityManager.getTransaction().begin();
+        entityManager.remove(u);
+        entityManager.getTransaction().commit();
+    }
     // nie wiem czy działa
 
     public void editPojazd(Pojazd p) {
@@ -161,6 +166,11 @@ public class DBConnector {
     }
 
     public void editUbezpieczenie(Ubezpieczenie u){
+        entityManager.getTransaction().begin();
+        entityManager.merge(u);
+        entityManager.getTransaction().commit();
+    }
+    public void ediService(Serwis u){
         entityManager.getTransaction().begin();
         entityManager.merge(u);
         entityManager.getTransaction().commit();
