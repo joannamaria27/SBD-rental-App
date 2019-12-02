@@ -22,6 +22,16 @@ public class Rezerwacja {
     @OneToOne
     private Pracownik id_pracownika;
 
+        public Rezerwacja( Pojazd id_pojazdu, Klient id_klienta, Date data_r_rezerwacji, Date data_z_rezerwacji, float przewidywana_cena, Pracownik id_pracownika) {
+//        this.id_rezerwacji = id_rezerwacji;
+        this.id_pojazdu = id_pojazdu;
+        this.id_klienta = id_klienta;
+        this.data_r_rezerwacji = data_r_rezerwacji;
+        this.data_z_rezerwacji = data_z_rezerwacji;
+        this.przewidywana_cena = przewidywana_cena;
+        this.id_pracownika = id_pracownika;
+    }
+    
     public long getId_rezerwacji() {
         return id_rezerwacji;
     }

@@ -183,4 +183,40 @@ public class DBConnector {
     public void addPracownik(Pracownik pracownik) {
         entityManager.persist(pracownik);
     }
+
+    public void deletePracownik(Pracownik p) {
+        entityManager.remove(p);
+    }
+    public void editPracownik(Pracownik p) {
+        entityManager.getTransaction().begin();
+        entityManager.merge(p);
+        entityManager.getTransaction().commit();
+    }
+
+        public void addRezerwacja(Rezerwacja pracownik) {
+        entityManager.persist(pracownik);
+    }
+
+    public void deleteRezerwacja(Rezerwacja p) {
+        entityManager.remove(p);
+    }
+
+    public void editRezerwacja(Rezerwacja p) {
+        entityManager.getTransaction().begin();
+        entityManager.merge(p);
+        entityManager.getTransaction().commit();
+    }
+    public void addZwrot(Zwrot z) {
+        entityManager.persist(z);
+    }
+
+    public void deleteZwrot(Zwrot p) {
+        entityManager.remove(p);
+    }
+
+    public void editZwrot(Zwrot p) {
+        entityManager.getTransaction().begin();
+        entityManager.merge(p);
+        entityManager.getTransaction().commit();
+    }
 }

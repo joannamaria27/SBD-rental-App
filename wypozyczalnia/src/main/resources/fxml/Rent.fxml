@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.StackPane?>
 
-<BorderPane style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" >
+<BorderPane style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
     <center>
         <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="742.0" prefWidth="1200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
             <tabs>
@@ -31,29 +31,29 @@
                                         <Insets bottom="500.0" left="700.0" right="50.0" />
                                     </StackPane.margin>
                                 </Button>
-                                <TextField prefHeight="31.0" prefWidth="599.0" promptText="KAUCJA" StackPane.alignment="CENTER">
+                                <TextField fx:id="addRentKaucjaTextField" prefHeight="31.0" prefWidth="599.0" promptText="KAUCJA" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets left="50.0" right="400.0" top="200.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <TextField prefHeight="31.0" prefWidth="599.0" promptText="ID POJAZDU" StackPane.alignment="CENTER">
+                                <TextField fx:id="addRentIdPojazduTextField" prefHeight="31.0" prefWidth="599.0" promptText="ID POJAZDU" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="500.0" left="50.0" right="400.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <TextField prefHeight="31.0" prefWidth="599.0" promptText="ID KLIENTA" StackPane.alignment="CENTER">
+                                <TextField fx:id="addRentIdKlientaTextField" prefHeight="31.0" prefWidth="599.0" promptText="ID KLIENTA" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="300.0" left="50.0" right="400.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <TextField prefHeight="31.0" prefWidth="599.0" promptText="KOD DOSTEPU" StackPane.alignment="CENTER">
+                                <TextField fx:id="addRentKodTextField" prefHeight="31.0" prefWidth="599.0" promptText="KOD DOSTEPU" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets left="50.0" right="400.0" top="100.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="186.0" text="DODAJ" StackPane.alignment="CENTER">
+                                <Button fx:id="addRent" mnemonicParsing="false" prefHeight="39.0" prefWidth="186.0" text="DODAJ" StackPane.alignment="CENTER">
                                     <StackPane.margin>
-                                        <Insets right="400.0" top="300.0" />
+                                        <Insets right="400.0" top="400.0" />
                                     </StackPane.margin>
                                     <cursor>
                                         <Cursor fx:constant="OPEN_HAND" />
@@ -69,7 +69,7 @@
                                         <Insets bottom="200.0" left="50.0" right="800.0" />
                                     </StackPane.margin>
                                 </Label>
-                                <TextField promptText="ID PRACOWNIKA" StackPane.alignment="CENTER">
+                                <TextField fx:id="addRentIdPracownikaTextField" promptText="ID PRACOWNIKA" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="100.0" left="50.0" right="400.0" />
                                     </StackPane.margin>
@@ -84,11 +84,16 @@
                                         <Insets bottom="300.0" left="700.0" right="50.0" />
                                     </StackPane.margin>
                                 </Button>
-                                <DatePicker prefHeight="31.0" prefWidth="751.0" promptText="DATA WYPOŻYCZENIA" StackPane.alignment="CENTER">
+                                <DatePicker fx:id="addRentDataWTextField" prefHeight="31.0" prefWidth="751.0" promptText="DATA WYPOŻYCZENIA" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets left="50.0" right="400.0" />
                                     </StackPane.margin>
                                 </DatePicker>
+                        <TextField fx:id="addRentStanTextField" prefHeight="31.0" prefWidth="599.0" promptText="STAN POJAZDU">
+                           <StackPane.margin>
+                              <Insets left="50.0" right="400.0" top="300.0" />
+                           </StackPane.margin>
+                        </TextField>
                             </children>
                         </StackPane>
                     </content>
@@ -102,12 +107,12 @@
                                         <Insets left="50.0" top="100.0" />
                                     </StackPane.margin>
                                 </Label>
-                                <TextField promptText="ID" StackPane.alignment="CENTER">
+                                <TextField fx:id="deleteRentIdTextField" promptText="ID" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="400.0" left="50.0" right="400.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <Button mnemonicParsing="false" text="USUŃ" StackPane.alignment="CENTER">
+                                <Button mnemonicParsing="false" onAction="#deleteRent" text="USUŃ" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="300.0" right="400.0" />
                                     </StackPane.margin>
@@ -130,60 +135,60 @@
                                         <Insets left="50.0" top="100.0" />
                                     </StackPane.margin>
                                 </Label>
-                                <TextField promptText="ID" StackPane.alignment="CENTER">
+                                <TextField fx:id="editRentIdTextField" promptText="ID" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="400.0" left="50.0" right="50.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <TextField prefHeight="31.0" prefWidth="599.0" promptText="KLIENT" StackPane.alignment="CENTER">
+                                <TextField fx:id="editRentNewIdKlientaTextField" prefHeight="31.0" prefWidth="599.0" promptText="KLIENT" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="400.0" left="50.0" right="900.0" top="300.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <TextField prefHeight="31.0" prefWidth="599.0" promptText="PRACOWNIK" StackPane.alignment="CENTER">
+                                <TextField fx:id="editRentNewIdPracownikaTextField" prefHeight="31.0" prefWidth="599.0" promptText="PRACOWNIK" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="300.0" left="50.0" right="900.0" top="300.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <TextField prefHeight="31.0" prefWidth="599.0" promptText="KOD DOSTEPU" StackPane.alignment="CENTER">
+                                <TextField fx:id="editRentNewKodTextField" prefHeight="31.0" prefWidth="599.0" promptText="KOD DOSTEPU" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="100.0" left="50.0" right="650.0" top="300.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <TextField prefHeight="31.0" prefWidth="599.0" promptText="KAUCJA" StackPane.alignment="CENTER">
+                                <TextField fx:id="editRentNewKaucjaTextField" prefHeight="31.0" prefWidth="599.0" promptText="KAUCJA" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets left="50.0" right="650.0" top="300.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="186.0" text="ZATWIERDZ" StackPane.alignment="CENTER">
+                                <Button fx:id="editReservation" mnemonicParsing="false" prefHeight="39.0" prefWidth="186.0" text="ZATWIERDZ" StackPane.alignment="CENTER">
                                     <StackPane.margin>
-                                        <Insets right="650.0" top="400.0" />
+                                        <Insets right="650.0" top="500.0" />
                                     </StackPane.margin>
                                     <cursor>
                                         <Cursor fx:constant="OPEN_HAND" />
                                     </cursor>
                                 </Button>
-                                <TextField disable="true" prefHeight="31.0" prefWidth="599.0" promptText="KOD DOSTĘPU" StackPane.alignment="CENTER">
+                                <TextField fx:id="editRentKodTextField" disable="true" prefHeight="31.0" prefWidth="599.0" promptText="KOD DOSTĘPU" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="100.0" left="650.0" right="50.0" top="300.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <TextField disable="true" prefHeight="31.0" prefWidth="599.0" promptText="DATA WYPOŻYCZENIA" StackPane.alignment="CENTER">
+                                <TextField fx:id="editRentDataWTextField" disable="true" prefHeight="31.0" prefWidth="599.0" promptText="DATA WYPOŻYCZENIA" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="200.0" left="650.0" right="50.0" top="300.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <TextField disable="true" prefHeight="31.0" prefWidth="793.0" promptText="KLIENT" StackPane.alignment="CENTER">
+                                <TextField fx:id="editRentIdKlientaTextField" disable="true" prefHeight="31.0" prefWidth="793.0" promptText="KLIENT" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="400.0" left="650.0" right="50.0" top="300.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <TextField disable="true" prefHeight="31.0" prefWidth="599.0" promptText="PRACOWNIK" StackPane.alignment="CENTER">
+                                <TextField fx:id="editRentIdPracownikaTextField" disable="true" prefHeight="31.0" prefWidth="599.0" promptText="PRACOWNIK" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="300.0" left="650.0" right="50.0" top="300.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <TextField disable="true" prefHeight="31.0" prefWidth="599.0" promptText="KAUCJA" StackPane.alignment="CENTER">
+                                <TextField fx:id="editRentKaucjaTextField" disable="true" prefHeight="31.0" prefWidth="599.0" promptText="KAUCJA" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets left="650.0" right="50.0" top="300.0" />
                                     </StackPane.margin>
@@ -196,7 +201,7 @@
                                         <Insets bottom="300.0" left="650.0" />
                                     </StackPane.margin>
                                 </Button>
-                                <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="186.0" text="EDYTUJ" StackPane.alignment="CENTER">
+                                <Button fx:id="fillEditedRentFields" mnemonicParsing="false" prefHeight="39.0" prefWidth="186.0" text="EDYTUJ" StackPane.alignment="CENTER">
                                     <cursor>
                                         <Cursor fx:constant="OPEN_HAND" />
                                     </cursor>
@@ -220,18 +225,46 @@
                                         <Insets left="50.0" right="400.0" />
                                     </StackPane.margin>
                                 </Button>
-                                <DatePicker prefHeight="31.0" prefWidth="501.0" promptText="DATA WYPOŻYCZENIA" StackPane.alignment="CENTER">
+                                <DatePicker fx:id="editRentNewDataWTextField" prefHeight="31.0" prefWidth="501.0" promptText="DATA WYPOŻYCZENIA" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets left="50.0" right="650.0" top="100.0" />
                                     </StackPane.margin>
                                 </DatePicker>
+                        <TextField fx:id="editRentNewStanTextField" prefHeight="31.0" prefWidth="599.0" promptText="STAN POJAZDU" StackPane.alignment="CENTER">
+                           <StackPane.margin>
+                              <Insets left="50.0" right="650.0" top="400.0" />
+                           </StackPane.margin>
+                        </TextField>
+                        <TextField fx:id="editRentStanTextField" disable="true" prefHeight="31.0" prefWidth="599.0" promptText="STAN POJAZDU" StackPane.alignment="CENTER">
+                           <StackPane.margin>
+                              <Insets left="650.0" right="50.0" top="400.0" />
+                           </StackPane.margin>
+                        </TextField>
+                        <TextField fx:id="editRentNewIdPojazduTextField" prefHeight="31.0" prefWidth="599.0" promptText="POJAZD" StackPane.alignment="CENTER">
+                           <StackPane.margin>
+                              <Insets bottom="200.0" left="50.0" right="900.0" />
+                           </StackPane.margin>
+                        </TextField>
+                        <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="217.0" text="LISTA KLIENTÓW" StackPane.alignment="CENTER">
+                           <cursor>
+                              <Cursor fx:constant="OPEN_HAND" />
+                           </cursor>
+                           <StackPane.margin>
+                              <Insets bottom="400.0" left="50.0" right="400.0" top="200.0" />
+                           </StackPane.margin>
+                        </Button>
+                        <TextField fx:id="editRentIdPojazduTextField" disable="true" prefHeight="31.0" prefWidth="793.0" promptText="POJAZD" StackPane.alignment="CENTER">
+                           <StackPane.margin>
+                              <Insets bottom="200.0" left="650.0" right="50.0" />
+                           </StackPane.margin>
+                        </TextField>
                             </children>
                         </StackPane>
                     </content>
                 </Tab>
                 <Tab text="WYPISZ">
                     <content>
-                        <StackPane fx:id="printScooterTabStackPane" prefHeight="150.0" prefWidth="200.0">
+                        <StackPane fx:id="printRentStackPane" prefHeight="150.0" prefWidth="200.0">
                             <children>
                                 <TableView prefHeight="200.0" prefWidth="200.0">
                                     <columns>
