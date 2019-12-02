@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.StackPane?>
 
-<BorderPane style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" >
+<BorderPane style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
     <center>
         <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="742.0" prefWidth="1200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
             <tabs>
@@ -21,19 +21,19 @@
                     <content>
                         <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: white;">
                             <children>
-                                <Label text="PODAJ ID POJAZDU KTÓRY CHCESZ WYPOŻYCZYĆ:" StackPane.alignment="CENTER">
+                                <Label prefHeight="21.0" prefWidth="747.0" text="PODAJ ID WYPOZYCZENIA KTÓRE CHCESZ ZWRÓCIĆĆ:" StackPane.alignment="CENTER">
                                     <StackPane.margin>
-                                        <Insets bottom="600.0" left="50.0" right="800.0" />
+                                        <Insets bottom="600.0" left="50.0" right="500.0" />
                                     </StackPane.margin>
                                 </Label>
-                                <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="201.0" text="LISTA POJAZDÓW" textAlignment="CENTER" StackPane.alignment="CENTER">
+                                <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="201.0" text="LISTA WYPOŻYCZEŃ" textAlignment="CENTER" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="500.0" left="700.0" right="50.0" />
                                     </StackPane.margin>
                                 </Button>
-                                <TextField prefHeight="31.0" prefWidth="599.0" promptText="KAUCJA" StackPane.alignment="CENTER">
+                                <TextField prefHeight="31.0" prefWidth="599.0" promptText="CENA OSTATECZNA" StackPane.alignment="CENTER">
                                     <StackPane.margin>
-                                        <Insets left="50.0" right="400.0" top="200.0" />
+                                        <Insets left="50.0" right="400.0" top="300.0" />
                                     </StackPane.margin>
                                 </TextField>
                                 <TextField prefHeight="31.0" prefWidth="599.0" promptText="ID POJAZDU" StackPane.alignment="CENTER">
@@ -41,29 +41,19 @@
                                         <Insets bottom="500.0" left="50.0" right="400.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <TextField prefHeight="31.0" prefWidth="599.0" promptText="ID KLIENTA" StackPane.alignment="CENTER">
+                                <TextField prefHeight="31.0" prefWidth="599.0" promptText="STAN POJAZDU" StackPane.alignment="CENTER">
                                     <StackPane.margin>
-                                        <Insets bottom="300.0" left="50.0" right="400.0" />
-                                    </StackPane.margin>
-                                </TextField>
-                                <TextField prefHeight="31.0" prefWidth="599.0" promptText="KOD DOSTEPU" StackPane.alignment="CENTER">
-                                    <StackPane.margin>
-                                        <Insets left="50.0" right="400.0" top="100.0" />
+                                        <Insets left="50.0" right="400.0" top="200.0" />
                                     </StackPane.margin>
                                 </TextField>
                                 <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="186.0" text="DODAJ" StackPane.alignment="CENTER">
                                     <StackPane.margin>
-                                        <Insets right="400.0" top="300.0" />
+                                        <Insets right="400.0" top="400.0" />
                                     </StackPane.margin>
                                     <cursor>
                                         <Cursor fx:constant="OPEN_HAND" />
                                     </cursor>
                                 </Button>
-                                <Label prefHeight="21.0" prefWidth="420.0" text="PODAJ ID KLIENTA KTÓRY CHCE DOKONAĆ WYPOŻYCZENIA:">
-                                    <StackPane.margin>
-                                        <Insets bottom="400.0" left="50.0" right="800.0" />
-                                    </StackPane.margin>
-                                </Label>
                                 <Label prefHeight="21.0" prefWidth="420.0" text="PODAJ ID PRACOWNIKA KTÓRY CHCE ZAPISAĆ WYPOZYCZENIE:">
                                     <StackPane.margin>
                                         <Insets bottom="200.0" left="50.0" right="800.0" />
@@ -79,16 +69,26 @@
                                         <Insets bottom="100.0" left="700.0" right="50.0" />
                                     </StackPane.margin>
                                 </Button>
-                                <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="201.0" text="LISTA KLIENTÓW" textAlignment="CENTER" StackPane.alignment="CENTER">
-                                    <StackPane.margin>
-                                        <Insets bottom="300.0" left="700.0" right="50.0" />
-                                    </StackPane.margin>
-                                </Button>
                                 <DatePicker prefHeight="31.0" prefWidth="751.0" promptText="DATA WYPOŻYCZENIA" StackPane.alignment="CENTER">
                                     <StackPane.margin>
-                                        <Insets left="50.0" right="400.0" />
+                                        <Insets left="50.0" right="400.0" top="100.0" />
                                     </StackPane.margin>
                                 </DatePicker>
+                        <TextField prefHeight="31.0" prefWidth="599.0" promptText="PŁATNOŚĆ">
+                           <StackPane.margin>
+                              <Insets bottom="400.0" left="50.0" right="400.0" top="100.0" />
+                           </StackPane.margin>
+                        </TextField>
+                        <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="201.0" text="LISTA PŁATNOŚCI" textAlignment="CENTER">
+                           <StackPane.margin>
+                              <Insets bottom="400.0" left="700.0" right="50.0" top="100.0" />
+                           </StackPane.margin>
+                        </Button>
+                        <Label prefHeight="21.0" prefWidth="605.0" text="PODAJ ID PŁATNOŚCI" StackPane.alignment="CENTER">
+                           <StackPane.margin>
+                              <Insets bottom="400.0" left="50.0" right="650.0" />
+                           </StackPane.margin>
+                        </Label>
                             </children>
                         </StackPane>
                     </content>
@@ -97,7 +97,7 @@
                     <content>
                         <StackPane prefHeight="150.0" prefWidth="200.0">
                             <children>
-                                <Label text="PODAJ ID WYPOZYCZENIA KTÓRE CHCESZ USUNĄĆ:" StackPane.alignment="TOP_LEFT">
+                                <Label text="PODAJ ID ZWROTU KTÓRY CHCESZ USUNĄĆ:" StackPane.alignment="TOP_LEFT">
                                     <StackPane.margin>
                                         <Insets left="50.0" top="100.0" />
                                     </StackPane.margin>
@@ -112,7 +112,7 @@
                                         <Insets bottom="300.0" right="400.0" />
                                     </StackPane.margin>
                                 </Button>
-                                <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="201.0" text="LISTA WYPOŻYCZEŃ" textAlignment="CENTER" StackPane.alignment="CENTER">
+                                <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="201.0" text="LISTA ZWROTÓW" textAlignment="CENTER" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="400.0" left="700.0" right="50.0" />
                                     </StackPane.margin>
@@ -125,7 +125,7 @@
                     <content>
                         <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: white;">
                             <children>
-                                <Label text="PODAJ ID WYPOŻYCZENIA KTÓRY CHCESZ EDYTOWAĆ:" StackPane.alignment="TOP_LEFT">
+                                <Label text="PODAJ ID ZWROTU KTÓRY CHCESZ EDYTOWAĆ:" StackPane.alignment="TOP_LEFT">
                                     <StackPane.margin>
                                         <Insets left="50.0" top="100.0" />
                                     </StackPane.margin>
@@ -135,7 +135,7 @@
                                         <Insets bottom="400.0" left="50.0" right="50.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <TextField prefHeight="31.0" prefWidth="599.0" promptText="KLIENT" StackPane.alignment="CENTER">
+                                <TextField prefHeight="31.0" prefWidth="599.0" promptText="PŁATNOŚCI" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="400.0" left="50.0" right="900.0" top="300.0" />
                                     </StackPane.margin>
@@ -145,12 +145,12 @@
                                         <Insets bottom="300.0" left="50.0" right="900.0" top="300.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <TextField prefHeight="31.0" prefWidth="599.0" promptText="KOD DOSTEPU" StackPane.alignment="CENTER">
+                                <TextField prefHeight="31.0" prefWidth="599.0" promptText="STAN POJAZDU" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="100.0" left="50.0" right="650.0" top="300.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <TextField prefHeight="31.0" prefWidth="599.0" promptText="KAUCJA" StackPane.alignment="CENTER">
+                                <TextField prefHeight="31.0" prefWidth="599.0" promptText="CENA OSTATECZNA" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets left="50.0" right="650.0" top="300.0" />
                                     </StackPane.margin>
@@ -168,7 +168,7 @@
                                         <Insets bottom="100.0" left="650.0" right="50.0" top="300.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <TextField disable="true" prefHeight="31.0" prefWidth="599.0" promptText="DATA WYPOŻYCZENIA" StackPane.alignment="CENTER">
+                                <TextField disable="true" prefHeight="31.0" prefWidth="599.0" promptText="DATA ZWROTU" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="200.0" left="650.0" right="50.0" top="300.0" />
                                     </StackPane.margin>
@@ -204,7 +204,7 @@
                                         <Insets bottom="300.0" right="650.0" />
                                     </StackPane.margin>
                                 </Button>
-                                <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="217.0" text="LISTA KLIENTÓW">
+                                <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="217.0" text="LISTA PŁATNOŚCI">
                                     <cursor>
                                         <Cursor fx:constant="OPEN_HAND" />
                                     </cursor>
@@ -220,22 +220,22 @@
                                         <Insets left="50.0" right="400.0" />
                                     </StackPane.margin>
                                 </Button>
-                                <DatePicker prefHeight="31.0" prefWidth="501.0" promptText="DATA WYPOŻYCZENIA" StackPane.alignment="CENTER">
+                                <DatePicker prefHeight="31.0" prefWidth="501.0" promptText="DATA ZWROTU" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets left="50.0" right="650.0" top="100.0" />
                                     </StackPane.margin>
                                 </DatePicker>
-                                <TextField prefHeight="31.0" prefWidth="599.0" promptText="POJAZD">
+                                <TextField prefHeight="31.0" prefWidth="599.0" promptText="WYPOZYCZENIE">
                                     <StackPane.margin>
                                         <Insets bottom="200.0" left="50.0" right="900.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <TextField disable="true" prefHeight="31.0" prefWidth="793.0" promptText="POJAZAD">
+                                <TextField disable="true" prefHeight="31.0" prefWidth="793.0" promptText="WYPOZYCZENIE">
                                     <StackPane.margin>
                                         <Insets bottom="200.0" left="650.0" right="50.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="217.0" text="LISTA POJAZDÓW" StackPane.alignment="CENTER">
+                                <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="217.0" text="LISTA WYPOZYCZENIA" StackPane.alignment="CENTER">
                                     <cursor>
                                         <Cursor fx:constant="OPEN_HAND" />
                                     </cursor>

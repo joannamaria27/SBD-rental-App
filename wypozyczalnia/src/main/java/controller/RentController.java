@@ -1,5 +1,8 @@
 package controller;
 
+import domain.Klient;
+import domain.Pojazd;
+import domain.Pracownik;
 import domain.Wypozyczenie;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
@@ -99,8 +102,12 @@ public class RentController {
         System.out.println(Date.valueOf(addRentDataWTextField.getValue()).getClass().getName());
 
         DBConnector.getInstance().start();
-        //todo
-//        DBConnector.getInstance().addWypozyczenie(new Wypozyczenie(addRentIdPojazduTextField.getText(), Date.valueOf(addRentDataWTextField.getValue()), addRentKodTextField.getText(),   addRentStanTextField.getText(), addRentIdKlientaTextField.getText(), addRentKaucjaTextField.getText(), addRentIdPracownikaTextField.getText() );
+
+        Pojazd pojazd = DBConnector.getInstance().getEntityManager().find(Pojazd.class, Long.parseLong(editRentNewIdPojazduTextField.getText()));
+        Klient klient = DBConnector.getInstance().getEntityManager().find(Klient.class, Long.parseLong(editRentNewIdKlientaTextField.getText()));
+        Pracownik pracownik = DBConnector.getInstance().getEntityManager().find(Pracownik.class, Long.parseLong(editRentNewIdPracownikaTextField.getText()));
+
+        DBConnector.getInstance().addWypozyczenie(new Wypozyczenie(pojazd, Date.valueOf(addRentDataWTextField.getValue()), addRentKodTextField.getText(),   addRentStanTextField.getText(), klient, Float.parseFloat(addRentKaucjaTextField.getText()), pracownik ));
         DBConnector.getInstance().stop();
         WindowSingleton.alert("Dodano wypozyczenie");
         addRentIdPojazduTextField.setText("");
@@ -114,6 +121,13 @@ public class RentController {
 
     }
 
+    public void showAddPojazduList() { WindowSingleton.showVehicleTable(addRentIdPojazduTextField); }
+    public void showAddKlientaList() {
+        WindowSingleton.showClientTable(addRentIdKlientaTextField);
+    }
+    public void showAddPracownikList() {
+        WindowSingleton.showEmployeeTable(addRentIdPracownikaTextField);
+    }
 
     public void deleteRent() {
         if (deleteRentIdTextField.getText().equals("")) {
@@ -140,6 +154,10 @@ public class RentController {
             System.out.println("zły format");
             return;
         }
+    }
+
+    public void deleteRentShowRentList() {
+        WindowSingleton.showRentTable(deleteRentIdTextField);
     }
 
     public void printRentList() {
@@ -189,15 +207,19 @@ public class RentController {
         }
 
 
+        Pojazd pojazd = DBConnector.getInstance().getEntityManager().find(Pojazd.class, Long.parseLong(editRentNewIdPojazduTextField.getText()));
+        Klient klient = DBConnector.getInstance().getEntityManager().find(Klient.class, Long.parseLong(editRentNewIdKlientaTextField.getText()));
+        Pracownik pracownik = DBConnector.getInstance().getEntityManager().find(Pracownik.class, Long.parseLong(editRentNewIdPracownikaTextField.getText()));
+
+
         Wypozyczenie wypozyczenie = DBConnector.getInstance().getEntityManager().find(Wypozyczenie.class, Long.parseLong(editRentNewIdTextField.getText()));
-//todo
-//        wypozyczenie.setId_pojazdu(editRentNewIdPojazduTextField.getText());
-//        wypozyczenie.setId_klienta(editRentNewIdKlientaTextField.getText());
-//        wypozyczenie.setData_wypozyczenia(editRentNewDataWTextField.getText());
-//        wypozyczenie.setStan_pojazdu((editRentNewStanTextField.getText()));
-//        wypozyczenie.getKod_dostepu(editRentNewKodTextField.getText());
-//        wypozyczenie.setKaucja(editRentNewKaucjaTextField.getText());
-//        wypozyczenie.setId_pracownika(editRentNewIdPracownikaTextField.getText());
+        wypozyczenie.setId_pojazdu(pojazd);
+        wypozyczenie.setId_klienta(klient);
+        wypozyczenie.setData_wypozyczenia(Date.valueOf(editRentNewDataWTextField.getValue().toString()));
+        wypozyczenie.setStan_pojazdu((editRentNewStanTextField.getText()));
+        wypozyczenie.setKod_dostepu(editRentNewKodTextField.getText());
+        wypozyczenie.setKaucja(Float.parseFloat(editRentNewKaucjaTextField.getText()));
+        wypozyczenie.setId_pracownika(pracownik);
 
         DBConnector.getInstance().editWypozyczenie(wypozyczenie);
         WindowSingleton.alert("Zedytowano wypozyczenie");
