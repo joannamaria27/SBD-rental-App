@@ -9,13 +9,13 @@
    <center>
       <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="rezerwacje" mnemonicParsing="false" prefHeight="63.0" prefWidth="176.0" text="REZERWACJE" StackPane.alignment="TOP_CENTER">
+            <Button fx:id="rezerwacje" mnemonicParsing="false" onAction="#showReservationMenu" prefHeight="63.0" prefWidth="176.0" text="REZERWACJE" StackPane.alignment="TOP_CENTER">
                <StackPane.margin>
                   <Insets top="200.0" />
                </StackPane.margin>
             </Button>
-            <Button fx:id="wypozyczenia" mnemonicParsing="false" prefHeight="63.0" prefWidth="176.0" text="WYPOZYCZENIA" StackPane.alignment="CENTER" />
-            <Button fx:id="zwroty" mnemonicParsing="false" prefHeight="63.0" prefWidth="176.0" text="ZWROTY" StackPane.alignment="BOTTOM_CENTER">
+            <Button fx:id="wypozyczenia" mnemonicParsing="false" onAction="#showRenteMenu" prefHeight="63.0" prefWidth="176.0" text="WYPOZYCZENIA" StackPane.alignment="CENTER" />
+            <Button fx:id="zwroty" mnemonicParsing="false" onAction="#showReturnMenu" prefHeight="63.0" prefWidth="176.0" text="ZWROTY" StackPane.alignment="BOTTOM_CENTER">
                <StackPane.margin>
                   <Insets bottom="200.0" />
                </StackPane.margin>

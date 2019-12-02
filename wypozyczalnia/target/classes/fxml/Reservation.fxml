@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.StackPane?>
 
-<BorderPane style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ReservationController">
     <center>
         <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="742.0" prefWidth="1200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
             <tabs>
@@ -46,7 +46,7 @@
                                         <Insets bottom="300.0" left="50.0" right="400.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <Button mnemonicParsing="false" onAction="#addClient" prefHeight="39.0" prefWidth="186.0" text="DODAJ" StackPane.alignment="CENTER">
+                                <Button mnemonicParsing="false" onAction="#addReservation" prefHeight="39.0" prefWidth="186.0" text="DODAJ" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets right="400.0" top="300.0" />
                                     </StackPane.margin>
@@ -247,9 +247,9 @@
                         </StackPane>
                     </content>
                 </Tab>
-                <Tab onSelectionChanged="#printReservationStackPane" text="WYPISZ">
+                <Tab onSelectionChanged="#printReservationList" text="WYPISZ">
                     <content>
-                        <StackPane prefHeight="150.0" prefWidth="200.0">
+                        <StackPane fx:id="printReservationStackPane" prefHeight="150.0" prefWidth="200.0">
                             <children>
                                 <TableView prefHeight="200.0" prefWidth="200.0">
                                     <columns>
@@ -268,7 +268,7 @@
         </TabPane>
     </center>
     <bottom>
-        <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="129.0" text="MENU GŁÓWNE" BorderPane.alignment="CENTER_RIGHT">
+        <Button mnemonicParsing="false" onAction="#showMainMenu" prefHeight="31.0" prefWidth="129.0" text="MENU GŁÓWNE" BorderPane.alignment="CENTER_RIGHT">
             <BorderPane.margin>
                 <Insets bottom="50.0" right="50.0" />
             </BorderPane.margin>
