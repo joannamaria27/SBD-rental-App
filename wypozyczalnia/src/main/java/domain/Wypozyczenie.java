@@ -23,7 +23,9 @@ public class Wypozyczenie {
     @OneToOne
     @JoinColumn(name="id_pracownika")
     private Pracownik id_pracownika;
-    
+    public Wypozyczenie ()
+    {}
+
         public Wypozyczenie( Pojazd id_pojazdu, Date data_wypozyczenia, String kod_dostepu, String stan_pojazdu, Klient id_klienta, float kaucja, Pracownik id_pracownika) {
 //        this.id_wypozyczenia = id_wypozyczenia;
         this.id_pojazdu = id_pojazdu;
