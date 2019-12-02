@@ -11,14 +11,17 @@ public class Wypozyczenie {
     private long id_wypozyczenia;
 
     @OneToOne
+    @JoinColumn(name="id_pojazdu")
     private Pojazd id_pojazdu;
     private Date data_wypozyczenia;
     private String kod_dostepu;;
     private String stan_pojazdu;
     @OneToOne
+    @JoinColumn(name="id_klienta")
     private Klient id_klienta;
     private float kaucja;
     @OneToOne
+    @JoinColumn(name="id_pracownika")
     private Pracownik id_pracownika;
     
         public Wypozyczenie( Pojazd id_pojazdu, Date data_wypozyczenia, String kod_dostepu, String stan_pojazdu, Klient id_klienta, float kaucja, Pracownik id_pracownika) {
