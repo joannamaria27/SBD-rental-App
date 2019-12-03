@@ -722,7 +722,7 @@ public class WindowSingleton {
         // id
         TableColumn<Zwrot, Long> idColumn = new TableColumn<Zwrot, Long>("ID");
         idColumn.setMinWidth(50);
-        idColumn.setCellValueFactory(new PropertyValueFactory<Zwrot, Long>("id_rezerwacji"));
+        idColumn.setCellValueFactory(new PropertyValueFactory<Zwrot, Long>("id_zwrotu"));
 
         // id_wypozyczenia
         TableColumn<Zwrot, Wypozyczenie> wypozyczenieColumn = new TableColumn<Zwrot, Wypozyczenie>("Wypożyczenie");
@@ -755,7 +755,7 @@ public class WindowSingleton {
         pracownikColumn.setCellValueFactory(new PropertyValueFactory<Zwrot, Pracownik>("id_pracownika"));
 
         //id_platnosci
-        TableColumn<Zwrot, Platnosc> platnoscColumn = new TableColumn<Zwrot, Platnosc>("Platnosc");
+        TableColumn<Zwrot, Platnosc> platnoscColumn = new TableColumn<Zwrot, Platnosc>("Płatność");
         platnoscColumn.setMinWidth(100);
         platnoscColumn.setCellValueFactory(new PropertyValueFactory<Zwrot, Platnosc>("id_platnosci"));
 

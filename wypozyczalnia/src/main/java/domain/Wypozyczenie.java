@@ -37,6 +37,10 @@ public class Wypozyczenie {
         this.id_pracownika = id_pracownika;
     }
 
+    @Override
+    public String toString() {
+        return String.valueOf(id_wypozyczenia);
+    }
 
     public long getId_wypozyczenia() {
         return id_wypozyczenia;

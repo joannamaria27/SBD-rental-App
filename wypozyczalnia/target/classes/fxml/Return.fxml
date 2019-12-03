@@ -69,7 +69,7 @@
                                         <Insets bottom="100.0" left="700.0" right="50.0" />
                                     </StackPane.margin>
                                 </Button>
-                                <DatePicker fx:id="addReturnDataZwrotuDataPicker" prefHeight="31.0" prefWidth="751.0" promptText="DATA WYPOŻYCZENIA" StackPane.alignment="CENTER">
+                                <DatePicker fx:id="addReturnDataZwrotuDataPicker" prefHeight="31.0" prefWidth="751.0" promptText="DATA ZWROTU" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets left="50.0" right="400.0" top="100.0" />
                                     </StackPane.margin>

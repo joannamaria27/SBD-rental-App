@@ -1,9 +1,6 @@
 package controller;
 
-import domain.Platnosc;
-import domain.Pracownik;
-import domain.Wypozyczenie;
-import domain.Zwrot;
+import domain.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableView;
@@ -12,6 +9,7 @@ import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.util.List;
 
 public class ReturnController {
 
@@ -80,20 +78,28 @@ public class ReturnController {
 //        }
 
         try {
-            Date startdate = Date.valueOf(addReturnDataZwrotuDataPicker.getValue());
+            Date.valueOf(addReturnDataZwrotuDataPicker.getValue());
         } catch (Exception e) {
-            System.out.println("nope");
+            WindowSingleton.alert("Niepoprawna data");
+            return;
         }
-        System.out.println(Date.valueOf(addReturnDataZwrotuDataPicker.getValue()).getClass().getName());
 
         Wypozyczenie wypozyczenie = DBConnector.getInstance().getEntityManager().find(Wypozyczenie.class, Long.parseLong(addReturnIdWypozyczeniaTextField.getText()));
         Platnosc platnosc = DBConnector.getInstance().getEntityManager().find(Platnosc.class, Long.parseLong(addReturnIdPlatnosciTextField.getText()));
         Pracownik pracownik = DBConnector.getInstance().getEntityManager().find(Pracownik.class, Long.parseLong(addReturnIdPracownikaTextField.getText()));
 
-//        DBConnector.getInstance().start();
+        List<Zwrot> list = (List<Zwrot>) DBConnector.getInstance().getEntityManager().createQuery("SELECT a FROM Zwrot a WHERE id_wypozyczenia_id_wypozyczenia='" + wypozyczenie.getId_wypozyczenia() + "'", Zwrot.class).getResultList();
+        if(list.size()>0){
+            WindowSingleton.alert("Wypożyczenie zostało już zwrócone");
+            return;
+        }
 
+        Pojazd pojazd = DBConnector.getInstance().getEntityManager().find(Pojazd.class, wypozyczenie.getId_pojazdu().getId_pojazdu());
+        pojazd.setCzyDostepny("tak");
+        pojazd.setStan_pojazdu(addReturnStanTextField.getText());
+        DBConnector.getInstance().editPojazd(pojazd);
         DBConnector.getInstance().addZwrot(new Zwrot(wypozyczenie, Date.valueOf(addReturnDataZwrotuDataPicker.getValue()), addReturnStanTextField.getText(), Float.parseFloat(addReturnCenaTextField.getText()), pracownik, platnosc));
-//        DBConnector.getInstance().stop();
+
         WindowSingleton.alert("Dodano zwrot");
         addReturnIdWypozyczeniaTextField.setText("");
         addReturnDataZwrotuDataPicker.setValue(null);
@@ -184,7 +190,7 @@ public class ReturnController {
         //WindowSingleton.showClientTable( );
     }
 
-    public void editReservation() {
+    public void editReturn() {
         if (editReturnNewIdWypozyczeniaTextField.getText().equals("") ||
             editReturnNewDataZwrotuDataPicker.getValue().equals(null) ||
             editReturnNewStanTextField.getText().equals("") ||
@@ -207,6 +213,17 @@ public class ReturnController {
         Wypozyczenie wypozyczenie = DBConnector.getInstance().getEntityManager().find(Wypozyczenie.class, Long.parseLong(editReturnIdWypozyczeniaTextField.getText()));
         Platnosc platnosc = DBConnector.getInstance().getEntityManager().find(Platnosc.class, Long.parseLong(editReturnIdPlatnosciTextField.getText()));
         Pracownik pracownik = DBConnector.getInstance().getEntityManager().find(Pracownik.class, Long.parseLong(editReturnIdPracownikaTextField.getText()));
+
+        List<Zwrot> list = (List<Zwrot>) DBConnector.getInstance().getEntityManager().createQuery("SELECT a FROM Zwrot a WHERE id_wypozyczenia_id_wypozyczenia='" + wypozyczenie.getId_wypozyczenia() + "'", Zwrot.class).getResultList();
+        if(list.size()>0){
+            WindowSingleton.alert("Wypożyczenie zostało już zwrócone");
+            return;
+        }
+
+        Pojazd pojazd = DBConnector.getInstance().getEntityManager().find(Pojazd.class, wypozyczenie.getId_pojazdu().getId_pojazdu());
+        pojazd.setCzyDostepny("tak");
+        pojazd.setStan_pojazdu(addReturnStanTextField.getText());
+
 
 
         zwrot.setId_wypozyczenia(wypozyczenie);

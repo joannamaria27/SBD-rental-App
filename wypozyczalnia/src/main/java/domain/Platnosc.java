@@ -21,6 +21,11 @@ public class Platnosc {
         this.faktura = faktura;
     }
 
+    @Override
+    public String toString() {
+        return String.valueOf(id_platnosci);
+    }
+
     public long getId_platnosci() {
         return id_platnosci;
     }

@@ -31,7 +31,10 @@ public class Zwrot {
         this.id_pracownika = id_pracownika;
         this.id_platnosci = id_platnosci;
     }
-    
+
+    public Zwrot(){
+
+    }
     
     public long getId_zwrotu() {
         return id_zwrotu;
