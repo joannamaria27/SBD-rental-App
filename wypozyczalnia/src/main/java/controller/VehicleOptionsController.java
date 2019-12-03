@@ -93,6 +93,9 @@ public class VehicleOptionsController {
     @FXML
     private TextField deleteServiceIdTextField;
     @FXML
+    private TextField addReturnIdPojazduTextField;
+
+    @FXML
     private TextField editServiceIdTextField;
     @FXML
     private TextField addServiceCenaTextField;
@@ -133,10 +136,18 @@ public class VehicleOptionsController {
 
         WindowSingleton.alert("Dodano serwis");
     }
+
+    public void showAddPojazdList() {
+        WindowSingleton.showVehicleTable(addReturnIdPojazduTextField);
+    }
+
+
     public void printService() {
         final TableView<Serwis> table = WindowSingleton.createServiceTable();
         printServiceStackPane.getChildren().add(table);
     }
+
+
 
     public void showDeleteServiceList() {
         WindowSingleton.showServiceTable(deleteServiceIdTextField);
