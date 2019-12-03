@@ -10,20 +10,26 @@ public class Serwis {
     @GeneratedValue
     private long id_serwisu;
     @OneToOne
-    @JoinColumn(name="id_pojazdu")
+    @JoinColumn(name = "id_pojazdu_id_pojazdu")
     private Pojazd id_pojazdu;
     private Date data_r_naprawy;
     private Date data_z_naprawy;
     private float cena;
 
-    public Serwis(Date data_r, Date data_z, float _cena){
+    public Serwis(Date data_r, Date data_z, float _cena) {
         this.data_r_naprawy = data_r;
         this.data_z_naprawy = data_z;
         this.cena = _cena;
     }
 
     public Serwis() {
+    }
 
+    public Serwis(Pojazd pojazd, Date data_r, Date data_z, float _cena) {
+        id_pojazdu = pojazd;
+        data_r_naprawy = data_r;
+        data_z_naprawy = data_z;
+        cena = _cena;
     }
 
     public long getId_serwisu() {

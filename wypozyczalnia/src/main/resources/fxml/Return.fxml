@@ -21,7 +21,7 @@
                     <content>
                         <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: white;">
                             <children>
-                                <Label prefHeight="21.0" prefWidth="747.0" text="PODAJ ID WYPOZYCZENIA KTÓRE CHCESZ ZWRÓCIĆĆ:" StackPane.alignment="CENTER">
+                                <Label prefHeight="21.0" prefWidth="747.0" text="PODAJ ID WYPOZYCZENIA KTÓRE CHCESZ ZWRÓCIĆ:" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="600.0" left="50.0" right="500.0" />
                                     </StackPane.margin>
@@ -36,7 +36,7 @@
                                         <Insets left="50.0" right="400.0" top="300.0" />
                                     </StackPane.margin>
                                 </TextField>
-                                <TextField fx:id="addReturnIdWypozyczeniaTextField" prefHeight="31.0" prefWidth="599.0" promptText="ID POJAZDU" StackPane.alignment="CENTER">
+                                <TextField fx:id="addReturnIdWypozyczeniaTextField" prefHeight="31.0" prefWidth="599.0" promptText="ID WYPOŻYCZENIA" StackPane.alignment="CENTER">
                                     <StackPane.margin>
                                         <Insets bottom="500.0" left="50.0" right="400.0" />
                                     </StackPane.margin>
@@ -74,7 +74,7 @@
                                         <Insets left="50.0" right="400.0" top="100.0" />
                                     </StackPane.margin>
                                 </DatePicker>
-                        <TextField fx:id="addReturnIdPlatnosciTextField" prefHeight="31.0" prefWidth="599.0" promptText="PŁATNOŚĆ">
+                        <TextField fx:id="addReturnIdPlatnosciTextField" prefHeight="31.0" prefWidth="599.0" promptText="ID PŁATNOŚCI">
                            <StackPane.margin>
                               <Insets bottom="400.0" left="50.0" right="400.0" top="100.0" />
                            </StackPane.margin>

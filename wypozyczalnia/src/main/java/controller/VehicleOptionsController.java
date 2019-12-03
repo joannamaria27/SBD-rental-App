@@ -104,22 +104,34 @@ public class VehicleOptionsController {
     private StackPane printServiceStackPane;
 
     public void addService() {
-        if (addServiceCenaTextField.getText().equals("")  ||  addServiceDataRDatePicker.getValue().equals("") || addServiceDataZDatePicker.getValue().equals("")) {
+        if (addServiceCenaTextField.getText().equals("")  ||  addServiceDataRDatePicker.getValue().toString().equals("") || addServiceDataZDatePicker.getValue().toString().equals("")) {
             WindowSingleton.alert("Niepoprawne dane");
             return;
         }
         try {
             Float.parseFloat(addServiceCenaTextField.getText());
+            Date.valueOf(addServiceDataRDatePicker.getValue());
+            Date.valueOf(addServiceDataZDatePicker.getValue());
         } catch (NumberFormatException e) {
-            WindowSingleton.alert("Niepoprawna cena");
+            WindowSingleton.alert("Niepoprawny format");
+            return;
+        }
+
+        if(addServiceDataRDatePicker.getValue().isAfter(addServiceDataZDatePicker.getValue())){
+            WindowSingleton.alert("Data zakończenia nie może być przed datą rozpoczęcia");
             return;
         }
 
         DBConnector.getInstance().addService(
                 new Serwis(
-                        // todo
+                        new Pojazd(),
+                        Date.valueOf(addServiceDataRDatePicker.getValue().toString()),
+                        Date.valueOf(addServiceDataZDatePicker.getValue().toString()),
+                        Float.parseFloat(addServiceCenaTextField.getText())
                 )
         );
+
+        WindowSingleton.alert("Dodano serwis");
     }
     public void printService() {
         final TableView<Serwis> table = WindowSingleton.createServiceTable();
@@ -142,7 +154,7 @@ public class VehicleOptionsController {
             return;
         }
 
-        if (DBConnector.getInstance().getEntityManager().createQuery("SELECT a FROM Pojazd a WHERE id_serwisu='" + deleteServiceIdTextField.getText() + "'", Serwis.class).getResultList().size() > 0) {
+        if (DBConnector.getInstance().getEntityManager().createQuery("SELECT a FROM Pojazd a WHERE id_serwisu='" + deleteServiceIdTextField.getText() + "'", Pojazd.class).getResultList().size() > 0) {
             WindowSingleton.alert(" Nie można usunąć. Serwis jest przypisany do pojazdu ");
             return;
         }

@@ -821,18 +821,18 @@ public class WindowSingleton {
 
         // data_r_naprawy
         TableColumn<Serwis, Date > cenaColumn = new TableColumn<Serwis, Date>("Data rozpoczecia naprawy");
-        cenaColumn.setMinWidth(100);
+        cenaColumn.setMinWidth(200);
         cenaColumn.setCellValueFactory(new PropertyValueFactory<Serwis, Date>("data_r_naprawy"));
 
         // data_z_naprawy
         TableColumn<Serwis, Date> datarColumn = new TableColumn<Serwis, Date>("Data zakonczenia naprawy");
-        datarColumn.setMinWidth(100);
+        datarColumn.setMinWidth(200);
         datarColumn.setCellValueFactory(new PropertyValueFactory<Serwis, Date>("data_z_naprawy"));
 
         // cena_ostateczna
         TableColumn<Serwis, Float> datazColumn = new TableColumn<Serwis, Float>("Ostateczna cena");
         datazColumn.setMinWidth(100);
-        datazColumn.setCellValueFactory(new PropertyValueFactory<Serwis, Float>("cena_ostateczna"));
+        datazColumn.setCellValueFactory(new PropertyValueFactory<Serwis, Float>("cena"));
 
 
         table = new TableView<Serwis>();

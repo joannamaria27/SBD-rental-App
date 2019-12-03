@@ -40,7 +40,7 @@ public class ReturnController {
     @FXML
     private TextField  editReturnIdWypozyczeniaTextField;
     @FXML
-    private DatePicker editReturnDataZwrotuDataPicker;
+    private TextField editReturnDataZwrotuDataPicker;
     @FXML
     private TextField  editReturnStanTextField;
     @FXML
@@ -115,6 +115,9 @@ public class ReturnController {
         WindowSingleton.showEmployeeTable(addReturnIdPracownikaTextField);
     }
 
+    public void showAddPlatnoscList(){
+
+    }
 
     public void deleteReturnShowReturnList() {
         WindowSingleton.showReturnTable(deleteReturnIdTextField);
@@ -165,7 +168,7 @@ public class ReturnController {
         Zwrot zwrot = DBConnector.getInstance().getEntityManager().find(Zwrot.class, Long.parseLong(editReturnIdTextField.getText()));
         editReturnIdWypozyczeniaTextField.setText(String.valueOf(zwrot.getId_zwrotu()));
         //todo
-//        editReturnDataZwrotuDataPicker.setText(String.valueOf(zwrot.getData_zwrotu()));
+        editReturnDataZwrotuDataPicker.setText(String.valueOf(zwrot.getData_zwrotu()));
         editReturnStanTextField.setText(String.valueOf(zwrot.getStan_pojazdu()));
         editReturnCenaTextField.setText(String.valueOf(zwrot.getCena_ostateczna()));
         editReturnIdPracownikaTextField.setText(String.valueOf(zwrot.getId_pracownika()));
@@ -180,9 +183,9 @@ public class ReturnController {
         WindowSingleton.showEmployeeTable(editReturnNewIdPracownikaTextField);
     }
 
-//    public void showEditPlatnosctList() {
-//        WindowSingleton.showClientTable(  cscsdfedrgag);
-//    }
+    public void showEditPlatnosctList() {
+        //WindowSingleton.showClientTable( );
+    }
 
     public void editReservation() {
         if (editReturnNewIdWypozyczeniaTextField.getText().equals("") ||
@@ -212,7 +215,7 @@ public class ReturnController {
         zwrot.setId_wypozyczenia(wypozyczenie);
         zwrot.setId_platnosci(platnosc);
         zwrot.setStan_pojazdu(editReturnNewStanTextField.getText());
-        zwrot.setData_zwrotu(Date.valueOf(editReturnDataZwrotuDataPicker.getValue()));
+        zwrot.setData_zwrotu(Date.valueOf(editReturnDataZwrotuDataPicker.getText()));
         zwrot.setCena_ostateczna(Float.parseFloat(editReturnCenaTextField.getText()));
         zwrot.setId_pracownika(pracownik);
 
@@ -222,7 +225,7 @@ public class ReturnController {
         editReturnIdTextField.setText("");
 
         editReturnIdWypozyczeniaTextField.setText("");
-        editReturnDataZwrotuDataPicker.getEditor().clear();
+        editReturnDataZwrotuDataPicker.setText("");
         editReturnStanTextField.setText("");
         editReturnCenaTextField.setText("");
         editReturnIdPracownikaTextField.setText("");

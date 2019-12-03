@@ -2,10 +2,7 @@ package controller;
 
 //import com.sun.tools.javac.util.List;
 
-import domain.Klient;
-import domain.Pojazd;
-import domain.Pracownik;
-import domain.Rezerwacja;
+import domain.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableView;
@@ -87,16 +84,15 @@ public class ReservationController {
 
         try {
             Date startdate = Date.valueOf(addReservationDataRozpTextField.getValue());
-        } catch (Exception e) {
-            System.out.println("nope");
-        }
-        System.out.println(Date.valueOf(addReservationDataRozpTextField.getValue()).getClass().getName());
-        try {
             Date stopdate = Date.valueOf(addReservationDataZakTextField.getValue());
         } catch (Exception e) {
-            System.out.println("nope");
+            System.out.println("Niepoprawny format");
         }
-        System.out.println(Date.valueOf(addReservationDataZakTextField.getValue()).getClass().getName());
+
+        if(addReservationDataRozpTextField.getValue().isAfter(addReservationDataZakTextField.getValue())){
+            WindowSingleton.alert("Data zakończenia nie może być przed datą rozpoczęcia");
+            return;
+        }
 
 
         Pojazd pojazd = DBConnector.getInstance().getEntityManager().find(Pojazd.class, Long.parseLong(addReservationIdPojazduTextField.getText()));
@@ -154,6 +150,10 @@ public class ReservationController {
 
             WindowSingleton.alert("Usunięto rezerwacje o id = " + _id);
             System.out.println("usunieto rezerwacje o id " + _id);
+
+            Pojazd pojazd = DBConnector.getInstance().getEntityManager().find(Pojazd.class, rezerwacja.getId_pojazdu().getId_pojazdu());
+            pojazd.setCzyDostepny("tak");
+            DBConnector.getInstance().editPojazd(pojazd);
             DBConnector.getInstance().deleteRezerwacja(rezerwacja);
             DBConnector.getInstance().stop();
             deleteReservationIdTextField.setText("");
