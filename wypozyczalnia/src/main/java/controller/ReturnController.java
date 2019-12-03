@@ -142,6 +142,10 @@ public class ReturnController {
                 return;
             }
 
+            Pojazd pojazd = DBConnector.getInstance().getEntityManager().find(Pojazd.class,zwrot.getId_wypozyczenia().getId_pojazdu().getId_pojazdu());
+            pojazd.setCzyDostepny("nie");
+            pojazd.setStan_pojazdu(zwrot.getId_wypozyczenia().getStan_pojazdu());
+            DBConnector.getInstance().editPojazd(pojazd);
             WindowSingleton.alert("Usunięto zwrot o id = " + _id);
             System.out.println("usunieto zwrot o id " + _id);
             DBConnector.getInstance().deleteZwrot(zwrot);
@@ -169,7 +173,7 @@ public class ReturnController {
             return;
         }
         Zwrot zwrot = DBConnector.getInstance().getEntityManager().find(Zwrot.class, Long.parseLong(editReturnIdTextField.getText()));
-        editReturnIdWypozyczeniaTextField.setText(String.valueOf(zwrot.getId_zwrotu()));
+        editReturnIdWypozyczeniaTextField.setText(String.valueOf(zwrot.getId_wypozyczenia()));
         //todo
         editReturnDataZwrotuDataPicker.setText(String.valueOf(zwrot.getData_zwrotu()));
         editReturnStanTextField.setText(String.valueOf(zwrot.getStan_pojazdu()));
@@ -214,9 +218,9 @@ public class ReturnController {
         Platnosc platnosc = DBConnector.getInstance().getEntityManager().find(Platnosc.class, Long.parseLong(editReturnIdPlatnosciTextField.getText()));
         Pracownik pracownik = DBConnector.getInstance().getEntityManager().find(Pracownik.class, Long.parseLong(editReturnIdPracownikaTextField.getText()));
 
-        List<Zwrot> list = (List<Zwrot>) DBConnector.getInstance().getEntityManager().createQuery("SELECT a FROM Zwrot a WHERE id_wypozyczenia_id_wypozyczenia='" + wypozyczenie.getId_wypozyczenia() + "'", Zwrot.class).getResultList();
+        List<Zwrot> list = (List<Zwrot>) DBConnector.getInstance().getEntityManager().createQuery("SELECT a FROM Zwrot a WHERE id_wypozyczenia_id_wypozyczenia='" + editReturnNewIdWypozyczeniaTextField.getText() + "'", Zwrot.class).getResultList();
         if(list.size()>0){
-            WindowSingleton.alert("Wypożyczenie zostało już zwrócone");
+            WindowSingleton.alert("Wypożyczenie zostało wcześniej zwrócone");
             return;
         }
 
