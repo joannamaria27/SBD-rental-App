@@ -103,9 +103,9 @@ public class ReturnController {
         addReturnIdPlatnosciTextField.setText("");
     }
 
-//    public void showAddPlatnoscList() {
-//        WindowSingleton.show Table(addReturnIdPlatnosciTextField);
-//    }
+    public void showAddPlatnoscList() {
+        WindowSingleton.showPlatnoscTable(addReturnIdPlatnosciTextField);
+    }
 
     public void showAddWypozyczenieList() {
         WindowSingleton.showRentTable(addReturnIdWypozyczeniaTextField);
@@ -115,9 +115,6 @@ public class ReturnController {
         WindowSingleton.showEmployeeTable(addReturnIdPracownikaTextField);
     }
 
-    public void showAddPlatnoscList(){
-
-    }
 
     public void deleteReturnShowReturnList() {
         WindowSingleton.showReturnTable(deleteReturnIdTextField);

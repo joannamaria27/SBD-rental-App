@@ -853,4 +853,72 @@ public class WindowSingleton {
         }
         return serwiss;
     }
+
+
+    public static void showPlatnoscTable(final TextField idField) {
+
+        final Stage window = new Stage();
+        Button button = new Button("Wybierz");
+        window.setTitle("Lista płatnosci");
+
+
+        final TableView<Platnosc> table = createPlatnoscTable();
+        Platnosc platnosc = table.getSelectionModel().getSelectedItem();
+
+        VBox vBox = new VBox();
+        vBox.getChildren().addAll(table, button);
+
+        button.setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent e) {
+                Platnosc selection;
+                selection = table.getSelectionModel().getSelectedItem();
+                //System.out.println(selection.getId());
+                idField.setText(String.valueOf(selection.getId_platnosci()));
+                window.close();
+            }
+        });
+
+        Scene scene = new Scene(vBox);
+        window.setScene(scene);
+        window.show();
+    }
+
+
+    public static TableView createPlatnoscTable() {
+        final TableView<Platnosc> table;
+
+        // id
+        TableColumn<Platnosc, Long> idColumn = new TableColumn<Platnosc, Long>("ID");
+        idColumn.setMinWidth(50);
+        idColumn.setCellValueFactory(new PropertyValueFactory<Platnosc, Long>("id_platnosci"));
+
+        // typ
+        TableColumn<Platnosc, String > typColumn = new TableColumn<Platnosc, String>("Typ");
+        typColumn.setMinWidth(200);
+        typColumn.setCellValueFactory(new PropertyValueFactory<Platnosc, String>("typ"));
+
+        // faktura
+        TableColumn<Platnosc, Boolean> fakturaColumn = new TableColumn<Platnosc, Boolean>("Faktura");
+        fakturaColumn.setMinWidth(200);
+        fakturaColumn.setCellValueFactory(new PropertyValueFactory<Platnosc, Boolean>("faktura"));
+
+        table = new TableView<Platnosc>();
+        table.setItems(WindowSingleton.getPlatnoscObservableList());
+        table.getColumns().addAll(idColumn,typColumn,fakturaColumn);
+
+        return table;
+    }
+
+
+    private static ObservableList<Platnosc> getPlatnoscObservableList() {
+        ObservableList<Platnosc> platnoscs = FXCollections.observableArrayList();
+
+        List<Platnosc> list = DBConnector.getInstance().getEntityManager().createQuery("SELECT a FROM Platnosc a", Platnosc.class).getResultList();
+
+        for (Platnosc platnosc : list) {
+            platnoscs.add(platnosc);
+        }
+        return platnoscs;
+    }
+
 }
