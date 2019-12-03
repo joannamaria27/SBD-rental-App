@@ -355,6 +355,21 @@
                                     <content>
                                         <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: white;">
                                             <children>
+                                                <Label prefHeight="21.0" prefWidth="763.0" text="PODAJ ID POJAZDU KTÓRY JEST W SERWISIE:">
+                                                <StackPane.margin>
+                                                    <Insets bottom="500.0" left="50.0" right="500.0" />
+                                                </StackPane.margin>
+                                            </Label>
+                                                <TextField fx:id="addServiceVehicleIdTextField" promptText="ID POJAZDU" StackPane.alignment="CENTER">
+                                                    <StackPane.margin>
+                                                        <Insets bottom="400.0" left="50.0" right="400.0" />
+                                                    </StackPane.margin>
+                                                </TextField>
+                                                <Button mnemonicParsing="false" onAction="#showAddPojazdList" prefHeight="31.0" prefWidth="201.0" text="LISTA POJAZDÓW" textAlignment="CENTER" StackPane.alignment="CENTER">
+                                                    <StackPane.margin>
+                                                        <Insets bottom="400.0" left="700.0" right="50.0" />
+                                                    </StackPane.margin>
+                                                </Button>
                                                 <TextField fx:id="addServiceCenaTextField" prefHeight="31.0" prefWidth="599.0" promptText="CENA" StackPane.alignment="CENTER">
                                                     <StackPane.margin>
                                                         <Insets bottom="300.0" left="50.0" right="400.0" />
@@ -401,7 +416,7 @@
                                                         <Insets bottom="200.0" right="400.0" />
                                                     </StackPane.margin>
                                                 </Button>
-                                                <Button mnemonicParsing="false" onAction="#showDeleteServiceList" prefHeight="31.0" prefWidth="201.0" text="LISTA UBEZPIECZEŃ" textAlignment="CENTER" StackPane.alignment="CENTER">
+                                                <Button mnemonicParsing="false" onAction="#showDeleteServiceList" prefHeight="31.0" prefWidth="201.0" text="LISTA SERWISÓW" textAlignment="CENTER" StackPane.alignment="CENTER">
                                                     <StackPane.margin>
                                                         <Insets bottom="300.0" left="700.0" right="50.0" />
                                                     </StackPane.margin>

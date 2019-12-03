@@ -88,7 +88,8 @@ public class VehicleOptionsController {
     private TextField editInsuranceNewCenaTextField;
     @FXML
     private DatePicker editInsuranceDataWaznosciDatePicker;
-
+    @FXML
+    private TextField addServiceVehicleIdTextField;
 
     @FXML
     private TextField deleteServiceIdTextField;
@@ -106,8 +107,12 @@ public class VehicleOptionsController {
     @FXML
     private StackPane printServiceStackPane;
 
+
     public void addService() {
-        if (addServiceCenaTextField.getText().equals("")  ||  addServiceDataRDatePicker.getValue().toString().equals("") || addServiceDataZDatePicker.getValue().toString().equals("")) {
+        if (addServiceCenaTextField.getText().equals("") ||
+                addServiceDataRDatePicker.getValue().toString().equals("") ||
+                addServiceDataZDatePicker.getValue().toString().equals("") ||
+                addServiceVehicleIdTextField.getText().equals("")) {
             WindowSingleton.alert("Niepoprawne dane");
             return;
         }
@@ -120,14 +125,23 @@ public class VehicleOptionsController {
             return;
         }
 
-        if(addServiceDataRDatePicker.getValue().isAfter(addServiceDataZDatePicker.getValue())){
+        if (addServiceDataRDatePicker.getValue().isAfter(addServiceDataZDatePicker.getValue())) {
             WindowSingleton.alert("Data zakończenia nie może być przed datą rozpoczęcia");
             return;
         }
 
+        Pojazd pojazd = DBConnector.getInstance().getEntityManager().find(Pojazd.class, Long.parseLong(addServiceVehicleIdTextField.getText()));
+        List<Wypozyczenie> list = DBConnector.getInstance().getEntityManager().createQuery("SELECT a FROM Wypozyczenie a WHERE id_pojazdu='" + addServiceVehicleIdTextField.getText() + "'", Wypozyczenie.class).getResultList();
+        if(list.size()>0){
+            WindowSingleton.alert("Pojazd jest w trakcie wypożyczenia");
+            return;
+        }
+        pojazd.setCzyDostepny("nie");
+
+        DBConnector.getInstance().editPojazd(pojazd);
         DBConnector.getInstance().addService(
                 new Serwis(
-                        new Pojazd(),
+                        pojazd,
                         Date.valueOf(addServiceDataRDatePicker.getValue().toString()),
                         Date.valueOf(addServiceDataZDatePicker.getValue().toString()),
                         Float.parseFloat(addServiceCenaTextField.getText())
@@ -138,7 +152,7 @@ public class VehicleOptionsController {
     }
 
     public void showAddPojazdList() {
-        WindowSingleton.showVehicleTable(addReturnIdPojazduTextField);
+        WindowSingleton.showVehicleTable(addServiceVehicleIdTextField);
     }
 
 
@@ -146,7 +160,6 @@ public class VehicleOptionsController {
         final TableView<Serwis> table = WindowSingleton.createServiceTable();
         printServiceStackPane.getChildren().add(table);
     }
-
 
 
     public void showDeleteServiceList() {
@@ -165,17 +178,15 @@ public class VehicleOptionsController {
             WindowSingleton.alert("Nie ma serwisu o podanym ID");
             return;
         }
-
-        if (DBConnector.getInstance().getEntityManager().createQuery("SELECT a FROM Pojazd a WHERE id_serwisu='" + deleteServiceIdTextField.getText() + "'", Pojazd.class).getResultList().size() > 0) {
-            WindowSingleton.alert(" Nie można usunąć. Serwis jest przypisany do pojazdu ");
-            return;
-        }
+        Pojazd pojazd = DBConnector.getInstance().getEntityManager().find(Pojazd.class, serwis.getId_pojazdu().getId_pojazdu());
+        pojazd.setCzyDostepny("tak");
+        DBConnector.getInstance().editPojazd(pojazd);
 
         DBConnector.getInstance().deleteService(serwis);
         WindowSingleton.alert("Usunięto serwis o ID = " + deleteServiceIdTextField.getText());
+        deleteServiceIdTextField.setText("");
 
     }
-
 
 
     public void addVehicle() {
@@ -364,18 +375,18 @@ public class VehicleOptionsController {
         }
 //        DBConnector.getInstance().start();
         Pojazd pojazd = DBConnector.getInstance().getEntityManager().find(Pojazd.class, Long.parseLong(deleteVehicleIdTextField.getText()));
-//            List<Wypozyczenie> list = DBConnector.getInstance().getEntityManager().createQuery("SELECT a FROM Wypozyczenie a WHERE id_pojazdu='" + deleteVehicleIdTextField.getText() + "'", Wypozyczenie.class).getResultList();
-//
-//            if (pojazd == null) {
-//                WindowSingleton.alert("Nie ma takiego pojazdu");
-//                DBConnector.getInstance().stop();
-//                return;
-//            }
-//            if (list.size() > 0) {
-//                WindowSingleton.alert("Pojazd jest w trakcie wypożyczenia");
-//                DBConnector.getInstance().stop();
-//                return;
-//            }
+            List<Wypozyczenie> list = DBConnector.getInstance().getEntityManager().createQuery("SELECT a FROM Wypozyczenie a WHERE id_pojazdu='" + deleteVehicleIdTextField.getText() + "'", Wypozyczenie.class).getResultList();
+
+            if (pojazd == null) {
+                WindowSingleton.alert("Nie ma takiego pojazdu");
+                DBConnector.getInstance().stop();
+                return;
+            }
+            if (list.size() > 0) {
+                WindowSingleton.alert("Pojazd jest w trakcie wypożyczenia");
+                //DBConnector.getInstance().stop();
+                return;
+            }
 
         WindowSingleton.alert("Usunięto pojazd o id = " + deleteVehicleIdTextField.getText());
         DBConnector.getInstance().deletePojazd(pojazd);

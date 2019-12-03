@@ -360,7 +360,7 @@
                                                     <Insets bottom="500.0" left="50.0" right="500.0" />
                                                 </StackPane.margin>
                                             </Label>
-                                                <TextField fx:id="addReturnIdPojazduTextField" promptText="ID POJAZDU" StackPane.alignment="CENTER">
+                                                <TextField fx:id="addServiceVehicleIdTextField" promptText="ID POJAZDU" StackPane.alignment="CENTER">
                                                     <StackPane.margin>
                                                         <Insets bottom="400.0" left="50.0" right="400.0" />
                                                     </StackPane.margin>
@@ -416,7 +416,7 @@
                                                         <Insets bottom="200.0" right="400.0" />
                                                     </StackPane.margin>
                                                 </Button>
-                                                <Button mnemonicParsing="false" onAction="#showDeleteServiceList" prefHeight="31.0" prefWidth="201.0" text="LISTA UBEZPIECZEŃ" textAlignment="CENTER" StackPane.alignment="CENTER">
+                                                <Button mnemonicParsing="false" onAction="#showDeleteServiceList" prefHeight="31.0" prefWidth="201.0" text="LISTA SERWISÓW" textAlignment="CENTER" StackPane.alignment="CENTER">
                                                     <StackPane.margin>
                                                         <Insets bottom="300.0" left="700.0" right="50.0" />
                                                     </StackPane.margin>

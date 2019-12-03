@@ -104,6 +104,12 @@ public class ReservationController {
             return;
         }
 
+        List<Serwis> list = DBConnector.getInstance().getEntityManager().createQuery("SELECT a FROM Serwis a WHERE id_pojazdu_id_pojazdu='" + addReservationIdPojazduTextField.getText() + "'", Serwis.class).getResultList();
+        if (list.size()>0) {
+            WindowSingleton.alert("Pojazd jest w serwisie");
+            return;
+        }
+
         pojazd.setCzyDostepny("nie");
         DBConnector.getInstance().editPojazd(pojazd);
 
@@ -153,8 +159,6 @@ public class ReservationController {
             }
 
             //List<Wypozyczenie> list = DBConnector.getInstance().getEntityManager().createQuery("SELECT a FROM Wypozyczenie a WHERE id='" + deleteVehicleIdTextField.getText() + "'", Wypozyczenie.class).getResultList();
-
-
 
 
             Pojazd pojazd = DBConnector.getInstance().getEntityManager().find(Pojazd.class, rezerwacja.getId_pojazdu().getId_pojazdu());
@@ -239,8 +243,14 @@ public class ReservationController {
         Klient klient = DBConnector.getInstance().getEntityManager().find(Klient.class, Long.parseLong(editReservationIdKlientaTextField.getText()));
         Pracownik pracownik = DBConnector.getInstance().getEntityManager().find(Pracownik.class, Long.parseLong(editReservationPracownikTextField.getText()));
 
+
         if (pojazd.getCzyDostepny() == "nie") {
             WindowSingleton.alert("Pojazd niedostępny");
+            return;
+        }
+        List<Serwis> list = DBConnector.getInstance().getEntityManager().createQuery("SELECT a FROM Serwis a WHERE id_pojazdu_id_pojazdu='" + editReservationIdPojazduTextField.getText() + "'", Serwis.class).getResultList();
+        if (list.size()>0) {
+            WindowSingleton.alert("Pojazd jest w serwisie");
             return;
         }
         pojazd.setCzyDostepny("nie");

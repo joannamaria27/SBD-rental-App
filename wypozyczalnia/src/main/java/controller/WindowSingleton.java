@@ -819,6 +819,11 @@ public class WindowSingleton {
         idColumn.setMinWidth(50);
         idColumn.setCellValueFactory(new PropertyValueFactory<Serwis, Long>("id_serwisu"));
 
+        // id pojazdu
+        TableColumn<Serwis, Long> pojazdColumn = new TableColumn<Serwis, Long>("ID pojazdu");
+        pojazdColumn.setMinWidth(50);
+        pojazdColumn.setCellValueFactory(new PropertyValueFactory<Serwis, Long>("id_pojazdu"));
+
         // data_r_naprawy
         TableColumn<Serwis, Date > cenaColumn = new TableColumn<Serwis, Date>("Data rozpoczecia naprawy");
         cenaColumn.setMinWidth(200);
@@ -837,7 +842,7 @@ public class WindowSingleton {
 
         table = new TableView<Serwis>();
         table.setItems(WindowSingleton.getServiceObservableList());
-        table.getColumns().addAll(idColumn,cenaColumn,datarColumn,datazColumn);
+        table.getColumns().addAll(idColumn,pojazdColumn,cenaColumn,datarColumn,datazColumn);
 
         return table;
     }
@@ -894,13 +899,13 @@ public class WindowSingleton {
 
         // typ
         TableColumn<Platnosc, String > typColumn = new TableColumn<Platnosc, String>("Typ");
-        typColumn.setMinWidth(200);
+        typColumn.setMinWidth(100);
         typColumn.setCellValueFactory(new PropertyValueFactory<Platnosc, String>("typ"));
 
         // faktura
-        TableColumn<Platnosc, Boolean> fakturaColumn = new TableColumn<Platnosc, Boolean>("Faktura");
-        fakturaColumn.setMinWidth(200);
-        fakturaColumn.setCellValueFactory(new PropertyValueFactory<Platnosc, Boolean>("faktura"));
+        TableColumn<Platnosc, String> fakturaColumn = new TableColumn<Platnosc, String>("Faktura");
+        fakturaColumn.setMinWidth(100);
+        fakturaColumn.setCellValueFactory(new PropertyValueFactory<Platnosc, String>("faktura"));
 
         table = new TableView<Platnosc>();
         table.setItems(WindowSingleton.getPlatnoscObservableList());

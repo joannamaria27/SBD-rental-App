@@ -11,7 +11,15 @@ public class Platnosc {
     @GeneratedValue
     private long id_platnosci;
     private String typ;
-    private boolean faktura;
+    private String faktura;
+
+    public String getFaktura() {
+        return faktura;
+    }
+
+    public void setFaktura(String faktura) {
+        this.faktura = faktura;
+    }
 
     public long getId_platnosci() {
         return id_platnosci;
@@ -29,11 +37,11 @@ public class Platnosc {
         this.typ = typ;
     }
 
-    public boolean isFaktura() {
-        return faktura;
-    }
-
-    public void setFaktura(boolean faktura) {
-        this.faktura = faktura;
-    }
+//    public boolean isFaktura() {
+//        return faktura;
+//    }
+//
+//    public void setFaktura(boolean faktura) {
+//        this.faktura = faktura;
+//    }
 }
