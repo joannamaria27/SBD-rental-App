@@ -54,7 +54,7 @@ public class WindowSingleton {
         scene = new Scene(borderPane);
 
         primaryStage.setScene(scene);
-        primaryStage.setTitle("KCK2");
+        primaryStage.setTitle("SBD");
         primaryStage.show();
     }
 
@@ -62,7 +62,7 @@ public class WindowSingleton {
         primaryStage = stage;
         primaryStage.setResizable(false);
         //primaryStage.getIcons().add(new Image("image/WindowIcon.png"));
-        setLayout("/fxml/StartScreen.fxml");
+        setLayout("/fxml/WelcomeScreen.fxml");
         //WelcomeScreen.ProgressMax();
 //        DBConnector.getInstance().getEntityManager();
     }
