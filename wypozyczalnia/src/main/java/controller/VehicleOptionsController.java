@@ -349,7 +349,7 @@ public class VehicleOptionsController {
             WindowSingleton.alert("Nie ma pojazdu o tym ID");
             return;
         }
-        DBConnector.getInstance().start();
+//        DBConnector.getInstance().start();
         Pojazd pojazd = DBConnector.getInstance().getEntityManager().find(Pojazd.class, Long.parseLong(deleteVehicleIdTextField.getText()));
 //            List<Wypozyczenie> list = DBConnector.getInstance().getEntityManager().createQuery("SELECT a FROM Wypozyczenie a WHERE id_pojazdu='" + deleteVehicleIdTextField.getText() + "'", Wypozyczenie.class).getResultList();
 //
@@ -366,7 +366,7 @@ public class VehicleOptionsController {
 
         WindowSingleton.alert("Usunięto pojazd o id = " + deleteVehicleIdTextField.getText());
         DBConnector.getInstance().deletePojazd(pojazd);
-        DBConnector.getInstance().stop();
+//        DBConnector.getInstance().stop();
         deleteVehicleIdTextField.setText("");
     }
 

@@ -87,9 +87,9 @@ public class EmployeeOptionsController {
         }
         System.out.println(Date.valueOf(addEmployeeBirthDateTextField.getText()).getClass().getName());
 
-        DBConnector.getInstance().start();
+//        DBConnector.getInstance().start();
         DBConnector.getInstance().addPracownik(new Pracownik(addEmployeeSurnameTextField.getText(), addEmployeeNameTextField.getText(), Date.valueOf(addEmployeeBirthDateDatePicker.getValue()), addEmployeeAddressTextField.getText(), addEmployeePeselTextField.getText(), addEmployeePhoneTextField.getText(), addEmployeeStanowiskoTextField.getText()));
-        DBConnector.getInstance().stop();
+//        DBConnector.getInstance().stop();
         WindowSingleton.alert("Dodano pracownika");
         addEmployeeStanowiskoTextField.setText("");
         addEmployeeSurnameTextField.setText("");
@@ -187,18 +187,18 @@ public class EmployeeOptionsController {
         long _id;
         try {
             _id = Long.parseLong(deleteEmployeeIdTextField.getText());
-            DBConnector.getInstance().start();
+//            DBConnector.getInstance().start();
             Pracownik pracownik = DBConnector.getInstance().getEntityManager().find(Pracownik.class, _id);
             if (pracownik == null) {
                 WindowSingleton.alert("Nie ma takiego pracownika");
-                DBConnector.getInstance().stop();
+//                DBConnector.getInstance().stop();
                 return;
             }
 
             WindowSingleton.alert("Usunięto pracownika o id = " + _id);
             System.out.println("usunieto pracownika o id " + _id);
             DBConnector.getInstance().deletePracownik(pracownik);
-            DBConnector.getInstance().stop();
+//            DBConnector.getInstance().stop();
             deleteEmployeeIdTextField.setText("");
         } catch (NumberFormatException e) {
             System.out.println("zły format");

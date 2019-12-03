@@ -89,7 +89,7 @@ public class ReservationController {
             System.out.println("Niepoprawny format");
         }
 
-        if(addReservationDataRozpTextField.getValue().isAfter(addReservationDataZakTextField.getValue())){
+        if (addReservationDataRozpTextField.getValue().isAfter(addReservationDataZakTextField.getValue())) {
             WindowSingleton.alert("Data zakończenia nie może być przed datą rozpoczęcia");
             return;
         }
@@ -99,13 +99,17 @@ public class ReservationController {
         Klient klient = DBConnector.getInstance().getEntityManager().find(Klient.class, Long.parseLong(addReservationIdKlientaTextField.getText()));
         Pracownik pracownik = DBConnector.getInstance().getEntityManager().find(Pracownik.class, Long.parseLong(addReservationIdPracownikaTextField.getText()));
 
+        if (pojazd.getCzyDostepny().equals("nie")) {
+            WindowSingleton.alert("Pojazd niedostępny");
+            return;
+        }
 
         pojazd.setCzyDostepny("nie");
         DBConnector.getInstance().editPojazd(pojazd);
 
-        DBConnector.getInstance().start();
+        //DBConnector.getInstance().start();
         DBConnector.getInstance().addRezerwacja(new Rezerwacja(pojazd, klient, Date.valueOf(addReservationDataRozpTextField.getValue()), Date.valueOf(addReservationDataZakTextField.getValue()), Float.parseFloat(addReservationPrzewidywanaCenaTextField.getText()), pracownik));
-        DBConnector.getInstance().stop();
+//        DBConnector.getInstance().stop();
         WindowSingleton.alert("Dodano rezerwacje");
         addReservationPrzewidywanaCenaTextField.setText("");
         addReservationIdKlientaTextField.setText("");
@@ -140,27 +144,32 @@ public class ReservationController {
         long _id;
         try {
             _id = Long.parseLong(deleteReservationIdTextField.getText());
-            DBConnector.getInstance().start();
+            //DBConnector.getInstance().start();
             Rezerwacja rezerwacja = DBConnector.getInstance().getEntityManager().find(Rezerwacja.class, _id);
             if (rezerwacja == null) {
                 WindowSingleton.alert("Nie ma takiej rezerwacji");
-                DBConnector.getInstance().stop();
+                //DBConnector.getInstance().stop();
                 return;
             }
 
-            WindowSingleton.alert("Usunięto rezerwacje o id = " + _id);
-            System.out.println("usunieto rezerwacje o id " + _id);
+            //List<Wypozyczenie> list = DBConnector.getInstance().getEntityManager().createQuery("SELECT a FROM Wypozyczenie a WHERE id='" + deleteVehicleIdTextField.getText() + "'", Wypozyczenie.class).getResultList();
+
+
+
 
             Pojazd pojazd = DBConnector.getInstance().getEntityManager().find(Pojazd.class, rezerwacja.getId_pojazdu().getId_pojazdu());
             pojazd.setCzyDostepny("tak");
             DBConnector.getInstance().editPojazd(pojazd);
             DBConnector.getInstance().deleteRezerwacja(rezerwacja);
-            DBConnector.getInstance().stop();
+            //DBConnector.getInstance().stop();
             deleteReservationIdTextField.setText("");
         } catch (NumberFormatException e) {
             System.out.println("zły format");
             return;
         }
+
+        WindowSingleton.alert("Usunięto rezerwacje o id = " + _id);
+        System.out.println("usunieto rezerwacje o id " + _id);
     }
 
 
@@ -230,6 +239,11 @@ public class ReservationController {
         Klient klient = DBConnector.getInstance().getEntityManager().find(Klient.class, Long.parseLong(editReservationIdKlientaTextField.getText()));
         Pracownik pracownik = DBConnector.getInstance().getEntityManager().find(Pracownik.class, Long.parseLong(editReservationPracownikTextField.getText()));
 
+        if (pojazd.getCzyDostepny() == "nie") {
+            WindowSingleton.alert("Pojazd niedostępny");
+            return;
+        }
+        pojazd.setCzyDostepny("nie");
 
         rezerwacja.setId_pojazdu(pojazd);
         rezerwacja.setId_klienta(klient);

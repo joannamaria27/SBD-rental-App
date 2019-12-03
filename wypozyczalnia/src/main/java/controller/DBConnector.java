@@ -84,9 +84,9 @@ public class DBConnector {
     }
 
     public void addKlient(Klient k) {
-        //entityManager.getTransaction().begin();
+        entityManager.getTransaction().begin();
         entityManager.persist(k);
-        //entityManager.getTransaction().commit();
+        entityManager.getTransaction().commit();
     }
 
     public void addPojazd(Pojazd p) {
@@ -101,28 +101,34 @@ public class DBConnector {
         entityManager.getTransaction().commit();
     }
 
-    public void addInsurance(Ubezpieczenie u){
+    public void addInsurance(Ubezpieczenie u) {
         entityManager.getTransaction().begin();
         entityManager.persist(u);
         entityManager.getTransaction().commit();
     }
 
-    public void addService(Serwis s){
+    public void addService(Serwis s) {
         entityManager.getTransaction().begin();
         entityManager.persist(s);
         entityManager.getTransaction().commit();
     }
 
     public void deletePojazd(Pojazd p) {
+        entityManager.getTransaction().begin();
         entityManager.remove(p);
+        entityManager.getTransaction().commit();
     }
 
     public void deleteKlient(Klient k) {
+        entityManager.getTransaction().begin();
         entityManager.remove(k);
+        entityManager.getTransaction().commit();
     }
 
     public void deleteWypozyczenie(Wypozyczenie w) {
+        entityManager.getTransaction().begin();
         entityManager.remove(w);
+        entityManager.getTransaction().commit();
     }
 
 //    public void deletePracownik(Pracownik p) {
@@ -135,12 +141,13 @@ public class DBConnector {
         entityManager.getTransaction().commit();
     }
 
-    public void deleteUbezpieczenie(Ubezpieczenie u){
+    public void deleteUbezpieczenie(Ubezpieczenie u) {
         entityManager.getTransaction().begin();
         entityManager.remove(u);
         entityManager.getTransaction().commit();
     }
-    public void deleteService(Serwis u){
+
+    public void deleteService(Serwis u) {
         entityManager.getTransaction().begin();
         entityManager.remove(u);
         entityManager.getTransaction().commit();
@@ -165,12 +172,13 @@ public class DBConnector {
         entityManager.getTransaction().commit();
     }
 
-    public void editUbezpieczenie(Ubezpieczenie u){
+    public void editUbezpieczenie(Ubezpieczenie u) {
         entityManager.getTransaction().begin();
         entityManager.merge(u);
         entityManager.getTransaction().commit();
     }
-    public void ediService(Serwis u){
+
+    public void ediService(Serwis u) {
         entityManager.getTransaction().begin();
         entityManager.merge(u);
         entityManager.getTransaction().commit();
@@ -192,24 +200,33 @@ public class DBConnector {
     }
 
     public void addPracownik(Pracownik pracownik) {
+        entityManager.getTransaction().begin();
         entityManager.persist(pracownik);
+        entityManager.getTransaction().commit();
     }
 
     public void deletePracownik(Pracownik p) {
+        entityManager.getTransaction().begin();
         entityManager.remove(p);
+        entityManager.getTransaction().commit();
     }
+
     public void editPracownik(Pracownik p) {
         entityManager.getTransaction().begin();
         entityManager.merge(p);
         entityManager.getTransaction().commit();
     }
 
-        public void addRezerwacja(Rezerwacja pracownik) {
+    public void addRezerwacja(Rezerwacja pracownik) {
+        entityManager.getTransaction().begin();
         entityManager.persist(pracownik);
+        entityManager.getTransaction().commit();
     }
 
     public void deleteRezerwacja(Rezerwacja p) {
+        entityManager.getTransaction().begin();
         entityManager.remove(p);
+        entityManager.getTransaction().commit();
     }
 
     public void editRezerwacja(Rezerwacja p) {
@@ -217,12 +234,17 @@ public class DBConnector {
         entityManager.merge(p);
         entityManager.getTransaction().commit();
     }
+
     public void addZwrot(Zwrot z) {
+        entityManager.getTransaction().begin();
         entityManager.persist(z);
+        entityManager.getTransaction().commit();
     }
 
     public void deleteZwrot(Zwrot p) {
+        entityManager.getTransaction().begin();
         entityManager.remove(p);
+        entityManager.getTransaction().commit();
     }
 
     public void editZwrot(Zwrot p) {

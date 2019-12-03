@@ -90,10 +90,10 @@ public class ReturnController {
         Platnosc platnosc = DBConnector.getInstance().getEntityManager().find(Platnosc.class, Long.parseLong(addReturnIdPlatnosciTextField.getText()));
         Pracownik pracownik = DBConnector.getInstance().getEntityManager().find(Pracownik.class, Long.parseLong(addReturnIdPracownikaTextField.getText()));
 
-        DBConnector.getInstance().start();
+//        DBConnector.getInstance().start();
 
         DBConnector.getInstance().addZwrot(new Zwrot(wypozyczenie, Date.valueOf(addReturnDataZwrotuDataPicker.getValue()), addReturnStanTextField.getText(), Float.parseFloat(addReturnCenaTextField.getText()), pracownik, platnosc));
-        DBConnector.getInstance().stop();
+//        DBConnector.getInstance().stop();
         WindowSingleton.alert("Dodano zwrot");
         addReturnIdWypozyczeniaTextField.setText("");
         addReturnDataZwrotuDataPicker.setValue(null);
@@ -131,18 +131,18 @@ public class ReturnController {
         long _id;
         try {
             _id = Long.parseLong(deleteReturnIdTextField.getText());
-            DBConnector.getInstance().start();
+//            DBConnector.getInstance().start();
             Zwrot zwrot = DBConnector.getInstance().getEntityManager().find(Zwrot.class, _id);
             if (zwrot == null) {
                 WindowSingleton.alert("Nie ma takiego zwrotu");
-                DBConnector.getInstance().stop();
+//                DBConnector.getInstance().stop();
                 return;
             }
 
             WindowSingleton.alert("Usunięto zwrot o id = " + _id);
             System.out.println("usunieto zwrot o id " + _id);
             DBConnector.getInstance().deleteZwrot(zwrot);
-            DBConnector.getInstance().stop();
+//            DBConnector.getInstance().stop();
             deleteReturnIdTextField.setText("");
         } catch (NumberFormatException e) {
             System.out.println("zły format");

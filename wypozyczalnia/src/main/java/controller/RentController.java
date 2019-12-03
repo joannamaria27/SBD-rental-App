@@ -115,11 +115,6 @@ public class RentController {
             return;
         }
 
-        if(rezerwacja.getId_pojazdu().getCzyDostepny() == "nie"){
-            WindowSingleton.alert("Pojazd niedostępny");
-            return;
-        }
-
         Wypozyczenie wypozyczenie = new Wypozyczenie(rezerwacja.getId_pojazdu(),
                 rezerwacja.getData_r_rezerwacji(),
                 addRentKodTextField.getText(),
@@ -131,6 +126,7 @@ public class RentController {
         rezerwacja.getId_pojazdu().setCzyDostepny("nie");
         rezerwacja.getId_pojazdu().setStan_pojazdu(addRentStanTextField.getText());
         DBConnector.getInstance().editPojazd(rezerwacja.getId_pojazdu());
+        DBConnector.getInstance().deleteRezerwacja(rezerwacja);
         DBConnector.getInstance().addWypozyczenie(wypozyczenie);
         WindowSingleton.alert("Dodano wypożyczenie");
 
@@ -163,18 +159,21 @@ public class RentController {
         long _id;
         try {
             _id = Long.parseLong(deleteRentIdTextField.getText());
-            DBConnector.getInstance().start();
+            //DBConnector.getInstance().start();
             Wypozyczenie wypozyczenie = DBConnector.getInstance().getEntityManager().find(Wypozyczenie.class, _id);
             if (wypozyczenie == null) {
                 WindowSingleton.alert("Nie ma takiego wypozyczenia");
-                DBConnector.getInstance().stop();
+//                DBConnector.getInstance().stop();
                 return;
             }
+            Pojazd pojazd = DBConnector.getInstance().getEntityManager().find(Pojazd.class, wypozyczenie.getId_pojazdu().getId_pojazdu());
+            pojazd.setCzyDostepny("tak");
 
+            DBConnector.getInstance().editPojazd(pojazd);
+            DBConnector.getInstance().deleteWypozyczenie(wypozyczenie);
+//            DBConnector.getInstance().stop();
             WindowSingleton.alert("Usunięto wypozyecznie o id = " + _id);
             System.out.println("usunieto wypozyczenie o id " + _id);
-            DBConnector.getInstance().deleteWypozyczenie(wypozyczenie);
-            DBConnector.getInstance().stop();
             deleteRentIdTextField.setText("");
         } catch (NumberFormatException e) {
             System.out.println("zły format");

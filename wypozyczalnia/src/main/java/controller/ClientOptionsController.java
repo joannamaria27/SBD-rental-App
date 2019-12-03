@@ -89,9 +89,24 @@ public class ClientOptionsController {
         }
         System.out.println(Date.valueOf(addClientBirthDateTextField.getText()).getClass().getName());
 
-        DBConnector.getInstance().start();
+        if(addClientPeselTextField.getText().length()>11){
+            WindowSingleton.alert("Za długi PESEL");
+            return;
+        }
+
+        if(addclientPhoneTextField.getText().length()>9){
+            WindowSingleton.alert("Za długi numer telefonu");
+            return;
+        }
+
+        if(addClientLicenceTextField.getText().length()>11){
+            WindowSingleton.alert("Za długi numer prawa jazdy");
+            return;
+        }
+
+//        DBConnector.getInstance().start();
         DBConnector.getInstance().addKlient(new Klient(addClientLicenceTextField.getText(), addClientSurnameTextField.getText(), addClientNameTextField.getText(), Date.valueOf(addClientBirthDateDatePicker.getValue()), addClientAddressTextField.getText(), addClientPeselTextField.getText(), addclientPhoneTextField.getText()));
-        DBConnector.getInstance().stop();
+//        DBConnector.getInstance().stop();
         WindowSingleton.alert("Dodano klienta");
         addClientLicenceTextField.setText("");
         addClientSurnameTextField.setText("");
@@ -120,18 +135,18 @@ public class ClientOptionsController {
         long _id;
         try {
             _id = Long.parseLong(deleteClientIdTextField.getText());
-            DBConnector.getInstance().start();
+//            DBConnector.getInstance().start();
             Klient klient = DBConnector.getInstance().getEntityManager().find(Klient.class, _id);
             if (klient == null) {
                 WindowSingleton.alert("Nie ma takiego klienta");
-                DBConnector.getInstance().stop();
+//                DBConnector.getInstance().stop();
                 return;
             }
 
             WindowSingleton.alert("Usunięto klienta o id = " + _id);
             System.out.println("usunieto klienta o id " + _id);
             DBConnector.getInstance().deleteKlient(klient);
-            DBConnector.getInstance().stop();
+//            DBConnector.getInstance().stop();
             deleteClientIdTextField.setText("");
         } catch (NumberFormatException e) {
             System.out.println("zły format");
