@@ -316,7 +316,7 @@
                                                         <Insets bottom="300.0" left="50.0" right="400.0" />
                                                     </StackPane.margin>
                                                 </TextField>
-                                                <Button mnemonicParsing="false" onAction="#deleteService" text="USUŃ" StackPane.alignment="CENTER">
+                                                <Button mnemonicParsing="false" onAction="#deleteInsurance" text="USUŃ" StackPane.alignment="CENTER">
                                                     <StackPane.margin>
                                                         <Insets bottom="200.0" right="400.0" />
                                                     </StackPane.margin>

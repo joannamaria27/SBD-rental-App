@@ -147,6 +147,7 @@ public class VehicleOptionsController {
 
         if (deleteServiceIdTextField.getText().equals("")) {
             WindowSingleton.alert("Niepoprawne ID");
+            return;
         }
         Serwis serwis = DBConnector.getInstance().getEntityManager().find(Serwis.class, Long.parseLong(deleteServiceIdTextField.getText()));
         if (serwis == null) {
@@ -313,6 +314,7 @@ public class VehicleOptionsController {
 
         DBConnector.getInstance().deleteUbezpieczenie(ubezpieczenie);
         WindowSingleton.alert("Usunięto ubezpieczenie o ID = " + deleteInsuranceIdTextField.getText());
+        deleteInsuranceIdTextField.setText("");
 
     }
 

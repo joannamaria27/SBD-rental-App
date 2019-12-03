@@ -10,16 +10,16 @@ public class Zwrot {
     @GeneratedValue
     private long id_zwrotu;
     @OneToOne
-    @JoinColumn(name="id_wypozyczenia")
+    @JoinColumn(name="id_wypozyczenia_id_wypozyczenia")
     private Wypozyczenie id_wypozyczenia;
     private Date data_zwrotu;
     private String stan_pojazdu;
     private float cena_ostateczna;
     @OneToOne
-    @JoinColumn(name="id_pracownika")
+    @JoinColumn(name="id_pracownika_id_pracownika")
     private Pracownik id_pracownika;
     @OneToOne
-    @JoinColumn(name="id_platnosci")
+    @JoinColumn(name="id_platnosci_id_platnosci")
     private Platnosc id_platnosci;
 
      public Zwrot(Wypozyczenie id_wypozyczenia, Date data_zwrotu, String stan_pojazdu, float cena_ostateczna, Pracownik id_pracownika, Platnosc id_platnosci) {
